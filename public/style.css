@@ -14,6 +14,11 @@
     padding: 1rem;
 }
 
+.padding-top-bottom1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
 .flex {
     display: flex;
 }
@@ -22,12 +27,20 @@
     flex-direction: column;
 }
 
+.justify-center {
+    justify-content: center;
+}
+
 .align-center {
     align-items: center;
 }
 
 .border-radius {
     border-radius: 1rem;
+}
+
+.space-between {
+    justify-content: space-between;
 }
 
 /* Styling för hela dokumentet */
@@ -54,4 +67,16 @@ aside {
 /* todo lista */
 #todo-list {
     background-color: var(--pink);
+}
+
+.todo-list-header {
+    font-size: 1.3rem;
+}
+
+.todo-list-current-day, .todo-list-other-days {
+    margin-top: 0.5rem;
+}
+.tlcd-activites, .tlod-activites {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
