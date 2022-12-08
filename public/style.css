@@ -1,0 +1,57 @@
+/* variaber */
+:root {
+    --darkblue: #141d5e; /*Används för rubriker, och annan text*/
+    --lightblue: #a8b2fc; /*Används för bakgrund av aside*/
+    --pink: #ff98cb; /*Används för todolist rutan samt de cirklar som dyker upp i kalendern*/
+}
+
+/* Återanvända klasser */
+.margin1 {
+    margin: 1rem;
+}
+
+.padding1 {
+    padding: 1rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.border-radius {
+    border-radius: 1rem;
+}
+
+/* Styling för hela dokumentet */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Aside */
+aside {
+    width: 20rem;
+    background-color: var(--lightblue);
+}
+/* Välkomst segment */
+.welcome-segment-day {
+    font-size: 1.5rem;
+    color: var(--darkblue);
+}
+
+.welcome-segment-date, .welcome-segment-time {
+    color: var(--darkblue);
+}
+
+/* todo lista */
+#todo-list {
+    background-color: var(--pink);
+}
