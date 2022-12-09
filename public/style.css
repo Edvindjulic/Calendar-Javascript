@@ -64,16 +64,18 @@ aside {
 /* Välkomst segment */
 .welcome-segment-day {
     font-size: 1.5rem;
-    color: var(--darkelectricblue);
+    font-weight: 700;
+    color: var(--white);
 }
 
 .welcome-segment-date, .welcome-segment-time {
-    color: var(--darkelectricblue);
+    color: var(--white);
 }
 
 /* todo lista */
 #todo-list {
     background-color: var(--silk);
+    color: var(--royalbluedark);
 }
 
 .todo-list-header {
