@@ -8,16 +8,6 @@
     --pewterblue: #95ACBE; /*Används för markering av helgdagar*/
 }
 
-/* Header */
-header {
-    width: 100%;
-    height: auto;
-    text-align: center;
-    font-size: 1.5rem;
-    background-color: var(--darkelectricblue);
-    color: var(--white);
-}
-
 /* Återanvända klasser */
 .margin1 {
     margin: 1rem;
@@ -60,10 +50,21 @@ header {
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
+}
+
+/* Header */
+header {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 1.5rem;
+    background-color: var(--darkelectricblue);
+    color: var(--white);
 }
 
 /* Aside */
@@ -74,16 +75,18 @@ aside {
 /* Välkomst segment */
 .welcome-segment-day {
     font-size: 1.5rem;
-    color: var(--darkelectricblue);
+    font-weight: 700;
+    color: var(--white);
 }
 
 .welcome-segment-date, .welcome-segment-time {
-    color: var(--darkelectricblue);
+    color: var(--white);
 }
 
 /* todo lista */
 #todo-list {
     background-color: var(--silk);
+    color: var(--royalbluedark);
 }
 
 .todo-list-header {

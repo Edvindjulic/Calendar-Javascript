@@ -1,5 +1,9 @@
 window.addEventListener("DOMContentLoaded", main);
 
-function main() {
-    
+/**
+ * Function that loads when the dom is loaded
+ */
+ function main() {
+    startClock();
 }
+
