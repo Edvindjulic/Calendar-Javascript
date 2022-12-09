@@ -73,6 +73,9 @@ aside {
     background-color: var(--cadetblue);
 }
 /* Välkomst segment */
+#welcome.segment {
+    height: auto;
+}
 .welcome-segment-day {
     font-size: 1.5rem;
     font-weight: 700;
