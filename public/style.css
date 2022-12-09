@@ -74,6 +74,12 @@ aside {
     font-size: 1.3rem;
 }
 
+.todo-list-add-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
 .todo-list-current-day, .todo-list-other-days {
     margin-top: 0.5rem;
 }

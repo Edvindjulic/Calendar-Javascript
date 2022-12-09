@@ -7,6 +7,7 @@
     <!-- länkar till filer -->
     <link rel="stylesheet" href="./style.css">
     <script src="./main.js"></script>
+    <script src="./todo.js"></script>
     <!-- länkar till fonts, ikoner osv -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Document</title>
@@ -26,23 +27,27 @@
       <div id="todo-list" data-cy="todo-list" class="padding1 margin1 border-radius">
         <div class="todo-list-header flex space-between align-center">
           <p><b>Mina aktiviteter</b></p>
-          <span class="material-symbols-outlined">
+          <button class="material-symbols-outlined todo-list-add-button" id="todo-list-add-new-item">
             add
-          </span>
+          </button>
         </div>
         <div class="todo-list-current-day">
           <p><b>Idag</b></p>
           <div class="tlcd-activites">
-            <p>Lämna in uppgift</p>
-            <p>Köp middag</p>
+            <ul>
+              <li>Lämna in uppgift</li>
+              <li>Köp middag</li>
+            </ul>
           </div>
         </div>
         <div class="todo-list-other-days">
           <p><b>Kommande</b></p>
-          <div class="tlod-activites">
-            <p>15/12 Fika med Fia</p>
-            <p>17/12 Köp julklapp till Pål</p>
-            <p>22/12 Maila chefen om projekt blalbl lblalballbalbala</p>
+          <div class="tlod-activites" id="tlod-new-item">
+            <ul>
+              <li>15/12 Fika med Fia</li>
+              <li>17/12 Köp julklapp till Pål</li>
+              <li>22/12 Maila chefen om projekt blalbl lblalballbalbala</li>
+            </ul>
           </div>
         </div>
       </div>
