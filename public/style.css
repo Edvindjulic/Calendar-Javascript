@@ -1,0 +1,83 @@
+/* variaber */
+:root {
+    --darkblue: #141d5e; /*Används för rubriker, och annan text*/
+    --lightblue: #a8b2fc; /*Används för bakgrund av aside*/
+    --pink: #ff98cb; /*Används för todolist rutan samt de cirklar som dyker upp i kalendern*/
+    --white: #fff; /*Används för text med mörkbakgrund*/
+}
+
+/* Återanvända klasser */
+.margin1 {
+    margin: 1rem;
+}
+
+.padding1 {
+    padding: 1rem;
+}
+
+.padding-top-bottom1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.border-radius {
+    border-radius: 1rem;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+/* Styling för hela dokumentet */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Aside */
+aside {
+    width: 20rem;
+    background-color: var(--lightblue);
+}
+/* Välkomst segment */
+.welcome-segment-day {
+    font-size: 1.5rem;
+    color: var(--darkblue);
+}
+
+.welcome-segment-date, .welcome-segment-time {
+    color: var(--darkblue);
+}
+
+/* todo lista */
+#todo-list {
+    background-color: var(--pink);
+}
+
+.todo-list-header {
+    font-size: 1.3rem;
+}
+
+.todo-list-current-day, .todo-list-other-days {
+    margin-top: 0.5rem;
+}
+.tlcd-activites, .tlod-activites {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
