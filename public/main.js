@@ -74,6 +74,7 @@ function getTodaysDate(date) {
 /**
  * Renders the full date on to the side
  * @param {Date} date 
+ * @param {HTMLDivElement} welcomeSegement 
  */
 function renderTodaysDate(date, welcomeSegement) {
     const dateText = document.createElement("p");
@@ -85,6 +86,7 @@ function renderTodaysDate(date, welcomeSegement) {
 /**
  * Get and renders the time
  * @param {Date} date 
+ * @param {HTMLDivElement} welcomeSegement 
  */
 function getAndRenderTime(date, welcomeSegement) {
     const time = date.toTimeString().split(" ")[0];
