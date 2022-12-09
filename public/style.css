@@ -3,6 +3,7 @@
     --darkblue: #141d5e; /*Används för rubriker, och annan text*/
     --lightblue: #a8b2fc; /*Används för bakgrund av aside*/
     --pink: #ff98cb; /*Används för todolist rutan samt de cirklar som dyker upp i kalendern*/
+    --white: #fff; /*Används för text med mörkbakgrund*/
 }
 
 /* Återanvända klasser */
