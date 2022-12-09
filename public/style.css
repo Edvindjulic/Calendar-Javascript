@@ -1,9 +1,11 @@
 /* variaber */
 :root {
-    --darkblue: #141d5e; /*Används för rubriker, och annan text*/
-    --lightblue: #a8b2fc; /*Används för bakgrund av aside*/
-    --pink: #ff98cb; /*Används för todolist rutan samt de cirklar som dyker upp i kalendern*/
-    --white: #fff; /*Används för text med mörkbakgrund*/
+    --darkelectricblue: #4B6274; /*Används för bakgrund av header*/
+    --cadetblue: #79AEB2; /*Används för bakgrund av aside samt markering av aktiv dag*/
+    --silk: #F9DDD2; /*Används för todolist rutan samt de cirklar som dyker upp i kalendern*/
+    --white: #fff; /*Används för text med mörk bakgrund*/
+    --royalbluedark: #132065; /*Används för text med ljus bakgrund*/
+    --pewterblue: #95ACBE; /*Används för markering av helgdagar*/
 }
 
 /* Återanvända klasser */
@@ -50,24 +52,28 @@
     padding: 0;
 }
 
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
 /* Aside */
 aside {
     width: 20rem;
-    background-color: var(--lightblue);
+    background-color: var(--cadetblue);
 }
 /* Välkomst segment */
 .welcome-segment-day {
     font-size: 1.5rem;
-    color: var(--darkblue);
+    color: var(--darkelectricblue);
 }
 
 .welcome-segment-date, .welcome-segment-time {
-    color: var(--darkblue);
+    color: var(--darkelectricblue);
 }
 
 /* todo lista */
 #todo-list {
-    background-color: var(--pink);
+    background-color: var(--silk);
 }
 
 .todo-list-header {
