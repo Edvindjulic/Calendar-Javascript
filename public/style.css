@@ -73,7 +73,7 @@ aside {
     background-color: var(--cadetblue);
 }
 /* Välkomst segment */
-#welcome.segment {
+#welcome-segment {
     height: auto;
 }
 .welcome-segment-day {

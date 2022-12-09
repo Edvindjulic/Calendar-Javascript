@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- länkar till filer -->
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./calendar.css">
     <script src="./main.js"></script>
     <script src="./welcomesegment.js"></script>
+    <script src="./calendar.js"></script>
     <!-- länkar till fonts, ikoner osv -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -55,7 +57,24 @@
       <div id="container">
         <div id="month">
         </div>
-        <div id="calendar" data-cy="calendar-body"></div>
+        <hr class="month-divider">
+        <div id="calendar" data-cy="calendar-body">
+          <table id="calendar-table">
+            <thead>
+              <tr>
+                <th class="days-of-week">Mån</th>
+                <th class="days-of-week">Tis</th>
+                <th class="days-of-week">Ons</th>
+                <th class="days-of-week">Tors</th>
+                <th class="days-of-week">Fre</th>
+                <th class="days-of-week">Lör</th>
+                <th class="days-of-week">Sön</th>
+              </tr>
+            </thead>
+            <tbody id="calendar-body">
+            </tbody>
+          </table>
+        </div>
       </div>
     </main>
 
