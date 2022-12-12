@@ -29,20 +29,28 @@
       <div id="todo-list" data-cy="todo-list" class="padding1 margin1 border-radius">
         <div class="todo-list-header flex space-between align-center">
           <p><b>Mina aktiviteter</b></p>
-          <button class="material-symbols-outlined todo-list-add-button" id="todo-list-add-new-item">
+          <button class="material-symbols-outlined todo-list-add-button" id="todo-list-add-button">
             add
           </button>
         </div>
+        <br>
+        <div id="new-todo"> 
+            <label for="new-todo-activity">Aktivitet</label><br>
+            <input type="text" id="new-todo-activity" placeholder="Ny aktivitet"><br><br>
+            <label for="new-todo-date">Datum:</label><br>
+            <input type="date" id="new-todo-date"><br><br>
+            <button id="new-todo-add">Lägg till aktivitet</button><br><br>
+        </div>
         <div class="todo-list-current-day">
           <p><b>Idag</b></p>
-          <ul class="tlcd-activites">
+          <ul class="tlcd-activites" id="tlcd-activities">
               <li>Lämna in uppgift</li>
               <li>Köp middag</li>
           </ul>
         </div>
         <div class="todo-list-other-days">
           <p><b>Kommande</b></p>
-          <ul class="tlod-activites" id="tlod-new-item">
+          <ul class="tlod-activites" id="tlod-activities">
               <li>15/12 Fika med Fia</li>
               <li>17/12 Köp julklapp till Pål</li>
               <li>22/12 Maila chefen om projekt blalbl lblalballbalbala</li>

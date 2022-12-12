@@ -3,17 +3,18 @@ window.addEventListener("DOMContentLoaded", main);
 function main () {
 
     // Variablar
-    const addNewItemButton = document.getElementById("todo-list-add-new-item");
-    const addNewItem = document.getElementById("tlod-new-item");
+    const addNewItemOtherDays = document.getElementById("tlod-activities");
+    const addNewItemToday = document.getElementById("tlcd-activities");
+    const addNewItemButton = document.getElementById("new-todo-add");
 
-
-    // Grundläggande funktion för att lägga till text i aktivitetslistan
-    addNewItemButton.addEventListener("click", () => {
+    // Grundläggande funktion för att lägga till en todo
+        addNewItemButton.addEventListener("click", () => {
         const newTodo = document.createElement("li");
-        const userInput = prompt("Vilken aktivitet vill du lägga till?");
-        const newTodoContent = document.createTextNode(userInput);
+        const userInputTodo = document.getElementById("new-todo-activity");
+        const userInputDate = document.getElementById("new-todo-date");
+        const newTodoContent = document.createTextNode(userInputDate.value + " – " + userInputTodo.value);
         newTodo.appendChild(newTodoContent);
-        addNewItem.appendChild(newTodo);
+        addNewItemToday.appendChild(newTodo);
     });
 
 }
