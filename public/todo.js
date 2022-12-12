@@ -63,7 +63,9 @@ function main () {
                 addNewItemOtherDays.appendChild(newTodo);
             }
 
-        
+            todoList.style.display = "none";
+            showAddTodo.style.display = "block"
+            hideAddTodo.style.display = "none";
             userInputTodo.value = "";
             userInputDate.value = "";
 
