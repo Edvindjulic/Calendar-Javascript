@@ -47,9 +47,23 @@ function main () {
         // Lägg till todo om inputfälten inte är tomma
         if (userInputTodo.value != "" && userInputDate.value != "") {
             const newTodo = document.createElement("li");
-            const newTodoContent = document.createTextNode(userInputDate.value + " – " + userInputTodo.value);
-            newTodo.appendChild(newTodoContent);
-            addNewItemToday.appendChild(newTodo);
+
+            const date = new Date();
+            const todaysDate = new Date(date.getFullYear(),date.getMonth(),date.getDate());
+            const todoDate = new Date(document.getElementById('new-todo-date').value);
+
+            //Väljer om todon ska hamna i "idag"-kolumnen eller "kommande"-kolumnen
+            if(todaysDate.toLocaleDateString() == todoDate.toLocaleDateString()) {
+                const newTodoContent = document.createTextNode(userInputTodo.value);
+                newTodo.appendChild(newTodoContent);
+                addNewItemToday.appendChild(newTodo);
+            } else {
+                const newTodoContent = document.createTextNode(userInputDate.value + " – " + userInputTodo.value);
+                newTodo.appendChild(newTodoContent);
+                addNewItemOtherDays.appendChild(newTodo);
+            }
+
+        
             userInputTodo.value = "";
             userInputDate.value = "";
 
