@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", main);
+window.addEventListener("DOMContentLoaded", blockEarlyDates);
 
 function main () {
-
     // Variablar
     const showAddTodo = document.getElementById("todo-list-add-button");
     const hideAddTodo = document.getElementById("todo-list-hide-button");
@@ -87,4 +87,23 @@ function main () {
         userInputErrorDate.style.display = "none";
         userInputErrorTodo.style.display = "none";
     });
+}
+
+// Begränsar användaren från att välja datum bakåt i tiden
+function blockEarlyDates() {
+    let today = new Date();
+    const dd = today.getDate();
+    const mm = today.getMonth() + 1;
+    const yyyy = today.getFullYear();
+
+    if (dd < 10) {
+       dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+       mm = '0' + mm;
+    } 
+
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("new-todo-date").setAttribute("min", today);
 }
