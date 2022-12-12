@@ -56,6 +56,7 @@ header {
     justify-content: space-between;
 }
 
+
 /* Styling för hela dokumentet */
 * {
     margin: 0;
@@ -67,10 +68,27 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.current-month {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--royalbluedark);
+    text-align: center;
+}
+
+.current-year {
+    color: var(--royalbluedark);
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+
 /* Aside */
 aside {
     width: 20rem;
     background-color: var(--cadetblue);
+    position: relative;
+    float: left;
 }
 /* Välkomst segment */
 .welcome-segment-day {
