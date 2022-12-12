@@ -9,7 +9,7 @@ function main () {
     const addNewItemOtherDays = document.getElementById("tlod-activities");
     const addNewItemToday = document.getElementById("tlcd-activities");
     const addNewItemButton = document.getElementById("new-todo-add");
-    const addNewItemButtonCancel = document.getElementById("new-todo-cancel");
+    const addNewItemButtonClear = document.getElementById("new-todo-clear");
 
     // Setup av inputfälten
     const userInputTodo = document.getElementById("new-todo-activity");
@@ -64,8 +64,8 @@ function main () {
         }
     });
 
-    // Funktion för användaren att avbryta skapande av en todo
-    addNewItemButtonCancel.addEventListener("click", () => {
+    // Funktion för användaren att rensa inmatning
+    addNewItemButtonClear.addEventListener("click", () => {
         userInputTodo.value = "";
         userInputDate.value = "";
         userInputErrorDate.style.display = "none";
