@@ -71,6 +71,10 @@ header {
 aside {
     width: 20rem;
     background-color: var(--cadetblue);
+    position: relative;
+    float: left;
+    top: 0;
+    bottom: 0;
 }
 /* Välkomst segment */
 #welcome-segment {
