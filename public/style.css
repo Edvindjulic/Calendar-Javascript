@@ -115,11 +115,14 @@ aside {
     border: none;
     background: none;
     cursor: pointer;
-    
 }
 
 .new-todo {
     display: none;
+}
+
+.new-todo-input {
+    font-family: 'Montserrat', sans-serif;
 }
 
 .new-todo-error-message {
