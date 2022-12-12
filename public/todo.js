@@ -2,6 +2,15 @@ window.addEventListener("DOMContentLoaded", main);
 
 function main () {
 
+    // Variablar
+    const showAddTodo = document.getElementById("todo-list-add-button");
+    const hideAddTodo = document.getElementById("todo-list-hide-button");
+    const todoList = document.getElementById("new-todo");
+    const addNewItemOtherDays = document.getElementById("tlod-activities");
+    const addNewItemToday = document.getElementById("tlcd-activities");
+    const addNewItemButton = document.getElementById("new-todo-add");
+    const addNewItemButtonCancel = document.getElementById("new-todo-cancel");
+
     // Setup av inputfälten
     const userInputTodo = document.getElementById("new-todo-activity");
     const userInputDate = document.getElementById("new-todo-date");
@@ -9,15 +18,28 @@ function main () {
     userInputDate.value = "";
     const userInputErrorTodo = document.getElementById("new-todo-activity-error-message");
     const userInputErrorDate = document.getElementById("new-todo-date-error-message");
+    hideAddTodo.style.display = "none";
 
-    // Variablar
-    const addNewItemOtherDays = document.getElementById("tlod-activities");
-    const addNewItemToday = document.getElementById("tlcd-activities");
-    const addNewItemButton = document.getElementById("new-todo-add");
-    const addNewItemButtonCancel = document.getElementById("new-todo-cancel");
+    // Gömmer och visar tilläggningsfunktionen
+
+    showAddTodo.addEventListener("click", () => {
+        todoList.style.display = "block";
+        showAddTodo.style.display = "none"
+        hideAddTodo.style.display = "block";
+    })
+
+    hideAddTodo.addEventListener("click", () => {
+        todoList.style.display = "none";
+        showAddTodo.style.display = "block"
+        hideAddTodo.style.display = "none";
+        userInputTodo.value = "";
+        userInputDate.value = "";
+        userInputErrorDate.style.display = "none";
+        userInputErrorTodo.style.display = "none";
+    });
 
     // Grundläggande funktion för att lägga till en todo
-        addNewItemButton.addEventListener("click", () => {
+    addNewItemButton.addEventListener("click", () => {
 
         userInputErrorDate.style.display = "none";
         userInputErrorTodo.style.display = "none";
