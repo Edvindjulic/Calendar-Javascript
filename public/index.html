@@ -36,9 +36,13 @@
         <br>
         <div id="new-todo"> 
             <label for="new-todo-activity">Aktivitet</label><br>
-            <input type="text" id="new-todo-activity" placeholder="Ny aktivitet"><br><br>
+            <input type="text" id="new-todo-activity" placeholder="Ny aktivitet"><br>
+            <p class="new-todo-error-message" id="new-todo-activity-error-message">Vänligen skriv ett namn på din aktivitet</p>
+            <br>
             <label for="new-todo-date">Datum:</label><br>
-            <input type="date" id="new-todo-date"><br><br>
+            <input type="date" id="new-todo-date"><br>
+            <p class="new-todo-error-message" id="new-todo-date-error-message">Vänligen lägg till ett datum på din aktivitet</p>
+            <br>
             <button id="new-todo-cancel">Avbryt</button>
             <button id="new-todo-add">Lägg till aktivitet</button><br><br>
         </div>
@@ -52,9 +56,9 @@
         <div class="todo-list-other-days">
           <p><b>Kommande</b></p>
           <ul class="tlod-activites" id="tlod-activities">
-              <li>15/12 Fika med Fia</li>
-              <li>17/12 Köp julklapp till Pål</li>
-              <li>22/12 Maila chefen om projekt blalbl lblalballbalbala</li>
+              <li>2022-15-12 Fika med Fia</li>
+              <li>2022-17-12 Köp julklapp till Pål</li>
+              <li>2022-22-12 Maila chefen om projekt blalbl lblalballbalbala</li>
           </ul>
         </div>
       </div>

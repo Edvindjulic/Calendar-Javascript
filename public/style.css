@@ -106,3 +106,7 @@ aside {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
+
+.new-todo-error-message {
+    display: none;
+}
