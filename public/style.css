@@ -72,6 +72,16 @@ body {
     text-align: center;
 }
 
+/* Header */
+header {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 1.5rem;
+    background-color: var(--darkelectricblue);
+    color: var(--white);
+}
+
 
 /* Aside */
 aside {
