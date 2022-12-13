@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="./calendar.css">
     <script src="./main.js"></script>
     <script src="./welcomesegment.js"></script>
-    <script src="./aside.js"></script>
     <script src="./currentMonthAndYear.js"></script>
     <script src="./welcomesegment.js"></script>
     <script src="./calendar.js"></script>
@@ -61,7 +60,22 @@
             <span class="material-symbols-outlined">chevron_right</span>
           </div>
           <div id="year" class="current-year"></div>
-          <div id="calendar" data-cy="calendar-body"></div>
+          <div id="calendar" data-cy="calendar-body">
+            <table class="calendar-table" id="calendar-table">
+              <thead>
+                <tr>
+                  <th class="days-of-week">Mån</th>
+                  <th class="days-of-week">Tis</th>
+                  <th class="days-of-week">Ons</th>
+                  <th class="days-of-week">Tors</th>
+                  <th class="days-of-week">Fre</th>
+                  <th class="days-of-week">Lör</th>
+                  <th class="days-of-week">Sön</th>
+                </tr>
+              </thead>
+              <tbody id="calendar-body">
+              </tbody>
+          </div>
       </div>
     </main>
 
