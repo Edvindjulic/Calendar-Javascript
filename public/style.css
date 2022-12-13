@@ -111,6 +111,24 @@ aside {
     font-size: 1.3rem;
 }
 
+.todo-list-add-button, .todo-list-hide-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.new-todo {
+    display: none;
+}
+
+.new-todo-input {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.new-todo-error-message {
+    display: none;
+}
+
 .todo-list-current-day, .todo-list-other-days {
     margin-top: 0.5rem;
 }
