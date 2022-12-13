@@ -85,7 +85,7 @@ header {
 
 /* Aside */
 aside {
-    width: 20rem;
+    width: 30rem;
     background-color: var(--cadetblue);
     position: relative;
     float: left;
