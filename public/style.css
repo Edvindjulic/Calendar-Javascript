@@ -129,10 +129,16 @@ aside {
     display: none;
 }
 
-.todo-list-current-day, .todo-list-other-days {
+.todo-list-current-day {
     margin-top: 0.5rem;
+} 
+
+.todo-list-other-days {
+    margin-top: 1.5rem;
 }
+
 .tlcd-activites, .tlod-activites {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+    margin-top: 0.5rem;
 }
