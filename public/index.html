@@ -72,26 +72,22 @@
     <main>
       <div id="container">
           <div id="container-month-arrows" class="flex space-between padding-top-bottom1">
-            <span class="material-symbols-outlined">chevron_left</span>
+            <span class="material-symbols-outlined" id="backButton">chevron_left</span>
             <div id="month" class="current-month"></div>
-            <span class="material-symbols-outlined">chevron_right</span>
+            <span class="material-symbols-outlined" id="nextButton">chevron_right</span>
           </div>
           <div id="year" class="current-year"></div>
-          <div id="calendar" data-cy="calendar-body">
-            <table class="calendar-table" id="calendar-table">
-              <thead>
-                <tr>
-                  <th class="days-of-week">Mån</th>
-                  <th class="days-of-week">Tis</th>
-                  <th class="days-of-week">Ons</th>
-                  <th class="days-of-week">Tors</th>
-                  <th class="days-of-week">Fre</th>
-                  <th class="days-of-week">Lör</th>
-                  <th class="days-of-week">Sön</th>
-                </tr>
-              </thead>
-              <tbody id="calendar-body">
-              </tbody>
+          <div id="calendar111" data-cy="calendar-body">
+            <div id="weekdays">
+              <div>Mån</div>
+              <div>Tis</div>
+              <div>Ons</div>
+              <div>Tors</div>
+              <div>Fre</div>
+              <div>Lör</div>
+              <div>Sön</div>
+            </div>
+            <div id="month-calendar"></div>
           </div>
       </div>
     </main>

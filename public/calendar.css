@@ -1,0 +1,9 @@
+.day-square {
+    width: 10rem;
+    height: 10rem;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
