@@ -117,15 +117,15 @@ aside {
     cursor: pointer;
 }
 
-.new-todo {
+.new-item {
     display: none;
 }
 
-.new-todo-input {
+.new-item-input {
     font-family: 'Montserrat', sans-serif;
 }
 
-.new-todo-error-message {
+.new-item-error-message {
     display: none;
 }
 

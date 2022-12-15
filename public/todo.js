@@ -1,104 +1,106 @@
 window.addEventListener("DOMContentLoaded", main);
-window.addEventListener("DOMContentLoaded", blockEarlyDates);
+window.addEventListener("DOMContentLoaded", blockPastDates);
 
 function main () {
-    // Variablar
-    const showAddTodo = document.getElementById("todo-list-add-button");
-    const hideAddTodo = document.getElementById("todo-list-hide-button");
-    const todoList = document.getElementById("new-todo");
-    const addNewItemOtherDays = document.getElementById("tlod-activities");
-    const addNewItemToday = document.getElementById("tlcd-activities");
-    const addNewItemButton = document.getElementById("new-todo-add");
-    const addNewItemButtonClear = document.getElementById("new-todo-clear");
+    // Variabeldeklarationer
+    const addItemContainer = document.getElementById("new-item");
+    const buttonShowAddItem = document.getElementById("todo-list-add-button");
+    const buttonHideAddItem = document.getElementById("todo-list-hide-button");
+    const todoListToday = document.getElementById("tlcd-activities");
+    const todoListOtherDays = document.getElementById("tlod-activities");
+    const buttonAddNewItem = document.getElementById("new-item-add");
+    const buttonClearNewItem = document.getElementById("new-item-clear");
 
     // Setup av inputfälten
-    const userInputTodo = document.getElementById("new-todo-activity");
-    const userInputDate = document.getElementById("new-todo-date");
-    userInputTodo.value = "";
+    const userInputActivity = document.getElementById("new-item-activity");
+    userInputActivity.value = ""
+    const userInputDate = document.getElementById("new-item-date");;
     userInputDate.value = "";
-    const userInputErrorTodo = document.getElementById("new-todo-activity-error-message");
-    const userInputErrorDate = document.getElementById("new-todo-date-error-message");
-    hideAddTodo.style.display = "none";
+    const userInputActivityError = document.getElementById("new-item-activity-error-message");
+    const userInputDateError = document.getElementById("new-item-date-error-message");
+    buttonHideAddItem.style.display = "none";
 
     // Gömmer och visar tilläggningsfunktionen
-
-    showAddTodo.addEventListener("click", () => {
-        todoList.style.display = "block";
-        showAddTodo.style.display = "none"
-        hideAddTodo.style.display = "block";
+    buttonShowAddItem.addEventListener("click", () => {
+        addItemContainer.style.display = "block";
+        buttonShowAddItem.style.display = "none"
+        buttonHideAddItem.style.display = "block";
     })
 
-    hideAddTodo.addEventListener("click", () => {
-        todoList.style.display = "none";
-        showAddTodo.style.display = "block"
-        hideAddTodo.style.display = "none";
-        userInputTodo.value = "";
+    buttonHideAddItem.addEventListener("click", () => {
+        addItemContainer.style.display = "none";
+        buttonShowAddItem.style.display = "block"
+        buttonHideAddItem.style.display = "none";
+        userInputActivity.value = "";
         userInputDate.value = "";
-        userInputErrorDate.style.display = "none";
-        userInputErrorTodo.style.display = "none";
+        userInputDateError.style.display = "none";
+        userInputActivityError.style.display = "none";
     });
 
-    // Grundläggande funktion för att lägga till en todo
-    addNewItemButton.addEventListener("click", () => {
+    // Grundläggande funktion för att lägga till en aktivitet
+    buttonAddNewItem.addEventListener("click", () => {
 
-        userInputErrorDate.style.display = "none";
-        userInputErrorTodo.style.display = "none";
+        userInputDateError.style.display = "none";
+        userInputActivityError.style.display = "none";
 
-        // Lägg till todo om inputfälten inte är tomma
-        if (userInputTodo.value != "" && userInputDate.value != "") {
-            const newTodo = document.createElement("li");
+        const newItemActivity = userInputActivity.value;
+        const newItemDate = userInputDate.value;
+
+        // Lägg till aktivitet om inputfälten inte är tomma
+        if (newItemActivity != "" && newItemDate != "") {
+            const newItem = document.createElement("li");
 
             const date = new Date();
             const todaysDate = new Date(date.getFullYear(),date.getMonth(),date.getDate());
-            const todoDate = new Date(document.getElementById('new-todo-date').value);
+            const itemDate = new Date(document.getElementById('new-item-date').value);
 
-            //Väljer om todon ska hamna i "idag"-kolumnen eller "kommande"-kolumnen
-            if(todaysDate.toLocaleDateString() == todoDate.toLocaleDateString()) {
-                const newTodoContent = document.createTextNode(userInputTodo.value);
-                const remove = document.createElement("button");
-                remove.innerHTML = "Ta bort";
-                remove.addEventListener('click', removeTodo);
-                newTodo.appendChild(newTodoContent);
-                newTodo.appendChild(remove);
-                addNewItemToday.appendChild(newTodo);
+            //Väljer om aktiviteten ska hamna i "idag"-kolumnen eller "kommande"-kolumnen
+            if(todaysDate.toLocaleDateString() == itemDate.toLocaleDateString()) {
+                const newItemContent = document.createTextNode(newItemActivity);
+                const buttonDeleteItem = document.createElement("button");
+                buttonDeleteItem.innerHTML = "Ta bort";
+                buttonDeleteItem.addEventListener('click', deleteItem);
+                newItem.appendChild(newItemContent);
+                newItem.appendChild(buttonDeleteItem);
+                todoListToday.appendChild(newItem);
             } else {
-                const newTodoContent = document.createTextNode(userInputDate.value + " – " + userInputTodo.value);
-                const remove = document.createElement("button");
-                remove.innerHTML = "Ta bort";
-                remove.addEventListener('click', removeTodo);
-                newTodo.appendChild(newTodoContent);
-                newTodo.appendChild(remove);
-                addNewItemOtherDays.appendChild(newTodo);
+                const newItemContent = document.createTextNode(newItemDate + " – " + newItemActivity);
+                const buttonDeleteItem = document.createElement("button");
+                buttonDeleteItem.innerHTML = "Ta bort";
+                buttonDeleteItem.addEventListener('click', deleteItem);
+                newItem.appendChild(newItemContent);
+                newItem.appendChild(buttonDeleteItem);
+                todoListOtherDays.appendChild(newItem);
             }
 
-            todoList.style.display = "none";
-            showAddTodo.style.display = "block"
-            hideAddTodo.style.display = "none";
-            userInputTodo.value = "";
+            addItemContainer.style.display = "none";
+            buttonShowAddItem.style.display = "block"
+            buttonHideAddItem.style.display = "none";
+            userInputActivity.value = "";
             userInputDate.value = "";
 
         // Varna om inputfält är tomt
         } else {
-            if (userInputTodo.value == "") {
-                userInputErrorTodo.style.display = "block";
+            if (userInputActivity.value == "") {
+                userInputActivityError.style.display = "block";
             } 
             if (userInputDate.value == ""){
-                userInputErrorDate.style.display = "block";
+                userInputDateError.style.display = "block";
             }
         }
     });
 
     // Funktion för användaren att rensa inmatning
-    addNewItemButtonClear.addEventListener("click", () => {
-        userInputTodo.value = "";
+    buttonClearNewItem.addEventListener("click", () => {
+        userInputActivity.value = "";
+        userInputActivityError.style.display = "none";
         userInputDate.value = "";
-        userInputErrorDate.style.display = "none";
-        userInputErrorTodo.style.display = "none";
+        userInputDateError.style.display = "none";
     });
 }
 
 // Begränsar användaren från att välja datum bakåt i tiden
-function blockEarlyDates() {
+function blockPastDates() {
     let today = new Date();
     const dd = today.getDate();
     const mm = today.getMonth() + 1;
@@ -113,10 +115,11 @@ function blockEarlyDates() {
     } 
 
     today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById("new-todo-date").setAttribute("min", today);
+    document.getElementById("new-item-date").setAttribute("min", today);
 }
 
-function removeTodo() {
-    const todo = this.parentNode;
-    todo.parentNode.removeChild(todo);
-  }
+// Tar bort en aktivitet
+function deleteItem() {
+    const item = this.parentNode;
+    item.parentNode.removeChild(item);
+}
