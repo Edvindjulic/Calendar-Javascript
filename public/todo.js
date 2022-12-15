@@ -55,11 +55,19 @@ function main () {
             //Väljer om todon ska hamna i "idag"-kolumnen eller "kommande"-kolumnen
             if(todaysDate.toLocaleDateString() == todoDate.toLocaleDateString()) {
                 const newTodoContent = document.createTextNode(userInputTodo.value);
+                const remove = document.createElement("button");
+                remove.innerHTML = "Ta bort";
+                remove.addEventListener('click', removeTodo);
                 newTodo.appendChild(newTodoContent);
+                newTodo.appendChild(remove);
                 addNewItemToday.appendChild(newTodo);
             } else {
                 const newTodoContent = document.createTextNode(userInputDate.value + " – " + userInputTodo.value);
+                const remove = document.createElement("button");
+                remove.innerHTML = "Ta bort";
+                remove.addEventListener('click', removeTodo);
                 newTodo.appendChild(newTodoContent);
+                newTodo.appendChild(remove);
                 addNewItemOtherDays.appendChild(newTodo);
             }
 
@@ -107,3 +115,8 @@ function blockEarlyDates() {
     today = yyyy + '-' + mm + '-' + dd;
     document.getElementById("new-todo-date").setAttribute("min", today);
 }
+
+function removeTodo() {
+    const todo = this.parentNode;
+    todo.parentNode.removeChild(todo);
+  }
