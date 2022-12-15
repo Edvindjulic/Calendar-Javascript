@@ -129,6 +129,10 @@ aside {
     display: none;
 }
 
+.todo-list-empty-text {
+    margin-top: 0.5rem;
+}
+
 .todo-list-current-day {
     margin-top: 0.5rem;
 } 

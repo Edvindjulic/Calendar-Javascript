@@ -10,6 +10,8 @@ function main () {
     const todoListOtherDays = document.getElementById("tlod-activities");
     const buttonAddNewItem = document.getElementById("new-item-add");
     const buttonClearNewItem = document.getElementById("new-item-clear");
+    const todoListEmptyTextToday = document.getElementById("todo-list-empty-text-today");
+    const todoListEmptyTextOtherDays = document.getElementById("todo-list-empty-text-other-days");
 
     // Setup av inputfälten
     const userInputActivity = document.getElementById("new-item-activity");
@@ -55,7 +57,7 @@ function main () {
             const itemDate = new Date(document.getElementById('new-item-date').value);
 
             //Väljer om aktiviteten ska hamna i "idag"-kolumnen eller "kommande"-kolumnen
-            if(todaysDate.toLocaleDateString() == itemDate.toLocaleDateString()) {
+            if (todaysDate.toLocaleDateString() == itemDate.toLocaleDateString()) {
                 const newItemContent = document.createTextNode(newItemActivity);
                 const buttonDeleteItem = document.createElement("button");
                 buttonDeleteItem.innerHTML = "Ta bort";
@@ -63,6 +65,8 @@ function main () {
                 newItem.appendChild(newItemContent);
                 newItem.appendChild(buttonDeleteItem);
                 todoListToday.appendChild(newItem);
+                todoListEmptyTextToday.style.display = "none";
+                
             } else {
                 const newItemContent = document.createTextNode(newItemDate + " – " + newItemActivity);
                 const buttonDeleteItem = document.createElement("button");
@@ -71,6 +75,7 @@ function main () {
                 newItem.appendChild(newItemContent);
                 newItem.appendChild(buttonDeleteItem);
                 todoListOtherDays.appendChild(newItem);
+                todoListEmptyTextOtherDays.style.display = "none";
             }
 
             addItemContainer.style.display = "none";
@@ -97,6 +102,19 @@ function main () {
         userInputDate.value = "";
         userInputDateError.style.display = "none";
     });
+
+    // Tar bort en aktivitet
+    function deleteItem() {
+        const item = this.parentNode;
+        item.parentNode.removeChild(item);
+        
+        if (todoListToday.innerText == "") {
+            todoListEmptyTextToday.style.display = "block";
+        }
+        if (todoListOtherDays.innerText == "") {
+            todoListEmptyTextOtherDays.style.display = "block";
+        }
+    }
 }
 
 // Begränsar användaren från att välja datum bakåt i tiden
@@ -116,10 +134,4 @@ function blockPastDates() {
 
     today = yyyy + '-' + mm + '-' + dd;
     document.getElementById("new-item-date").setAttribute("min", today);
-}
-
-// Tar bort en aktivitet
-function deleteItem() {
-    const item = this.parentNode;
-    item.parentNode.removeChild(item);
 }
