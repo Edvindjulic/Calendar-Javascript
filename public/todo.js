@@ -6,12 +6,12 @@ function main () {
     const addItemContainer = document.getElementById("new-item");
     const buttonShowAddItem = document.getElementById("todo-list-add-button");
     const buttonHideAddItem = document.getElementById("todo-list-hide-button");
-    const todoListToday = document.getElementById("tlcd-activities");
-    const todoListOtherDays = document.getElementById("tlod-activities");
+    const todoListToday = document.getElementById("todo-list-today-activities");
+    const todoListUpcoming = document.getElementById("todo-list-upcoming-activities");
     const buttonAddNewItem = document.getElementById("new-item-add");
     const buttonClearNewItem = document.getElementById("new-item-clear");
     const todoListEmptyTextToday = document.getElementById("todo-list-empty-text-today");
-    const todoListEmptyTextOtherDays = document.getElementById("todo-list-empty-text-other-days");
+    const todoListEmptyTextUpcoming = document.getElementById("todo-list-empty-text-upcoming");
 
     // Setup av inputfälten
     const userInputActivity = document.getElementById("new-item-activity");
@@ -66,7 +66,7 @@ function main () {
                 newItem.appendChild(buttonDeleteItem);
                 todoListToday.appendChild(newItem);
                 todoListEmptyTextToday.style.display = "none";
-                
+
             } else {
                 const newItemContent = document.createTextNode(newItemDate + " – " + newItemActivity);
                 const buttonDeleteItem = document.createElement("button");
@@ -74,8 +74,8 @@ function main () {
                 buttonDeleteItem.addEventListener('click', deleteItem);
                 newItem.appendChild(newItemContent);
                 newItem.appendChild(buttonDeleteItem);
-                todoListOtherDays.appendChild(newItem);
-                todoListEmptyTextOtherDays.style.display = "none";
+                todoListUpcoming.appendChild(newItem);
+                todoListEmptyTextUpcoming.style.display = "none";
             }
 
             addItemContainer.style.display = "none";
@@ -111,8 +111,8 @@ function main () {
         if (todoListToday.innerText == "") {
             todoListEmptyTextToday.style.display = "block";
         }
-        if (todoListOtherDays.innerText == "") {
-            todoListEmptyTextOtherDays.style.display = "block";
+        if (todoListUpcoming.innerText == "") {
+            todoListEmptyTextUpcoming.style.display = "block";
         }
     }
 }

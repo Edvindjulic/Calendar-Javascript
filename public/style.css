@@ -133,15 +133,15 @@ aside {
     margin-top: 0.5rem;
 }
 
-.todo-list-current-day {
+.todo-list-today {
     margin-top: 0.5rem;
 } 
 
-.todo-list-other-days {
+.todo-list-upcoming {
     margin-top: 1.5rem;
 }
 
-.tlcd-activites, .tlod-activites {
+.todo-list-today-activites, .todo-list-upcoming-activites {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     margin-top: 0.5rem;
