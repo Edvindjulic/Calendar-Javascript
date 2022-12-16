@@ -5,5 +5,6 @@ window.addEventListener("DOMContentLoaded", main);
  */
  function main() {
     startClock();
-    currentMonthAndYear();
+    loadCalendar();
+    initButtons();
 }

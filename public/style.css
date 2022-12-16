@@ -56,26 +56,13 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-}
-
-.current-month {
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: var(--royalbluedark);
-    text-align: center;
-}
-
-.current-year {
-    color: var(--royalbluedark);
-    font-size: 1.75rem;
-    font-weight: 700;
-    text-align: center;
+    height: calc(100vh - 6rem);
 }
 
 /* Header */
 header {
     width: 100%;
-    height: auto;
+    height: 6rem;
     text-align: center;
     font-size: 1.5rem;
     background-color: var(--darkelectricblue);
@@ -86,11 +73,17 @@ header {
 /* Aside */
 aside {
     width: 20rem;
+    height: 100vh;
     background-color: var(--cadetblue);
     position: relative;
     float: left;
+    top: 0;
+    bottom: 0;
 }
 /* Välkomst segment */
+#welcome-segment {
+    height: auto;
+}
 .welcome-segment-day {
     font-size: 1.5rem;
     font-weight: 700;

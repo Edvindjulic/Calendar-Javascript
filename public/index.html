@@ -6,20 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- länkar till filer -->
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./calendar.css">
     <script src="./main.js"></script>
     <script src="./todo.js"></script>
     <script src="./welcomesegment.js"></script>
-    <script src="./aside.js"></script>
-    <script src="./currentMonthAndYear.js"></script>
-    <script src="./welcomesegment.js"></script>
+    <script src="./newcalendar.js"></script>
     <!-- länkar till fonts, ikoner osv -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Calendar</title>
   </head>
   <body>
     <header class="padding1">
-      <h1>Kalender</h1>
+      <h1>Calendar</h1>
     </header>
 
 <!-- Innehåller tid, veckordag och datum samt todo-lista -->
@@ -29,9 +28,9 @@
       <div id="todo-list" data-cy="todo-list" class="padding1 margin1 border-radius">
         <div class="todo-list-header flex space-between align-center">
           <p><b>Mina aktiviteter</b></p>
-          <button class="material-symbols-outlined todo-list-add-button" id="todo-list-add-button">
+          <span class="material-symbols-outlined todo-list-add-button" id="todo-list-add-button">
             add
-          </button>
+          </span>
           <button class="material-symbols-outlined todo-list-hide-button" id="todo-list-hide-button">
             remove
           </button>
@@ -71,12 +70,23 @@
     <main>
       <div id="container">
           <div id="container-month-arrows" class="flex space-between padding-top-bottom1">
-            <span class="material-symbols-outlined">chevron_left</span>
-            <div id="month" class="current-month"></div>
-            <span class="material-symbols-outlined">chevron_right</span>
+            <span class="material-symbols-outlined button" id="backButton">chevron_left</span>
+            <div id="monthAndYear" class="current-month"></div>
+            <span class="material-symbols-outlined" id="nextButton">chevron_right</span>
           </div>
-          <div id="year" class="current-year"></div>
-          <div id="calendar" data-cy="calendar-body"></div>
+
+          <div id="calendar">
+            <div id="weekdays">
+              <div>Mon</div>
+              <div>Tue</div>
+              <div>Wed</div>
+              <div>Thu</div>
+              <div>Fri</div>
+              <div>Sat</div>
+              <div>Sun</div>
+            </div>
+            <div id="month-calendar" data-cy="calendar-body" class="calendar-body"></div>
+          </div>
       </div>
     </main>
 
