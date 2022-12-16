@@ -72,8 +72,7 @@ header {
 
 /* Aside */
 aside {
-    width: 20rem;
-    height: 100vh;
+    width: 30rem;
     background-color: var(--cadetblue);
     position: relative;
     float: left;
@@ -104,28 +103,58 @@ aside {
     font-size: 1.3rem;
 }
 
-.todo-list-add-button, .todo-list-hide-button {
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-
-.new-todo {
-    display: none;
-}
-
-.new-todo-input {
+.new-item-input {
     font-family: 'Montserrat', sans-serif;
 }
 
-.new-todo-error-message {
+.todo-list-empty-text {
+    margin-top: 0.5rem;
+}
+
+.todo-list-today {
+    margin-top: 0.5rem;
+} 
+
+.todo-list-today-activites {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.new-item-error-message {
     display: none;
 }
 
-.todo-list-current-day, .todo-list-other-days {
-    margin-top: 0.5rem;
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.6rem;
 }
-.tlcd-activites, .tlod-activites {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+
+.item-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--pewterblue);
+    color: var(--royalbluedark);
+    border-radius: 25px;
+    width: 75px;
+    height: 20px;
+    font-size: 0.7rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    margin-right: 0.7rem;
+}
+
+.item-buttons {
+    margin-left: auto;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    align-items:center;
+}
+
+.item-text {
+    width: 250px;
 }
