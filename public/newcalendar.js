@@ -77,6 +77,9 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
         } else {
             daySquare.classList.add("empty")
         }
+
+        const daySquareActivities = document.createElement("div");
+        daySquare.appendChild(daySquareActivities);
         calendar.appendChild(daySquare);
     }
 }

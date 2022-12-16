@@ -57,6 +57,10 @@ function main () {
             buttonUndoItem.style.display = "none";
             buttonUndoItem.addEventListener('click', completeItem);
 
+            // Lägger till aktivitet i kalendern
+            const addItemToCalendar = document.getElementById(newItemDate);
+            addItemToCalendar.lastChild.innerHTML = 1;
+            
             // Samlar ihop allt och pushar till DOM
             badgeItem.appendChild(badgeItemContent);
             newItem.appendChild(badgeItem);
