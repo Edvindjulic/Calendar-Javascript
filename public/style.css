@@ -118,7 +118,7 @@ aside {
 }
 
 .new-item {
-    display: none;
+    display: show;
 }
 
 .new-item-input {

@@ -25,42 +25,26 @@
     <aside class="padding-top-bottom1">
       <div id="welcome-segment" data-cy="welcome-segment" class="flex column align-center">
       </div>
-      <div id="todo-list" data-cy="todo-list" class="padding1 margin1 border-radius">
+      <div id="todo-list" class="padding1 margin1 border-radius">
         <div class="todo-list-header flex space-between align-center">
           <p><b>Mina aktiviteter</b></p>
-          <button class="material-symbols-outlined todo-list-add-button" id="todo-list-add-button">
-            add
-          </button>
-          <button class="material-symbols-outlined todo-list-hide-button" id="todo-list-hide-button">
-            remove
-          </button>
         </div>
         <br>
         <div class="new-item" id="new-item"> 
             <label for="new-todo-activity">Aktivitet</label><br>
-            <input type="text" class="new-item-input" id="new-item-activity" placeholder="Ny aktivitet"><br>
-            <p class="new-item-error-message" id="new-item-activity-error-message">Vänligen skriv ett namn på din aktivitet</p>
+            <input data-cy="todo-task-input" type="text" class="new-item-input" id="new-item-activity" placeholder="Ny aktivitet"><br>
             <br>
             <label for="new-todo-date">Datum:</label><br>
-            <input type="date" class="new-item-input" id="new-item-date"><br>
-            <p class="new-item-error-message" id="new-item-date-error-message">Vänligen lägg till ett datum på din aktivitet</p>
+            <input data-cy="todo-date-input" type="date" class="new-item-input" id="new-item-date"><br>
             <br>
             <button class="new-item-input" id="new-item-clear">Rensa</button>
-            <button class="new-item-input" id="new-item-add">Lägg till aktivitet</button><br><br>
+            <button data-cy="save-todo" class="new-item-input" id="new-item-add">Lägg till aktivitet</button><br><br>
         </div>
         <div class="todo-list-today">
           <p><b>Idag</b></p>
-          <p class="todo-list-empty-text" id="todo-list-empty-text-today">Du är klar med allt för idag!</p>
-          <ul class="todo-list-today-activites" id="todo-list-today-activities">
+          <ul data-cy="todo-list" class="todo-list-today-activites" id="todo-list-today-activities">
           </ul>
         </div>
-        <div class="todo-list-upcoming">
-          <p><b>Kommande</b></p>
-          <p class="todo-list-empty-text" id="todo-list-empty-text-upcoming">Du har inga planerade aktiviteter.</p>
-          <ul class="todo-list-upcoming-activites" id="todo-list-upcoming-activities">
-          </ul>
-        </div>
-      </div>
     </aside>
 
     <!-- Innehåller nuvarande månad, år och kalendern -->
