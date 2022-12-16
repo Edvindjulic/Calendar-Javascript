@@ -21,56 +21,58 @@
       <h1>Calendar</h1>
     </header>
 
-<!-- Innehåller tid, veckordag och datum samt todo-lista -->
-    <aside class="padding-top-bottom1">
-      <div id="welcome-segment" data-cy="welcome-segment" class="flex column align-center">
-      </div>
-      <div id="todo-list" class="padding1 margin1 border-radius">
-        <div class="todo-list-header flex space-between align-center">
-          <p><b>Mina aktiviteter</b></p>
-        </div>
-        <br>
-        <div class="new-item" id="new-item"> 
-            <label for="new-todo-activity">Aktivitet</label><br>
-            <input data-cy="todo-task-input" type="text" class="new-item-input" id="new-item-activity" placeholder="Ny aktivitet"><br>
-            <br>
-            <label for="new-todo-date">Datum:</label><br>
-            <input data-cy="todo-date-input" type="date" class="new-item-input" id="new-item-date"><br>
-            <br>
-            <button class="new-item-input" id="new-item-clear">Rensa</button>
-            <button data-cy="save-todo" class="new-item-input" id="new-item-add">Lägg till aktivitet</button><br><br>
-        </div>
-        <div class="todo-list-today">
-          <p><b>Aktiviteter</b></p>
-          <p class="todo-list-empty-text" id="todo-list-empty-text-today">Du har inga planerade aktiviteter.</p>
-          <ul data-cy="todo-list" class="todo-list-today-activites" id="todo-list-today-activities">
-          </ul>
-        </div>
-    </aside>
-
-    <!-- Innehåller nuvarande månad, år och kalendern -->
-    <main>
-      <div id="container">
-          <div id="container-month-arrows" class="flex space-between padding-top-bottom1">
-            <span class="material-symbols-outlined button" id="backButton">chevron_left</span>
-            <div id="monthAndYear" class="current-month"></div>
-            <span class="material-symbols-outlined" id="nextButton">chevron_right</span>
-          </div>
-
-          <div id="calendar">
-            <div id="weekdays">
-              <div>Mon</div>
-              <div>Tue</div>
-              <div>Wed</div>
-              <div>Thu</div>
-              <div>Fri</div>
-              <div>Sat</div>
-              <div>Sun</div>
+    <div class="flex">
+      <!-- Innehåller tid, veckordag och datum samt todo-lista -->
+          <aside class="padding-top-bottom1">
+            <div id="welcome-segment" data-cy="welcome-segment" class="flex column align-center">
             </div>
-            <div id="month-calendar" data-cy="calendar-body" class="calendar-body"></div>
-          </div>
-      </div>
-    </main>
+            <div id="todo-list" class="padding1 margin1 border-radius">
+              <div class="todo-list-header flex space-between align-center">
+                <p><b>Mina aktiviteter</b></p>
+              </div>
+              <br>
+              <div class="new-item" id="new-item"> 
+                  <label for="new-todo-activity">Aktivitet</label><br>
+                  <input data-cy="todo-task-input" type="text" class="new-item-input" id="new-item-activity" placeholder="Ny aktivitet"><br>
+                  <br>
+                  <label for="new-todo-date">Datum:</label><br>
+                  <input data-cy="todo-date-input" type="date" class="new-item-input" id="new-item-date"><br>
+                  <br>
+                  <button class="new-item-input" id="new-item-clear">Rensa</button>
+                  <button data-cy="save-todo" class="new-item-input" id="new-item-add">Lägg till aktivitet</button><br><br>
+              </div>
+              <div class="todo-list-today">
+                <p><b>Aktiviteter</b></p>
+                <p class="todo-list-empty-text" id="todo-list-empty-text-today">Du har inga planerade aktiviteter.</p>
+                <ul data-cy="todo-list" class="todo-list-today-activites" id="todo-list-today-activities">
+                </ul>
+              </div>
+          </aside>
+      
+          <!-- Innehåller nuvarande månad, år och kalendern -->
+          <main>
+            <div id="container">
+                <div id="container-month-arrows" class="flex space-between padding-top-bottom1">
+                  <span class="material-symbols-outlined button" id="backButton">chevron_left</span>
+                  <div id="monthAndYear" class="current-month"></div>
+                  <span class="material-symbols-outlined" id="nextButton">chevron_right</span>
+                </div>
+      
+                <div id="calendar">
+                  <div id="weekdays">
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                    <div>Sun</div>
+                  </div>
+                  <div id="month-calendar" data-cy="calendar-body" class="calendar-body"></div>
+                </div>
+            </div>
+          </main>
+    </div>
 
   </body>
 </html>

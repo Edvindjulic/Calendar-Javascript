@@ -58,6 +58,10 @@ body {
     height: calc(100vh - 6rem);
 }
 
+main {
+    width: calc(100% - 30rem);
+}
+
 /* Header */
 header {
     width: 100%;
@@ -71,13 +75,8 @@ header {
 
 /* Aside */
 aside {
-    width: 20rem;
-    height: 100vh;
+    width: 30rem;
     background-color: var(--cadetblue);
-    position: relative;
-    float: left;
-    top: 0;
-    bottom: 0;
 }
 /* Välkomst segment */
 #welcome-segment {
@@ -118,7 +117,6 @@ aside {
 .todo-list-today-activites {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-    margin-top: 0.5rem;
 }
 
 .new-item-error-message {
@@ -127,9 +125,9 @@ aside {
 
 .item {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
-    margin-top: 0.6rem;
+    margin-top: 1rem;
 }
 
 .item-badge {
@@ -157,4 +155,5 @@ aside {
 
 .item-text {
     width: 250px;
+    word-wrap: break-word;
 }

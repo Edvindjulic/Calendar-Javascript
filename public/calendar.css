@@ -1,6 +1,5 @@
 #container {
-    width: calc(100% - 20rem);
-    margin-left: 320px;
+    width: 100%;
     padding-left: 2rem;
     padding-right: 2rem;
 }
