@@ -6,6 +6,7 @@ function main () {
     const todoListToday = document.getElementById("todo-list-today-activities");
     const buttonAddNewItem = document.getElementById("new-item-add");
     const buttonClearNewItem = document.getElementById("new-item-clear");
+    const todoListEmptyTextToday = document.getElementById("todo-list-empty-text-today");
 
     // Setup av inputfälten
     const userInputActivity = document.getElementById("new-item-activity");
@@ -20,34 +21,38 @@ function main () {
         const newItemDate = userInputDate.value;
 
         // Lägg till aktivitet om inputfälten inte är tomma
+        if (newItemActivity != "" && newItemDate != "") {
+    
             const newItem = document.createElement("li");
-
-            //Väljer om aktiviteten ska hamna i "idag"-kolumnen eller "kommande"-kolumnen
-                const newItemContent = document.createTextNode(newItemDate + " – " + newItemActivity);
-                const buttonDeleteItem = document.createElement("button");
-                buttonDeleteItem.setAttribute("data-cy", "delete-todo-button");
-                buttonDeleteItem.innerHTML = "Ta bort";
-                buttonDeleteItem.addEventListener('click', deleteItem);
-                newItem.appendChild(newItemContent);
-                newItem.appendChild(buttonDeleteItem);
-                todoListToday.appendChild(newItem);
-
+            const newItemContent = document.createTextNode(newItemDate + " – " + newItemActivity);
+            const buttonDeleteItem = document.createElement("button");
+            buttonDeleteItem.setAttribute("data-cy", "delete-todo-button");
+            buttonDeleteItem.innerHTML = "Ta bort";
+            buttonDeleteItem.addEventListener('click', deleteItem);
+            newItem.appendChild(newItemContent);
+            newItem.appendChild(buttonDeleteItem);
+            todoListToday.appendChild(newItem);
+            
+            todoListEmptyTextToday.style.display = "none";
             userInputActivity.value = "";
             userInputDate.value = "";
+        }
     });
 
     // Funktion för användaren att rensa inmatning
     buttonClearNewItem.addEventListener("click", () => {
         userInputActivity.value = "";
-        userInputActivityError.style.display = "none";
         userInputDate.value = "";
-        userInputDateError.style.display = "none";
     });
 
     // Tar bort en aktivitet
     function deleteItem() {
         const item = this.parentNode;
         item.parentNode.removeChild(item);
+
+        if (todoListToday.innerText == "") {
+            todoListEmptyTextToday.style.display = "block";
+        }
     }
 }
 
