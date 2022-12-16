@@ -6,5 +6,6 @@ window.addEventListener("DOMContentLoaded", main);
  function main() {
     startWelcomeSegment();
     startClock();
-    currentMonthAndYear();
+    loadCalendar();
+    initButtons();
 }
