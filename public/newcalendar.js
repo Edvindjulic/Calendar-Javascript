@@ -71,7 +71,7 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
             }
 
             if (i - emptyDaySquare === day && nav === 0) {
-                daySquare.id = "today";
+                daySquare.classList.add("today");
             }
 
         } else {
@@ -79,6 +79,7 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
         }
 
         const daySquareActivities = document.createElement("div");
+        daySquareActivities.classList.add("day-square-activities");
         daySquare.appendChild(daySquareActivities);
         calendar.appendChild(daySquare);
     }
