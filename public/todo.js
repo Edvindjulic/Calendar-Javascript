@@ -59,7 +59,12 @@ function main () {
 
             // Lägger till aktivitet i kalendern
             const addItemToCalendar = document.getElementById(newItemDate);
-            addItemToCalendar.lastChild.innerHTML = 1;
+            
+            if (addItemToCalendar.lastChild.innerHTML == "") {
+                addItemToCalendar.lastChild.innerHTML = 1;
+            } else {
+                addItemToCalendar.lastChild.innerHTML++;
+            }
             
             // Samlar ihop allt och pushar till DOM
             badgeItem.appendChild(badgeItemContent);
