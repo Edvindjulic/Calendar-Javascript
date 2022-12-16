@@ -91,6 +91,15 @@ function main () {
 
     // Tar bort en aktivitet
     function deleteItem() {
+        const itemDate = this.parentNode.firstChild.innerText;
+        const daySquare = document.getElementById(itemDate);
+
+        if (daySquare.lastChild.innerHTML == "1") {
+            daySquare.lastChild.innerHTML = "";
+        } else {
+            daySquare.lastChild.innerHTML--;
+        }
+
         const item = this.parentNode;
         item.parentNode.removeChild(item);
 
