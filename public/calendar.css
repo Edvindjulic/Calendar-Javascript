@@ -12,9 +12,6 @@
     color: var(--royalbluedark);
     cursor: pointer;
 }
-.material-symbols-outlined:hover {
-    color: yellow;
-}
 
 .current-month {
     font-size: 2.25rem;
@@ -40,7 +37,7 @@
 }
 
 .day-square:hover {
-    background-color: var(--cadetblue);
+    background-color: #79aeb279;
 }
 
 .empty {
