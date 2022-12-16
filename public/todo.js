@@ -24,12 +24,26 @@ function main () {
         if (newItemActivity != "" && newItemDate != "") {
     
             const newItem = document.createElement("li");
-            const newItemContent = document.createTextNode(newItemDate + " – " + newItemActivity);
+            newItem.classList.add("item");
+
+            const badgeItem = document.createElement("span");
+            badgeItem.classList.add("item-badge");
+            const badgeItemContent = document.createTextNode(newItemDate);
+
+            const newItemContentDiv = document.createElement("span");
+            newItemContentDiv.classList.add("item-text");
+            const newItemContent = document.createTextNode(newItemActivity);
+
             const buttonDeleteItem = document.createElement("button");
+            buttonDeleteItem.classList.add("item-delete-button", "material-symbols-outlined");
             buttonDeleteItem.setAttribute("data-cy", "delete-todo-button");
-            buttonDeleteItem.innerHTML = "Ta bort";
+            buttonDeleteItem.innerHTML = "delete";
             buttonDeleteItem.addEventListener('click', deleteItem);
-            newItem.appendChild(newItemContent);
+            
+            badgeItem.appendChild(badgeItemContent);
+            newItem.appendChild(badgeItem);
+            newItemContentDiv.appendChild(newItemContent);
+            newItem.appendChild(newItemContentDiv);
             newItem.appendChild(buttonDeleteItem);
             todoListToday.appendChild(newItem);
             

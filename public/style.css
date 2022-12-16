@@ -132,3 +132,37 @@ aside {
 .new-item-error-message {
     display: none;
 }
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.6rem;
+}
+
+.item-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--pewterblue);
+    color: var(--royalbluedark);
+    border-radius: 25px;
+    width: 75px;
+    height: 20px;
+    font-size: 0.7rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    margin-right: 0.7rem;
+}
+
+.item-delete-button {
+    margin-left: auto;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    align-items:center;
+}
+
+.item-text {
+    width: 250px;
+}
