@@ -8,6 +8,8 @@ function main () {
     const todoListEmptyTextToday = document.getElementById("todo-list-empty-text-today");
     const userInputActivity = document.getElementById("new-item-activity");
     const userInputDate = document.getElementById("new-item-date");
+    const addItemContainer = document.getElementById("new-item");
+    const buttonShowAddItem = document.getElementById("todo-list-add-button");
     let todoListLocalStorage = [];
 
     // Setup
@@ -15,6 +17,17 @@ function main () {
     loadTodoList();
     buttonAddNewItem.addEventListener("click", controlInputFields);
     buttonClearNewItem.addEventListener("click", clearInputFields);
+    buttonShowAddItem.addEventListener("click", changeAddButton);
+
+    function changeAddButton() {
+        if (buttonShowAddItem.innerHTML == "remove") {
+            buttonShowAddItem.innerHTML = "add";
+            addItemContainer.style.display = "none";
+        } else {
+            buttonShowAddItem.innerHTML = "remove";
+            addItemContainer.style.display = "block";
+        }
+    }
 
     // Funktion för användaren att rensa inmatning
     function clearInputFields() {
@@ -91,6 +104,8 @@ function main () {
         todoListEmptyTextToday.style.display = "none";
         userInputActivity.value = "";
         userInputDate.value = "";
+        buttonShowAddItem.innerHTML = "add";
+        addItemContainer.style.display = "none";
     }
 
     // Lögger till aktivitet i local storage

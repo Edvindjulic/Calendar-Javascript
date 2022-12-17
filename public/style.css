@@ -157,3 +157,13 @@ aside {
     width: 250px;
     word-wrap: break-word;
 }
+
+.new-item {
+    display: none;
+}
+
+.todo-list-add-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
