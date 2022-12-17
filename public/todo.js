@@ -75,15 +75,8 @@ function main () {
             completeItem(buttonUndoItem);
         });
 
-        // Lägger till aktivitet i kalendern
-        const addItemToCalendar = document.getElementById(date);
+        loadCalendar();
         
-        if (addItemToCalendar.lastChild.innerHTML == "") {
-            addItemToCalendar.lastChild.innerHTML = 1;
-        } else {
-            addItemToCalendar.lastChild.innerHTML++;
-        }
-
         // Samlar ihop allt och pushar till DOM
         badgeItem.appendChild(badgeItemContent);
         newItem.appendChild(badgeItem);
@@ -117,11 +110,15 @@ function main () {
     function deleteItem() {
         const itemDate = this.parentNode.firstChild.innerText;
         const daySquare = document.getElementById(itemDate);
+        
+        if (daySquare == null) {
 
-        if (daySquare.lastChild.innerHTML == "1") {
-            daySquare.lastChild.innerHTML = "";
         } else {
-            daySquare.lastChild.innerHTML--;
+            if (daySquare.lastChild.innerHTML == "1") {
+                daySquare.lastChild.innerHTML = "";
+            } else {
+                daySquare.lastChild.innerHTML--;
+            }
         }
 
         const item = this.parentNode;

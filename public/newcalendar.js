@@ -4,6 +4,11 @@
 let nav = 0;
 
 /**
+ * Loading local storage into variable
+ */
+let todoListLocalStorage = [];
+
+/**
  * A global list of all the days in a week
  */
 const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -17,7 +22,7 @@ function loadCalendar() {
     if (nav !== 0) {
         date.setMonth(new Date().getMonth() + nav);
       }
-
+    
     const day = date.getDate();
     const month = date.getMonth();
     const year = date.getFullYear();
@@ -80,8 +85,28 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
 
         const daySquareActivities = document.createElement("div");
         daySquareActivities.classList.add("day-square-activities");
+
+        todoListLocalStorage = JSON.parse(localStorage.getItem("lista"));
+        if (todoListLocalStorage == null) {
+
+        } else {
+            addItemsToCalendar(daySquareActivities, daySquare.id);
+        }
+
         daySquare.appendChild(daySquareActivities);
         calendar.appendChild(daySquare);
+    }
+}
+
+function addItemsToCalendar(activityNode, day) {
+    for (var i = 0; i < todoListLocalStorage.length; i++) {;
+        if (todoListLocalStorage[i].date == day) {
+            if (activityNode.innerHTML == "") {
+                activityNode.innerHTML = 1;
+            } else {
+                activityNode.innerHTML++;;
+            }
+        }
     }
 }
 
