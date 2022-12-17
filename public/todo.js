@@ -62,14 +62,18 @@ function main () {
         const buttonCompleteItem = document.createElement("button");
         buttonCompleteItem.classList.add("item-buttons", "material-symbols-outlined");
         buttonCompleteItem.innerHTML = "done";
-        buttonCompleteItem.addEventListener('click', completeItem);
+        buttonCompleteItem.addEventListener('click', () => {
+            completeItem(buttonCompleteItem);
+        });
 
         // Skapar en ångraknapp (för avklarad aktivitet)
         const buttonUndoItem = document.createElement("button");
         buttonUndoItem.classList.add("item-buttons", "material-symbols-outlined");
         buttonUndoItem.innerHTML = "undo";
         buttonUndoItem.style.display = "none";
-        buttonUndoItem.addEventListener('click', completeItem);
+        buttonUndoItem.addEventListener('click', () => {
+            completeItem(buttonUndoItem);
+        });
 
         // Lägger till aktivitet i kalendern
         const addItemToCalendar = document.getElementById(date);
@@ -101,7 +105,8 @@ function main () {
         const todo = {
             id: todoListLocalStorage.length+1,
             title: activityTitle,
-            date: activityDate
+            date: activityDate,
+            completed: false
         };
 
         todoListLocalStorage.push(todo);
@@ -145,17 +150,22 @@ function main () {
     }
 
     // Markerar en aktivitet som avklarad eller oavklarad
-    function completeItem() {
-        let item = this.parentNode.firstChild.nextSibling;
-
+    function completeItem(knapp) {
+        let item = knapp.parentNode.firstChild.nextSibling;
         if (item.style.textDecoration == "line-through") {
             item.style.textDecoration = "none";
-            this.style.display = "none";
-            this.nextSibling.style.display = "block";
+            knapp.style.display = "none";
+            knapp.nextSibling.style.display = "block";
+
+            todoListLocalStorage[knapp.parentNode.id-1].completed = false;
+            localStorage.setItem("lista", JSON.stringify(todoListLocalStorage));
+
         } else {
             item.style.textDecoration = "line-through";
-            this.style.display = "none";
-            this.previousSibling.style.display = "block";
+            knapp.style.display = "none";
+            knapp.previousSibling.style.display = "block";
+            todoListLocalStorage[knapp.parentNode.id-1].completed = true;
+            localStorage.setItem("lista", JSON.stringify(todoListLocalStorage));
         }
     }
 
@@ -167,7 +177,10 @@ function main () {
         if (localStorage.getItem("lista")) {
             todoListLocalStorage = JSON.parse(localStorage.getItem("lista"));
             for (var i = 0; i < todoListLocalStorage.length; i++) {
-                addTodo(todoListLocalStorage[i].title, todoListLocalStorage[i].date)
+                addTodo(todoListLocalStorage[i].title, todoListLocalStorage[i].date);
+                if (todoListLocalStorage[i].completed == true) {
+                    completeItem(todoListToday.lastChild.lastChild.previousSibling);
+                }
             }
         }
     }
