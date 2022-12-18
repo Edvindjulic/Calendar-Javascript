@@ -83,28 +83,28 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
             daySquare.classList.add("empty")
         }
 
-        const daySquareActivities = document.createElement("div");
-        daySquareActivities.classList.add("day-square-activities");
+        const daySquareTodos = document.createElement("div");
+        daySquareTodos.classList.add("day-square-activities");
 
-        todoListLocalStorage = JSON.parse(localStorage.getItem("lista"));
+        todoListLocalStorage = JSON.parse(localStorage.getItem("todo-list"));
         if (todoListLocalStorage == null) {
 
         } else {
-            addItemsToCalendar(daySquareActivities, daySquare.id);
+            addTodoToCalendar(daySquareTodos, daySquare.id);
         }
 
-        daySquare.appendChild(daySquareActivities);
+        daySquare.appendChild(daySquareTodos);
         calendar.appendChild(daySquare);
     }
 }
 
-function addItemsToCalendar(activityNode, day) {
+function addTodoToCalendar(calendarTodo, day) {
     for (var i = 0; i < todoListLocalStorage.length; i++) {;
         if (todoListLocalStorage[i].date == day) {
-            if (activityNode.innerHTML == "") {
-                activityNode.innerHTML = 1;
+            if (calendarTodo.innerHTML == "") {
+                calendarTodo.innerHTML = 1;
             } else {
-                activityNode.innerHTML++;;
+                calendarTodo.innerHTML++;;
             }
         }
     }
