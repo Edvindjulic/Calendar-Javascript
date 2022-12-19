@@ -2,7 +2,7 @@
  * Makes it so that the clock can tick, updates every second
  */
 function startClock() {
-    setInterval(startWelcomeSegment, 1000)
+    setInterval(startWelcomeSegment, 10)
 }
 
 /**

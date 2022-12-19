@@ -1,4 +1,4 @@
-/* variaber */
+/* variables */
 :root {
     --darkelectricblue: #4B6274; /*Används för bakgrund av header*/
     --cadetblue: #79AEB2; /*Används för bakgrund av aside samt markering av aktiv dag*/
@@ -8,7 +8,7 @@
     --pewterblue: #95ACBE; /*Används för markering av helgdagar*/
 }
 
-/* Återanvända klasser */
+/* Re-usable classes */
 .margin1 {
     margin: 1rem;
 }
@@ -46,7 +46,7 @@
     justify-content: space-between;
 }
 
-/* Styling för hela dokumentet */
+/* Styling for the entire document */
 * {
     margin: 0;
     padding: 0;
@@ -79,7 +79,7 @@ aside {
     width: 30rem;
     background-color: var(--cadetblue);
 }
-/* Välkomst segment */
+/* Welcome-segment */
 #welcome-segment {
     height: auto;
 }
@@ -93,7 +93,7 @@ aside {
     color: var(--white);
 }
 
-/* todo lista */
+/* todo-list */
 #todo-list-container {
     background-color: var(--silk);
     color: var(--royalbluedark);
