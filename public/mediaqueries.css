@@ -13,6 +13,21 @@
         width: calc(100% - 20rem);
     }
     
+    .todo-text {
+        width: 100%
+    }
+
+    .todo-badge {
+        display: none;
+    }
+
+    .todo-badge-hidden {
+        display: flex;
+        width: 75px;
+        height: 40px;
+        border-radius: 15px;
+        text-align: center;
+    }
 }
 
 @media (max-width: 820px) {
@@ -40,16 +55,21 @@
     }
 
     .todo-badge {
-        font-size: 0.65rem;
-        width: 100px;
+        display: flex;
+        width: 75px;
     }
 
     .todo-text {
-        width: 100%;
+        width: 300px;
+        word-wrap: break-word;
+    }
+
+    .todo-badge-hidden {
+        display: none;
     }
 
     .todo-buttons {
-        margin-left: 0;
+        margin-left: auto;
     }
 
     /* main */
@@ -82,7 +102,7 @@
 }
 
 /* mobile */
-@media (max-width: 480px) {
+@media (max-width: 560px) {
     /* aside */
     /* todo-list */
     .activites {
@@ -97,5 +117,17 @@
         font-size: 0.8rem;
         margin: 0.2rem;
         border: 1px solid var(--cadetblue);
+    }
+
+    .todo-badge {
+        display: none;
+    }
+
+    .todo-badge-hidden {
+        display: flex;
+        width: 75px;
+        height: 40px;
+        border-radius: 15px;
+        text-align: center;
     }
 }

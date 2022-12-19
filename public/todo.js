@@ -70,6 +70,12 @@ function addTodo(title, date, filterId) {
     badgeTodo.classList.add("todo-badge");
     const badgeTodoContent = document.createTextNode(date);
 
+    // Creates a hidden badge for the date
+    const badgeTodoHidden = document.createElement("span");
+    badgeTodoHidden.classList.add("todo-badge-hidden");
+    const splitBadgeText = date.split("-");
+    const badgeTodoHiddenContent = document.createTextNode(splitBadgeText[0] + " " + splitBadgeText[1] + "-" + splitBadgeText[2]);
+
     // Creates a div for styling
     const newTodoContentDiv = document.createElement("span");
     newTodoContentDiv.classList.add("todo-text");
@@ -90,16 +96,24 @@ function addTodo(title, date, filterId) {
         completeTodo(buttonCompleteTodo);
     });
 
+    // Creates a container for all the buttons
+    const buttonContainer = document.createElement("span");
+    buttonContainer.classList.add("todo-buttons-container");
+
+
     // Updates the calendar
     loadCalendar();
     
     // Gathers all the parts and pushes them to the DOM
     badgeTodo.appendChild(badgeTodoContent);
+    badgeTodoHidden.appendChild(badgeTodoHiddenContent);
     newTodo.appendChild(badgeTodo);
+    newTodo.appendChild(badgeTodoHidden);
     newTodoContentDiv.appendChild(newTodoContent);
     newTodo.appendChild(newTodoContentDiv);
-    newTodo.appendChild(buttonCompleteTodo);
-    newTodo.appendChild(buttonDeleteTodo);
+    buttonContainer.appendChild(buttonCompleteTodo);
+    buttonContainer.appendChild(buttonDeleteTodo);
+    newTodo.appendChild(buttonContainer);
     todoList.appendChild(newTodo);
 
     // Clears the input fields after adding

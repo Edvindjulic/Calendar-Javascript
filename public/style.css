@@ -135,6 +135,21 @@ aside {
     background-color: var(--pewterblue);
     color: var(--royalbluedark);
     border-radius: 25px;
+    width: 20%;
+    height: 20px;
+    font-size: 0.7rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    margin-right: 0.7rem;
+}
+
+.todo-badge-hidden {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--pewterblue);
+    color: var(--royalbluedark);
+    border-radius: 25px;
     width: 75px;
     height: 20px;
     font-size: 0.7rem;
@@ -143,16 +158,19 @@ aside {
     margin-right: 0.7rem;
 }
 
-.todo-buttons {
+.todo-buttons-container {
     margin-left: auto;
+    display: flex;
+}
+
+.todo-buttons {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    align-items:center;
 }
 
 .todo-text {
-    width: 250px;
+    width: 70%;
     word-wrap: break-word;
 }
 
