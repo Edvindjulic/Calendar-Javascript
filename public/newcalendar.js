@@ -65,10 +65,22 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
 
             if (daySquare.innerText < 10) {
                 daySquare.id = year + "-" + (month) + "-0" + (i - emptyDaySquare);
+
+                if (daySquare.id == localStorage.getItem("selected-calendar-day")) {
+                    daySquare.classList.remove("day-square");
+                    daySquare.classList.add("day-square-selected");
+                }
+
                 daySquare.style.cursor = "pointer";
                 daySquare.addEventListener('click', foo);
             } else {
                 daySquare.id = year + "-" + (month) + "-" + (i - emptyDaySquare);
+
+                if (daySquare.id == localStorage.getItem("selected-calendar-day")) {
+                    daySquare.classList.remove("day-square");
+                    daySquare.classList.add("day-square-selected");
+                }
+
                 daySquare.style.cursor = "pointer";
                 daySquare.addEventListener('click', foo);
             }

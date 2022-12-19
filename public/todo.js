@@ -12,6 +12,8 @@ const userInputDate = document.getElementById("new-todo-date");
 const addTodoContainer = document.getElementById("new-todo-container");
 const showAddTodoContainer = document.getElementById("todo-list-add-button");
 let todoListLocalStorage = [];
+let calendarSelectedDay = [];
+window.localStorage.removeItem("selected-calendar-day");
 
 // Initalizing event listeners
 buttonAddNewTodo.addEventListener("click", verifyInputFields);
@@ -58,13 +60,14 @@ function foo() {
             } else {
 
                 daySquare.classList.remove("day-square-selected");
-                    daySquare.classList.add("day-square");
+                daySquare.classList.add("day-square");
 
             }
         }
 
         this.classList.remove("day-square");
         this.classList.add("day-square-selected");
+        localStorage.setItem("selected-calendar-day", this.id);
         
     } else if (this.classList.contains("day-square-selected") || daySquare.classList.contains("today")) {
         this.classList.remove("day-square-selected");
