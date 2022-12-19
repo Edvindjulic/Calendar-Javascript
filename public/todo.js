@@ -22,7 +22,9 @@ showAddTodoContainer.addEventListener("click", containerShowOrHide);
  * FUNCTIONS
  */
 
-// Shows or hides the container when adding a new todo
+/**
+ * Shows or hides the container when adding a new todo
+ */
 function containerShowOrHide() {
     if (showAddTodoContainer.innerHTML == "remove") {
         showAddTodoContainer.innerHTML = "add";
@@ -33,13 +35,17 @@ function containerShowOrHide() {
     }
 }
 
-// Clears the input
+/**
+ * Clears the input
+ */
 function clearInputFields() {
     userInputTitle.value = "";
     userInputDate.value = "";
 }    
 
-// Checks if the input fields are empty
+/**
+ * Checks if input fields are empty
+ */
 function verifyInputFields() {
     const newTodoTitle = userInputTitle.value;
     const newTodoDate = userInputDate.value;
@@ -49,7 +55,11 @@ function verifyInputFields() {
     }
 }
 
-// Creates and adds a new todo in the todo-list
+/**
+ * Creates and adds a new todo in the todo-list
+ * @param {HTMLInputElement} title 
+ * @param {HTMLInputElement} date 
+ */
 function addTodo(title, date) {
     // Creates a new todo-object
     const newTodo = document.createElement("li");
@@ -101,7 +111,11 @@ function addTodo(title, date) {
     addTodoContainer.style.display = "none";
 }
 
-// Adds todo in local storage
+/**
+ * Adds todo in local storage
+ * @param {HTMLInputElement} todoTitle 
+ * @param {HTMLInputElement} todoDate 
+ */
 function addToLocalStorage (todoTitle, todoDate) {        
     const todo = {
         id: todoListLocalStorage.length+1,
@@ -114,7 +128,9 @@ function addToLocalStorage (todoTitle, todoDate) {
     localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
 }
 
-// Removes a todo
+/**
+ * Removes a todo
+ */
 function deleteTodo() {
     const todo = this.parentNode;
     todoList.removeChild(todo);
@@ -127,13 +143,18 @@ function deleteTodo() {
     }
 }
 
-// Removes object in local storage
+/**
+ * Removes object in local storage
+ * @param {*} todoId 
+ */
 function deleteTodoInLocalStorage(todoId) {
     todoListLocalStorage.splice(todoId-1, 1);
     localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
 }
 
-// Updates the ID in the local storage and DOM object
+/**
+ * Updates the ID in the local storage and DOM object
+ */
 function updateId () {
     id = 1;
 
@@ -148,6 +169,10 @@ function updateId () {
 }
 
 // Marks a todo as completed or not
+/**
+ * Marks a todo as completed or not
+ * @param {HTMLButtonElement} button 
+ */
 function completeTodo(button) {
     let todo = button.parentNode.firstChild.nextSibling;
     let todoId = button.parentNode.id-1;
@@ -168,14 +193,18 @@ function completeTodo(button) {
     loadCalendar();
 }
 
-// Creates empty local storage key if no local storage is found
+/**
+ * Creats empty local storage key if no local storage is found
+ */
 function checkIfLocalStorageIsEmpty() {
     if (localStorage.getItem("todo-list") === null) {
         todoListLocalStorage = localStorage.setItem("todo-list", "[]");
     }
 }
 
-// Loads the todo-list in the DOM from local storage
+/**
+ * Loads the todo-list in the DOM from local storage
+ */
 function loadTodoList() {
     userInputTitle.value = "";
     userInputDate.value = "";
@@ -195,7 +224,9 @@ function loadTodoList() {
     }
 }
 
-// Blocks the user from chosing an earlier date
+/**
+ * Blocks the user from choosing an earlier date
+ */
 function blockPastDates() {
     let today = new Date();
     const dd = today.getDate();
