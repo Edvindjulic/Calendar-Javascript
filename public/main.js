@@ -1,11 +1,14 @@
 window.addEventListener("DOMContentLoaded", main);
 
 /**
- * Function that loads when the dom is loaded
+ * Setting up the app
  */
- function main() {
+function main() {
+    checkIfLocalStorageIsEmpty();
     startWelcomeSegment();
     startClock();
     loadCalendar();
     initButtons();
+    blockPastDates();
+    loadTodoList();
 }

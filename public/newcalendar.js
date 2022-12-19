@@ -4,11 +4,6 @@
 let nav = 0;
 
 /**
- * Loading local storage into variable
- */
-let todoListLocalStorage = [];
-
-/**
  * A global list of all the days in a week
  */
 const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
