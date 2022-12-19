@@ -113,7 +113,7 @@ function addTodoToCalendar(calendarTodo, day) {
 }
 
 /**
- * Function that makes <> buttons clickable, so that the month changes. 
+ * Function that makes the <> buttons clickable, so that the month changes. 
  * When < is clicked nav decreases with 1, and when > is clicked nav increases with 1
  */
 function initButtons() {
