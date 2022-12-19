@@ -1,0 +1,101 @@
+/* big tablet */
+@media (max-width: 1100px) {
+    /* header */
+
+
+    /* aside */
+    aside {
+        width: 20rem;
+    }
+
+    /* main */
+    main {
+        width: calc(100% - 20rem);
+    }
+    
+}
+
+@media (max-width: 820px) {
+    /* header */
+    header {
+        height: 3rem;
+        font-size: 1rem;
+    }
+
+    /* aside */
+    aside {
+        width: 100%;
+    }
+
+    /* todo-list */
+    .new-todo-container {
+        flex: 1;
+    }
+    .todo-list {
+        flex: 1;
+        margin-top: 0;
+    }
+    .activites {
+        flex-direction: row;
+    }
+
+    .todo-badge {
+        font-size: 0.65rem;
+        width: 100px;
+    }
+
+    .todo-text {
+        width: 100%;
+    }
+
+    .todo-buttons {
+        margin-left: 0;
+    }
+
+    /* main */
+    .aside-main-container {
+        flex-direction: column-reverse;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    #backButton, #nextButton {
+        font-size: 1.5rem;
+    }
+
+    .current-month {
+        font-size: 1.5rem;
+    }
+
+    /* calendar */
+    .day-square {
+        height: 4rem;
+    }
+
+    .day-square-activities {
+        width: 1rem;
+        font-size: 0.8rem;
+        border-radius: 100rem;
+    }
+}
+
+/* mobile */
+@media (max-width: 480px) {
+    /* aside */
+    /* todo-list */
+    .activites {
+        flex-direction: column;
+    }
+    /* main */
+    /* calendar */
+    #weekdays {
+        font-size: 0.8rem;
+    }
+    .day-square {
+        font-size: 0.8rem;
+        margin: 0.2rem;
+        border: 1px solid var(--cadetblue);
+    }
+}

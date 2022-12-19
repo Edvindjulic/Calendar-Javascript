@@ -7,6 +7,7 @@
     <!-- Links to files -->
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./calendar.css">
+    <link rel="stylesheet" href="./mediaqueries.css">
     <script src="./main.js"></script>
     <script src="./todo.js"></script>
     <script src="./welcomesegment.js"></script>
@@ -17,11 +18,11 @@
     <title>Calendar</title>
   </head>
   <body>
-    <header class="padding1">
+    <header class="padding1 flex justify-center align-center">
       <h1>Calendar</h1>
     </header>
 
-    <div class="flex">
+    <div class="flex aside-main-container">
       <!-- Contains current time, weekday, date and the todo-list-->
           <aside class="padding-top-bottom1">
             <div id="welcome-segment" data-cy="welcome-segment" class="flex column align-center">
@@ -34,20 +35,22 @@
                 </button>
               </div>
               <br>
-              <div class="new-todo-container" id="new-todo-container"> 
-                  <label for="new-todo-title">To do</label><br>
-                  <input data-cy="todo-task-input" type="text" class="new-todo-input" id="new-todo-title" placeholder="Ny aktivitet"><br>
-                  <br>
-                  <label for="new-todo-date">Date</label><br>
-                  <input data-cy="todo-date-input" type="date" class="new-todo-input" id="new-todo-date"><br>
-                  <br>
-                  <button class="new-todo-input" id="new-todo-clear-button">Clear</button>
-                  <button data-cy="save-todo" class="new-todo-input" id="new-todo-add-button">Add to do</button><br><br>
-              </div>
-              <div class="todo-list">
-                <p><b>To do</b></p>
-                <p class="todo-list-empty-text" id="todo-list-empty-text">You have no planned to do's</p>
-                <ul data-cy="todo-list" class="todo-list-todos" id="todo-list-todos"></ul>
+              <div class="flex column activites">
+                <div class="new-todo-container" id="new-todo-container"> 
+                    <label for="new-todo-title">To do</label><br>
+                    <input data-cy="todo-task-input" type="text" class="new-todo-input" id="new-todo-title" placeholder="Ny aktivitet"><br>
+                    <br>
+                    <label for="new-todo-date">Date</label><br>
+                    <input data-cy="todo-date-input" type="date" class="new-todo-input" id="new-todo-date"><br>
+                    <br>
+                    <button class="new-todo-input" id="new-todo-clear-button">Clear</button>
+                    <button data-cy="save-todo" class="new-todo-input" id="new-todo-add-button">Add to do</button><br><br>
+                </div>
+                <div class="todo-list">
+                  <p><b>To do</b></p>
+                  <p class="todo-list-empty-text" id="todo-list-empty-text">You have no planned to do's</p>
+                  <ul data-cy="todo-list" class="todo-list-todos" id="todo-list-todos"></ul>
+                </div>
               </div>
           </aside>
       
