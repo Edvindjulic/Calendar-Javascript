@@ -21,7 +21,7 @@ function main () {
 
     // Visar eller gömmer container för tilläggning av ny aktivitet
     function containerShowOrHide() {
-        
+
         if (showAddTodoContainer.innerHTML == "remove") {
             showAddTodoContainer.innerHTML = "add";
             addTodoContainer.style.display = "none";
@@ -81,15 +81,6 @@ function main () {
             completeTodo(buttonCompleteTodo);
         });
 
-        // Skapar en ångraknapp (för avklarad aktivitet)
-        const buttonUndoTodo = document.createElement("button");
-        buttonUndoTodo.classList.add("todo-buttons", "material-symbols-outlined");
-        buttonUndoTodo.innerHTML = "undo";
-        buttonUndoTodo.style.display = "none";
-        buttonUndoTodo.addEventListener('click', () => {
-            completeTodo(buttonUndoTodo);
-        });
-
         // Uppdaterar kalendern
         loadCalendar();
         
@@ -98,7 +89,6 @@ function main () {
         newTodo.appendChild(badgeTodo);
         newTodoContentDiv.appendChild(newTodoContent);
         newTodo.appendChild(newTodoContentDiv);
-        newTodo.appendChild(buttonUndoTodo);
         newTodo.appendChild(buttonCompleteTodo);
         newTodo.appendChild(buttonDeleteTodo);
 
@@ -165,18 +155,18 @@ function main () {
 
         if (todo.style.textDecoration == "line-through") {
             todo.style.textDecoration = "none";
-            button.style.display = "none";
-            button.nextSibling.style.display = "block";
+            button.innerHTML = "done";
 
             todoListLocalStorage[todoId].completed = false;
             localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
         } else {
             todo.style.textDecoration = "line-through";
-            button.style.display = "none";
-            button.previousSibling.style.display = "block";
+            button.innerHTML = "undo";
             todoListLocalStorage[todoId].completed = true;
             localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
         }
+
+        loadCalendar();
     }
 
     // Laddar in aktivitetslista i DOM från lokal lagring
@@ -203,6 +193,7 @@ function main () {
         const dd = today.getDate();
         const mm = today.getMonth() + 1;
         const yyyy = today.getFullYear();
+        const datePicker = document.getElementById("new-todo-date");
 
         if (dd < 10) {
            dd = '0' + dd;
@@ -213,6 +204,6 @@ function main () {
         } 
 
         today = yyyy + '-' + mm + '-' + dd;
-        document.getElementById("new-todo-date").setAttribute("min", today);
+        datePicker.setAttribute("min", today);
     }
 }

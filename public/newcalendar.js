@@ -101,7 +101,9 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
 function addTodoToCalendar(calendarTodo, day) {
     for (var i = 0; i < todoListLocalStorage.length; i++) {;
         if (todoListLocalStorage[i].date == day) {
-            if (calendarTodo.innerHTML == "") {
+            if (todoListLocalStorage[i].completed == true) {
+                
+            } else if (calendarTodo.innerHTML == "") {
                 calendarTodo.innerHTML = 1;
             } else {
                 calendarTodo.innerHTML++;;
