@@ -266,6 +266,9 @@ function loadTodoList() {
     checkIfTodoListIsEmpty();
 }
 
+/**
+ * Clears the todo-list
+ */
 function clearTodoList() {
     while (todoList.firstChild) {
         todoList.removeChild(todoList.firstChild);
