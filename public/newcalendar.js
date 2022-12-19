@@ -32,7 +32,6 @@ function loadCalendar() {
     });
 
     const emptyDaySquare = weekdays.indexOf(dateToString.split(', ')[0]);
-
     const monthAndYear = document.getElementById('monthAndYear');
     monthAndYear.innerText = `${date.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
     monthAndYear.classList.add("current-month");
@@ -66,8 +65,12 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
 
             if (daySquare.innerText < 10) {
                 daySquare.id = year + "-" + (month) + "-0" + (i - emptyDaySquare);
+                daySquare.style.cursor = "pointer";
+                daySquare.addEventListener('click', foo);
             } else {
                 daySquare.id = year + "-" + (month) + "-" + (i - emptyDaySquare);
+                daySquare.style.cursor = "pointer";
+                daySquare.addEventListener('click', foo);
             }
 
             if (i - emptyDaySquare === day && nav === 0) {
@@ -87,7 +90,6 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
         } else {
             addTodoToCalendar(daySquareTodos, daySquare.id);
         }
-
         daySquare.appendChild(daySquareTodos);
         calendar.appendChild(daySquare);
     }
