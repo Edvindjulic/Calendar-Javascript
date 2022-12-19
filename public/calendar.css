@@ -62,7 +62,7 @@
     font-weight: 700;
 }
 
-/* Design för div that day-squares are in */
+/* The design for the div that day-squares are in */
 .calendar-body {
     display: grid;
     grid-template-columns: repeat(7, 1fr);

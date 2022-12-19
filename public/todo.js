@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", main);
 
 function main () {
-    // Variabeldeklarationer
+    // Variable declarations
     const todoList = document.getElementById("todo-list-todos");
     const buttonAddNewTodo = document.getElementById("new-todo-add-button");
     const buttonClearNewTodo = document.getElementById("new-todo-clear-button");
@@ -19,7 +19,7 @@ function main () {
     buttonClearNewTodo.addEventListener("click", clearInputFields);
     showAddTodoContainer.addEventListener("click", containerShowOrHide);
 
-    // Visar eller gömmer container för tilläggning av ny aktivitet
+    // Shows or hides the container when adding a new to do
     function containerShowOrHide() {
 
         if (showAddTodoContainer.innerHTML == "remove") {
@@ -31,13 +31,13 @@ function main () {
         }
     }
 
-    // Rensar inmatning
+    // Clears the input
     function clearInputFields() {
         userInputTitle.value = "";
         userInputDate.value = "";
     }    
 
-    // Kontrollerar att inputfälten är tomma
+    // Checks if the input fields are empty
     function verifyInputFields() {
         const newTodoTitle = userInputTitle.value;
         const newTodoDate = userInputDate.value;
@@ -48,32 +48,32 @@ function main () {
         }
     }
 
-    // Skapar och lägger till en aktivitet i aktivitetslistan
+    // Creates and adds a new to do in the todo-list
     function addTodo(title, date) {
 
-        // Skapar ett nytt aktivitetsobjekt
+        // Creates a new todo-object
         const newTodo = document.createElement("li");
         newTodo.classList.add("todo");
         newTodo.id = (todoList.childElementCount + 1);
 
-        // Skapar en datumbricka
+        // Crates a badge for the date
         const badgeTodo = document.createElement("span");
         badgeTodo.classList.add("todo-badge");
         const badgeTodoContent = document.createTextNode(date);
 
-        // Skapar en div för styling
+        // Creates a div for styling
         const newTodoContentDiv = document.createElement("span");
         newTodoContentDiv.classList.add("todo-text");
         const newTodoContent = document.createTextNode(title);
 
-        // Skapar en borttagningsknapp
+        // Creates a delete button
         const buttonDeleteTodo = document.createElement("button");
         buttonDeleteTodo.classList.add("todo-buttons", "material-symbols-outlined");
         buttonDeleteTodo.setAttribute("data-cy", "delete-todo-button");
         buttonDeleteTodo.innerHTML = "delete";
         buttonDeleteTodo.addEventListener('click', deleteTodo);
         
-        // Skapar en avklarningsknapp
+        // Creates a done button
         const buttonCompleteTodo = document.createElement("button");
         buttonCompleteTodo.classList.add("todo-buttons", "material-symbols-outlined");
         buttonCompleteTodo.innerHTML = "done";
@@ -81,10 +81,10 @@ function main () {
             completeTodo(buttonCompleteTodo);
         });
 
-        // Uppdaterar kalendern
+        // Updates the calendar
         loadCalendar();
         
-        // Samlar ihop all delar och pushar till DOM
+        // Gathers all the parts and pushes them to the DOM
         badgeTodo.appendChild(badgeTodoContent);
         newTodo.appendChild(badgeTodo);
         newTodoContentDiv.appendChild(newTodoContent);
@@ -94,7 +94,7 @@ function main () {
 
         todoList.appendChild(newTodo);
 
-        // Rensar inputfälten efter tilläggning
+        // Clears the input fields after adding
         todoListEmptyText.style.display = "none";
         userInputTitle.value = "";
         userInputDate.value = "";
@@ -102,7 +102,7 @@ function main () {
         addTodoContainer.style.display = "none";
     }
 
-    // Lögger till aktivitet i lokal lagring
+    // Adds to do in local storage
     function addToLocalStorage (todoTitle, todoDate) {        
         const todo = {
             id: todoListLocalStorage.length+1,
@@ -115,7 +115,7 @@ function main () {
         localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
     }
 
-    // Tar bort en aktivitet
+    // Removes a to do
     function deleteTodo() {
         const todo = this.parentNode;
         todoList.removeChild(todo);
@@ -128,13 +128,13 @@ function main () {
         }
     }
 
-    // Tar bort objekt i lokal lagring
+    // Removes object inn local string
     function deleteTodoInLocalStorage(todoId) {
         todoListLocalStorage.splice(todoId-1, 1);
         localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
     }
 
-    // Uppdaterar ID i både localStorage-objekt och i DOM-objekt
+    // Updates the ID in the local storage- and DOM object
     function updateId () {
         id = 1;
 
@@ -148,7 +148,7 @@ function main () {
         localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
     }
 
-    // Markerar en aktivitet som avklarad eller oavklarad
+    // Marks a to do as completed or not
     function completeTodo(button) {
         let todo = button.parentNode.firstChild.nextSibling;
         let todoId = button.parentNode.id-1;
@@ -169,7 +169,7 @@ function main () {
         loadCalendar();
     }
 
-    // Laddar in aktivitetslista i DOM från lokal lagring
+    // Loads the todo-list in the DOM from local storage
     function loadTodoList() {
         userInputTitle.value = "";
         userInputDate.value = "";
@@ -187,7 +187,7 @@ function main () {
         }
     }
 
-    // Begränsar användaren från att välja datum bakåt i tiden
+    // Limits the user from chosing an earlier date
     function blockPastDates() {
         let today = new Date();
         const dd = today.getDate();
