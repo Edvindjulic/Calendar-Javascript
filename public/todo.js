@@ -61,7 +61,6 @@ function foo() {
 
                 daySquare.classList.remove("day-square-selected");
                 daySquare.classList.add("day-square");
-
             }
         }
 

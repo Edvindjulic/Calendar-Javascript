@@ -71,6 +71,7 @@ header {
     background-color: var(--darkelectricblue);
     color: var(--white);
     display: flex;
+    user-select: none;
 }
 
 
