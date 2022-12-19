@@ -52,6 +52,11 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
     const calendar = document.getElementById("month-calendar");
     calendar.innerHTML = "";
     
+    month = (month +1);
+    if ((month) < 10) {
+        month = '0' + month;
+    } 
+
     for(let i = 1; i <= emptyDaySquare + daysInAMonth; i++) {
         const daySquare = document.createElement("div");
         daySquare.classList.add("day-square");
@@ -59,13 +64,23 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
         if (i > emptyDaySquare) {
             daySquare.innerText = i - emptyDaySquare;
 
+            if (daySquare.innerText < 10) {
+                daySquare.id = year + "-" + (month) + "-0" + (i - emptyDaySquare);
+            } else {
+                daySquare.id = year + "-" + (month) + "-" + (i - emptyDaySquare);
+            }
+
             if (i - emptyDaySquare === day && nav === 0) {
-                daySquare.id = "today";
+                daySquare.classList.add("today");
             }
 
         } else {
             daySquare.classList.add("empty")
         }
+
+        const daySquareActivities = document.createElement("div");
+        daySquareActivities.classList.add("day-square-activities");
+        daySquare.appendChild(daySquareActivities);
         calendar.appendChild(daySquare);
     }
 }

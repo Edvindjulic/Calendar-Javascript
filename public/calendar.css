@@ -39,6 +39,15 @@
     background-color: #79aeb279;
 }
 
+.day-square-activities {
+    background-color: var(--silk);
+    border-radius: 50%;
+    display: inline-block;
+    width: 25px;
+    align-self: center;
+    margin-bottom: 10px;
+}
+
 .empty {
     background-color: #fff;
     /* border: 2px solid #5f9ea05d; */
@@ -48,7 +57,7 @@
     background-color: #fff;
 }
 
-#today {
+.today {
     background-color: var(--cadetblue);
     font-weight: 700;
 }

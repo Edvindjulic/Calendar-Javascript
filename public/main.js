@@ -7,5 +7,5 @@ window.addEventListener("DOMContentLoaded", main);
     startWelcomeSegment();
     startClock();
     loadCalendar();
-    initButtons();
+    // initButtons();
 }

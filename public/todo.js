@@ -57,6 +57,15 @@ function main () {
             buttonUndoItem.style.display = "none";
             buttonUndoItem.addEventListener('click', completeItem);
 
+            // Lägger till aktivitet i kalendern
+            const addItemToCalendar = document.getElementById(newItemDate);
+            
+            if (addItemToCalendar.lastChild.innerHTML == "") {
+                addItemToCalendar.lastChild.innerHTML = 1;
+            } else {
+                addItemToCalendar.lastChild.innerHTML++;
+            }
+            
             // Samlar ihop allt och pushar till DOM
             badgeItem.appendChild(badgeItemContent);
             newItem.appendChild(badgeItem);
@@ -82,6 +91,15 @@ function main () {
 
     // Tar bort en aktivitet
     function deleteItem() {
+        const itemDate = this.parentNode.firstChild.innerText;
+        const daySquare = document.getElementById(itemDate);
+
+        if (daySquare.lastChild.innerHTML == "1") {
+            daySquare.lastChild.innerHTML = "";
+        } else {
+            daySquare.lastChild.innerHTML--;
+        }
+
         const item = this.parentNode;
         item.parentNode.removeChild(item);
 
