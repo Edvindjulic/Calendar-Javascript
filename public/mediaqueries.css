@@ -17,6 +17,11 @@
         width: 100%
     }
 
+
+    .todo {
+        align-items: center;
+    }
+
     .todo-badge {
         display: none;
     }
@@ -50,26 +55,18 @@
         flex: 1;
         margin-top: 0;
     }
+
     .activites {
         flex-direction: row;
     }
 
     .todo-badge {
         display: flex;
-        width: 75px;
-    }
-
-    .todo-text {
-        width: 300px;
-        word-wrap: break-word;
+        flex-basis: auto;
     }
 
     .todo-badge-hidden {
         display: none;
-    }
-
-    .todo-buttons {
-        margin-left: auto;
     }
 
     /* main */
@@ -121,6 +118,11 @@
 
     .todo-badge {
         display: none;
+    }
+
+
+    .todo {
+        align-items: center;
     }
 
     .todo-badge-hidden {

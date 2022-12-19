@@ -116,15 +116,9 @@ aside {
     margin-top: 0.5rem;
 } 
 
-.todo-list-todos {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-}
-
 .todo {
     display: flex;
     align-items: start;
-    justify-content: center;
     margin-top: 1rem;
 }
 
@@ -159,8 +153,10 @@ aside {
 }
 
 .todo-buttons-container {
-    margin-left: auto;
     display: flex;
+    width: 25%;
+    justify-content: flex-end;
+
 }
 
 .todo-buttons {

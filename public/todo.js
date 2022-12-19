@@ -139,7 +139,7 @@ function addToLocalStorage (todoTitle, todoDate) {
 
 // Removes a todo
 function deleteTodo() {
-    const todo = this.parentNode;
+    const todo = this.parentNode.parentNode;
     todoList.removeChild(todo);
     deleteTodoInLocalStorage(todo.id);
     updateId();
@@ -190,8 +190,8 @@ function updateId () {
 
 // Marks a todo as completed or not
 function completeTodo(button) {
-    let todo = button.parentNode.firstChild.nextSibling;
-    let todoId = button.parentNode.id-1;
+    let todo = button.parentNode.parentNode.firstChild.nextSibling.nextSibling;
+    let todoId = button.parentNode.parentNode.id-1;
 
     if (todo.style.textDecoration == "line-through") {
         todo.style.textDecoration = "none";
@@ -233,7 +233,7 @@ function loadTodoList() {
                 addTodo(todoListLocalStorage[todoId].title, todoListLocalStorage[todoId].date);
 
                 if (todoListLocalStorage[todoId].completed == true) {
-                    completeTodo(todoList.lastChild.lastChild.previousSibling);
+                    completeTodo(todoList.lastChild.lastChild.lastChild.previousSibling);
                 }
 
             // Loads todos related to selected calendar day only
@@ -243,7 +243,7 @@ function loadTodoList() {
                     addTodo(todoListLocalStorage[todoId].title, todoListLocalStorage[todoId].date, todoId+1);
 
                     if (todoListLocalStorage[todoId].completed == true) {
-                        completeTodo(todoList.lastChild.lastChild.previousSibling);
+                        completeTodo(todoList.lastChild.lastChild.lastChild.previousSibling);
                     }
                 }
             }
