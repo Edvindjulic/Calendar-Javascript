@@ -38,13 +38,13 @@ function getWeekday(date) {
     const weekday = date.getDay();
 
     switch (weekday) {
-        case 0: return "Söndag";
-        case 1: return "Måndag";
-        case 2: return "Tisdag";
-        case 3: return "Onsdag";
-        case 4: return "Torsdag";
-        case 5: return "Fredag";
-        case 6: return "Lördag";
+        case 0: return "Sunday";
+        case 1: return "Monday";
+        case 2: return "Tuesday";
+        case 3: return "Wednesday";
+        case 4: return "Thursday";
+        case 5: return "Friday";
+        case 6: return "Saturday";
     }
 }
 
