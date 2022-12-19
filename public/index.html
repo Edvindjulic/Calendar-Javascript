@@ -26,26 +26,28 @@
           <aside class="padding-top-bottom1">
             <div id="welcome-segment" data-cy="welcome-segment" class="flex column align-center">
             </div>
-            <div id="todo-list" class="padding1 margin1 border-radius">
+            <div id="todo-list-container" class="padding1 margin1 border-radius">
               <div class="todo-list-header flex space-between align-center">
                 <p><b>Mina aktiviteter</b></p>
+                <button data-cy="todo-reveal-form" class="material-symbols-outlined todo-list-add-button" id="todo-list-add-button">
+                  add
+                </button>
               </div>
               <br>
-              <div class="new-item" id="new-item"> 
-                  <label for="new-todo-activity">Aktivitet</label><br>
-                  <input data-cy="todo-task-input" type="text" class="new-item-input" id="new-item-activity" placeholder="Ny aktivitet"><br>
+              <div class="new-todo-container" id="new-todo-container"> 
+                  <label for="new-todo-title">Aktivitet</label><br>
+                  <input data-cy="todo-task-input" type="text" class="new-todo-input" id="new-todo-title" placeholder="Ny aktivitet"><br>
                   <br>
-                  <label for="new-todo-date">Datum:</label><br>
-                  <input data-cy="todo-date-input" type="date" class="new-item-input" id="new-item-date"><br>
+                  <label for="new-todo-date">Datum</label><br>
+                  <input data-cy="todo-date-input" type="date" class="new-todo-input" id="new-todo-date"><br>
                   <br>
-                  <button class="new-item-input" id="new-item-clear">Rensa</button>
-                  <button data-cy="save-todo" class="new-item-input" id="new-item-add">Lägg till aktivitet</button><br><br>
+                  <button class="new-todo-input" id="new-todo-clear-button">Rensa</button>
+                  <button data-cy="save-todo" class="new-todo-input" id="new-todo-add-button">Lägg till aktivitet</button><br><br>
               </div>
-              <div class="todo-list-today">
+              <div class="todo-list">
                 <p><b>Aktiviteter</b></p>
-                <p class="todo-list-empty-text" id="todo-list-empty-text-today">Du har inga planerade aktiviteter.</p>
-                <ul data-cy="todo-list" class="todo-list-today-activites" id="todo-list-today-activities">
-                </ul>
+                <p class="todo-list-empty-text" id="todo-list-empty-text">Du har inga planerade aktiviteter.</p>
+                <ul data-cy="todo-list" class="todo-list-todos" id="todo-list-todos"></ul>
               </div>
           </aside>
       

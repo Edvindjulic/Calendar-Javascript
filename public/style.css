@@ -93,7 +93,7 @@ aside {
 }
 
 /* todo lista */
-#todo-list {
+#todo-list-container {
     background-color: var(--silk);
     color: var(--royalbluedark);
 }
@@ -102,7 +102,7 @@ aside {
     font-size: 1.3rem;
 }
 
-.new-item-input {
+.new-todo-input {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -110,27 +110,23 @@ aside {
     margin-top: 0.5rem;
 }
 
-.todo-list-today {
+.todo-list {
     margin-top: 0.5rem;
 } 
 
-.todo-list-today-activites {
+.todo-list-todos {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
 
-.new-item-error-message {
-    display: none;
-}
-
-.item {
+.todo {
     display: flex;
     align-items: start;
     justify-content: center;
     margin-top: 1rem;
 }
 
-.item-badge {
+.todo-badge {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -145,7 +141,7 @@ aside {
     margin-right: 0.7rem;
 }
 
-.item-buttons {
+.todo-buttons {
     margin-left: auto;
     border: none;
     background-color: transparent;
@@ -153,7 +149,17 @@ aside {
     align-items:center;
 }
 
-.item-text {
+.todo-text {
     width: 250px;
     word-wrap: break-word;
+}
+
+.new-todo-container {
+    display: none;
+}
+
+.todo-list-add-button {
+    border: none;
+    background: none;
+    cursor: pointer;
 }
