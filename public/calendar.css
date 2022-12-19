@@ -70,7 +70,6 @@
 
 .empty {
     background-color: #fff;
-    /* border: 2px solid #5f9ea05d; */
     border: 2px solid #fff;
 }
 .empty:hover {

@@ -68,9 +68,10 @@ function foo() {
         this.classList.add("day-square-selected");
         localStorage.setItem("selected-calendar-day", this.id);
         
-    } else if (this.classList.contains("day-square-selected") || daySquare.classList.contains("today")) {
+    } else if (this.classList.contains("day-square-selected")) {
         this.classList.remove("day-square-selected");
         this.classList.add("day-square")
+        window.localStorage.removeItem("selected-calendar-day");
     }
 }
 
