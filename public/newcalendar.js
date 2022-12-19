@@ -32,7 +32,6 @@ function loadCalendar() {
     });
 
     const emptyDaySquare = weekdays.indexOf(dateToString.split(', ')[0]);
-
     const monthAndYear = document.getElementById('monthAndYear');
     monthAndYear.innerText = `${date.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
     monthAndYear.classList.add("current-month");
@@ -66,8 +65,24 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
 
             if (daySquare.innerText < 10) {
                 daySquare.id = year + "-" + (month) + "-0" + (i - emptyDaySquare);
+
+                if (daySquare.id == localStorage.getItem("selected-calendar-day")) {
+                    daySquare.classList.remove("day-square");
+                    daySquare.classList.add("day-square-selected");
+                }
+
+                daySquare.style.cursor = "pointer";
+                daySquare.addEventListener('click', selectCalendarDay);
             } else {
                 daySquare.id = year + "-" + (month) + "-" + (i - emptyDaySquare);
+
+                if (daySquare.id == localStorage.getItem("selected-calendar-day")) {
+                    daySquare.classList.remove("day-square");
+                    daySquare.classList.add("day-square-selected");
+                }
+
+                daySquare.style.cursor = "pointer";
+                daySquare.addEventListener('click', selectCalendarDay);
             }
 
             if (i - emptyDaySquare === day && nav === 0) {
@@ -87,7 +102,6 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
         } else {
             addTodoToCalendar(daySquareTodos, daySquare.id);
         }
-
         daySquare.appendChild(daySquareTodos);
         calendar.appendChild(daySquare);
     }
@@ -122,3 +136,34 @@ function initButtons() {
       loadCalendar();
     });
   }
+
+// Filters the todo list by selected calendar day
+function selectCalendarDay() {
+    let filteredText = document.getElementById("todo-list-filtered");
+
+    if (this.classList.contains("day-square")) {
+        
+        for (const daySquare of this.parentNode.childNodes) {
+            
+            if (daySquare.classList.contains("empty")) {
+
+            } else {
+                daySquare.classList.remove("day-square-selected");
+                daySquare.classList.add("day-square");
+            }
+        }
+
+        this.classList.remove("day-square");
+        this.classList.add("day-square-selected");
+        localStorage.setItem("selected-calendar-day", this.id);
+        filteredText.innerHTML = "My todos on " + this.id;
+        loadTodoList()
+        
+    } else if (this.classList.contains("day-square-selected")) {
+        this.classList.remove("day-square-selected");
+        this.classList.add("day-square")
+        window.localStorage.removeItem("selected-calendar-day");
+        filteredText.innerHTML = "My todos";
+        loadTodoList()
+    }
+}

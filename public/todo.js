@@ -12,6 +12,8 @@ const userInputDate = document.getElementById("new-todo-date");
 const addTodoContainer = document.getElementById("new-todo-container");
 const showAddTodoContainer = document.getElementById("todo-list-add-button");
 let todoListLocalStorage = [];
+let calendarSelectedDay = [];
+window.localStorage.removeItem("selected-calendar-day");
 
 // Initalizing event listeners
 buttonAddNewTodo.addEventListener("click", verifyInputFields);
@@ -51,7 +53,8 @@ function verifyInputFields() {
     const newTodoDate = userInputDate.value;
     if (newTodoTitle != "" && newTodoDate != "") {
         addToLocalStorage (newTodoTitle, newTodoDate);
-        addTodo(newTodoTitle, newTodoDate);
+        addTodo(newTodoTitle, newTodoDate, todoListLocalStorage.length+1);
+        loadTodoList();
     }
 }
 
@@ -60,11 +63,17 @@ function verifyInputFields() {
  * @param {HTMLInputElement} title - User input title
  * @param {HTMLInputElement} date  - User input date
  */
-function addTodo(title, date) {
+function addTodo(title, date, filterId) {
+
     // Creates a new todo-object
     const newTodo = document.createElement("li");
     newTodo.classList.add("todo");
-    newTodo.id = (todoList.childElementCount + 1);
+
+    if (localStorage.getItem("selected-calendar-day") == null) {
+        newTodo.id = (todoList.childElementCount + 1);
+    } else {
+        newTodo.id = filterId;
+    }
 
     // Creates a badge for the date
     const badgeTodo = document.createElement("span");
@@ -104,7 +113,7 @@ function addTodo(title, date) {
     todoList.appendChild(newTodo);
 
     // Clears the input fields after adding
-    todoListEmptyText.style.display = "none";
+    todoListEmptyText.innerHTML = "";
     userInputTitle.value = "";
     userInputDate.value = "";
     showAddTodoContainer.innerHTML = "add";
@@ -137,9 +146,19 @@ function deleteTodo() {
     deleteTodoInLocalStorage(todo.id);
     updateId();
     loadCalendar();
+    loadTodoList();
 
     if (todoList.innerText == "") {
-        todoListEmptyText.style.display = "block";
+        todoList.innerText == "You have no planned todos";
+    }
+}
+
+// Check if todo-list is empty
+function checkIfTodoListIsEmpty() {
+    if (todoList.innerHTML == "" && localStorage.getItem("selected-calendar-day") != null) {
+    todoListEmptyText.innerHTML = "You have no planned todos on this date";
+    } else if (todoList.innerHTML == "") {
+        todoListEmptyText.innerHTML = "You have no planned todos";
     }
 }
 
@@ -158,11 +177,19 @@ function deleteTodoInLocalStorage(todoId) {
 function updateId () {
     id = 1;
 
-    for (const todo of todoList.childNodes) {
-        todo.removeAttribute("id");
-        todo.id = id;
-        todoListLocalStorage[id-1].id = id;
-        id++;
+    if (localStorage.getItem("selected-calendar-day") == null) {
+        for (const todo of todoList.childNodes) {
+            todo.removeAttribute("id");
+            todo.id = id;
+            todoListLocalStorage[id-1].id = id;
+            id++;
+        }
+
+    } else {
+        for (let i = 0; i < todoListLocalStorage.length; i++) {
+            todoListLocalStorage[id-1].id = id;
+            id++;
+        }
     }
     
     localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
@@ -196,7 +223,7 @@ function completeTodo(button) {
  * Creats empty local storage key if no local storage is found
  */
 function checkIfLocalStorageIsEmpty() {
-    if (localStorage.getItem("todo-list") === null) {
+    if (localStorage.getItem("todo-list") == null) {
         todoListLocalStorage = localStorage.setItem("todo-list", "[]");
     }
 }
@@ -207,19 +234,41 @@ function checkIfLocalStorageIsEmpty() {
 function loadTodoList() {
     userInputTitle.value = "";
     userInputDate.value = "";
+    clearTodoList();
 
+    // Checks if the todo-list is empty before trying to load
     if (localStorage.getItem("todo-list")) {
         todoListLocalStorage = JSON.parse(localStorage.getItem("todo-list"));
 
         for (var todoId = 0; todoId < todoListLocalStorage.length; todoId++) {
-            addTodo(todoListLocalStorage[todoId].title, todoListLocalStorage[todoId].date);
 
-            if (todoListLocalStorage[todoId].completed == true) {
-                completeTodo(todoList.lastChild.lastChild.previousSibling);
+            // Loads all todos if no calendar day is selected
+            if (localStorage.getItem("selected-calendar-day") == null) {
+                addTodo(todoListLocalStorage[todoId].title, todoListLocalStorage[todoId].date);
+
+                if (todoListLocalStorage[todoId].completed == true) {
+                    completeTodo(todoList.lastChild.lastChild.previousSibling);
+                }
+
+            // Loads todos related to selected calendar day only
+            } else if (localStorage.getItem("selected-calendar-day") !== null) {
+
+                if (todoListLocalStorage[todoId].date == localStorage.getItem("selected-calendar-day")) {
+                    addTodo(todoListLocalStorage[todoId].title, todoListLocalStorage[todoId].date, todoId+1);
+
+                    if (todoListLocalStorage[todoId].completed == true) {
+                        completeTodo(todoList.lastChild.lastChild.previousSibling);
+                    }
+                }
             }
         }
-    } else {
-        console.log(":-(");
+    }
+    checkIfTodoListIsEmpty();
+}
+
+function clearTodoList() {
+    while (todoList.firstChild) {
+        todoList.removeChild(todoList.firstChild);
     }
 }
 

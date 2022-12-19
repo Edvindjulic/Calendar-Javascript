@@ -71,6 +71,7 @@ header {
     background-color: var(--darkelectricblue);
     color: var(--white);
     display: flex;
+    user-select: none;
 }
 
 /* Aside */
@@ -164,4 +165,8 @@ aside {
     border: none;
     background: none;
     cursor: pointer;
+}
+
+#todo-list-filtered {
+    font-weight: bold;
 }
