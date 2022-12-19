@@ -56,7 +56,7 @@ function main () {
         newTodo.classList.add("todo");
         newTodo.id = (todoList.childElementCount + 1);
 
-        // Crates a badge for the date
+        // Creates a badge for the date
         const badgeTodo = document.createElement("span");
         badgeTodo.classList.add("todo-badge");
         const badgeTodoContent = document.createTextNode(date);
@@ -128,7 +128,7 @@ function main () {
         }
     }
 
-    // Removes object inn local string
+    // Removes object in local string
     function deleteTodoInLocalStorage(todoId) {
         todoListLocalStorage.splice(todoId-1, 1);
         localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
