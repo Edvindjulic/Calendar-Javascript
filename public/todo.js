@@ -57,8 +57,8 @@ function verifyInputFields() {
 
 /**
  * Creates and adds a new todo in the todo-list
- * @param {HTMLInputElement} title 
- * @param {HTMLInputElement} date 
+ * @param {HTMLInputElement} title - User input title
+ * @param {HTMLInputElement} date  - User input date
  */
 function addTodo(title, date) {
     // Creates a new todo-object
@@ -113,8 +113,8 @@ function addTodo(title, date) {
 
 /**
  * Adds todo in local storage
- * @param {HTMLInputElement} todoTitle 
- * @param {HTMLInputElement} todoDate 
+ * @param {HTMLInputElement} todoTitle - User input title
+ * @param {HTMLInputElement} todoDate - User input date
  */
 function addToLocalStorage (todoTitle, todoDate) {        
     const todo = {
@@ -145,7 +145,7 @@ function deleteTodo() {
 
 /**
  * Removes object in local storage
- * @param {*} todoId 
+ * @param {*} todoId - Number for looping through todo-list
  */
 function deleteTodoInLocalStorage(todoId) {
     todoListLocalStorage.splice(todoId-1, 1);
@@ -168,10 +168,9 @@ function updateId () {
     localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
 }
 
-// Marks a todo as completed or not
 /**
  * Marks a todo as completed or not
- * @param {HTMLButtonElement} button 
+ * @param {HTMLButtonElement} button - Button that draws a line through todo list item if clicked
  */
 function completeTodo(button) {
     let todo = button.parentNode.firstChild.nextSibling;
