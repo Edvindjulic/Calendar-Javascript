@@ -41,7 +41,7 @@
 .day-square-selected {
     width: auto;
     height: 6rem;
-    background-color: blue;
+    background-color: var(--royalbluedark);
     border: 2px solid var(--cadetblue);
     display: flex;
     flex-direction: column;

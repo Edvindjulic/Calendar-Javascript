@@ -72,7 +72,7 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
                 }
 
                 daySquare.style.cursor = "pointer";
-                daySquare.addEventListener('click', foo);
+                daySquare.addEventListener('click', selectCalendarDay);
             } else {
                 daySquare.id = year + "-" + (month) + "-" + (i - emptyDaySquare);
 
@@ -82,7 +82,7 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
                 }
 
                 daySquare.style.cursor = "pointer";
-                daySquare.addEventListener('click', foo);
+                daySquare.addEventListener('click', selectCalendarDay);
             }
 
             if (i - emptyDaySquare === day && nav === 0) {
@@ -136,3 +136,32 @@ function initButtons() {
       loadCalendar();
     });
   }
+
+// Filters the todo list by selected calendar day
+function selectCalendarDay() {
+    if (this.classList.contains("day-square")) {
+        
+        for (const daySquare of this.parentNode.childNodes) {
+            
+            if (daySquare.classList.contains("empty")) {
+
+            } else {
+                daySquare.classList.remove("day-square-selected");
+                daySquare.classList.add("day-square");
+            }
+        }
+
+        this.classList.remove("day-square");
+        this.classList.add("day-square-selected");
+        localStorage.setItem("selected-calendar-day", this.id);
+
+        loadTodoList()
+        
+    } else if (this.classList.contains("day-square-selected")) {
+        this.classList.remove("day-square-selected");
+        this.classList.add("day-square")
+        window.localStorage.removeItem("selected-calendar-day");
+
+        loadTodoList()
+    }
+}
