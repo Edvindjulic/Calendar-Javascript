@@ -50,21 +50,23 @@ function verifyInputFields() {
 }
 
 function foo() {
-    if (this.classList == "day-square") {
+    if (this.classList.contains("day-square")) {
         
         for (const daySquare of this.parentNode.childNodes) {
             if (daySquare.classList.contains("empty")) {
 
             } else {
-            daySquare.className = "";
-            daySquare.classList.add("day-square");
+
+                daySquare.classList.remove("day-square-selected");
+                    daySquare.classList.add("day-square");
+
             }
         }
 
         this.classList.remove("day-square");
         this.classList.add("day-square-selected");
         
-    } else if (this.classList == "day-square-selected") {
+    } else if (this.classList.contains("day-square-selected") || daySquare.classList.contains("today")) {
         this.classList.remove("day-square-selected");
         this.classList.add("day-square")
     }
