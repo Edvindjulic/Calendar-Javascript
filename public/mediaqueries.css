@@ -27,15 +27,29 @@
         width: 100%;
     }
 
-    .new-item {
+    /* todo-list */
+    .new-todo-container {
         flex: 1;
     }
-    .todo-list-today {
+    .todo-list {
         flex: 1;
         margin-top: 0;
     }
     .activites {
         flex-direction: row;
+    }
+
+    .todo-badge {
+        font-size: 0.65rem;
+        width: 100px;
+    }
+
+    .todo-text {
+        width: 100%;
+    }
+
+    .todo-buttons {
+        margin-left: 0;
     }
 
     /* main */
@@ -69,5 +83,19 @@
 
 /* mobile */
 @media (max-width: 480px) {
-    
+    /* aside */
+    /* todo-list */
+    .activites {
+        flex-direction: column;
+    }
+    /* main */
+    /* calendar */
+    #weekdays {
+        font-size: 0.8rem;
+    }
+    .day-square {
+        font-size: 0.8rem;
+        margin: 0.2rem;
+        border: 1px solid var(--cadetblue);
+    }
 }

@@ -35,20 +35,22 @@
                 </button>
               </div>
               <br>
-              <div class="new-todo-container" id="new-todo-container"> 
-                  <label for="new-todo-title">Aktivitet</label><br>
-                  <input data-cy="todo-task-input" type="text" class="new-todo-input" id="new-todo-title" placeholder="Ny aktivitet"><br>
-                  <br>
-                  <label for="new-todo-date">Datum</label><br>
-                  <input data-cy="todo-date-input" type="date" class="new-todo-input" id="new-todo-date"><br>
-                  <br>
-                  <button class="new-todo-input" id="new-todo-clear-button">Rensa</button>
-                  <button data-cy="save-todo" class="new-todo-input" id="new-todo-add-button">Lägg till aktivitet</button><br><br>
-              </div>
-              <div class="todo-list">
-                <p><b>Aktiviteter</b></p>
-                <p class="todo-list-empty-text" id="todo-list-empty-text">Du har inga planerade aktiviteter.</p>
-                <ul data-cy="todo-list" class="todo-list-todos" id="todo-list-todos"></ul>
+              <div class="flex column activites">
+                <div class="new-todo-container" id="new-todo-container"> 
+                    <label for="new-todo-title">Aktivitet</label><br>
+                    <input data-cy="todo-task-input" type="text" class="new-todo-input" id="new-todo-title" placeholder="Ny aktivitet"><br>
+                    <br>
+                    <label for="new-todo-date">Datum</label><br>
+                    <input data-cy="todo-date-input" type="date" class="new-todo-input" id="new-todo-date"><br>
+                    <br>
+                    <button class="new-todo-input" id="new-todo-clear-button">Rensa</button>
+                    <button data-cy="save-todo" class="new-todo-input" id="new-todo-add-button">Lägg till aktivitet</button><br><br>
+                </div>
+                <div class="todo-list">
+                  <p><b>Aktiviteter</b></p>
+                  <p class="todo-list-empty-text" id="todo-list-empty-text">Du har inga planerade aktiviteter.</p>
+                  <ul data-cy="todo-list" class="todo-list-todos" id="todo-list-todos"></ul>
+                </div>
               </div>
           </aside>
       
