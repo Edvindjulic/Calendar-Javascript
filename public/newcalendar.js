@@ -107,6 +107,11 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
     }
 }
 
+/**
+ * Adds a todo to the calendar
+ * @param {HTMLDivElement} calendarTodo - The div that the todo gets added into
+ * @param {*} day 
+ */
 function addTodoToCalendar(calendarTodo, day) {
     for (var i = 0; i < todoListLocalStorage.length; i++) {;
         if (todoListLocalStorage[i].date == day) {
@@ -137,7 +142,9 @@ function initButtons() {
     });
   }
 
-// Filters the todo list by selected calendar day
+/**
+ * Filters the todo list by selected calendar day
+ */
 function selectCalendarDay() {
     let filteredText = document.getElementById("todo-list-filtered");
 
