@@ -21,7 +21,7 @@
 
 /* Design for each day-square */
 .day-square {
-    width: 1fr;
+    width: auto;
     height: 6rem;
     background-color: #fff;
     border: 2px solid var(--cadetblue);

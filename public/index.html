@@ -7,6 +7,7 @@
     <!-- länkar till filer -->
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./calendar.css">
+    <link rel="stylesheet" href="./mediaqueries.css">
     <script src="./main.js"></script>
     <script src="./todo.js"></script>
     <script src="./welcomesegment.js"></script>
@@ -17,11 +18,11 @@
     <title>Calendar</title>
   </head>
   <body>
-    <header class="padding1">
+    <header class="padding1 flex justify-center align-center">
       <h1>Calendar</h1>
     </header>
 
-    <div class="flex">
+    <div class="flex aside-main-container">
       <!-- Innehåller tid, veckordag och datum samt todo-lista -->
           <aside class="padding-top-bottom1">
             <div id="welcome-segment" data-cy="welcome-segment" class="flex column align-center">
@@ -31,21 +32,23 @@
                 <p><b>Mina aktiviteter</b></p>
               </div>
               <br>
-              <div class="new-item" id="new-item"> 
-                  <label for="new-todo-activity">Aktivitet</label><br>
-                  <input data-cy="todo-task-input" type="text" class="new-item-input" id="new-item-activity" placeholder="Ny aktivitet"><br>
-                  <br>
-                  <label for="new-todo-date">Datum:</label><br>
-                  <input data-cy="todo-date-input" type="date" class="new-item-input" id="new-item-date"><br>
-                  <br>
-                  <button class="new-item-input" id="new-item-clear">Rensa</button>
-                  <button data-cy="save-todo" class="new-item-input" id="new-item-add">Lägg till aktivitet</button><br><br>
-              </div>
-              <div class="todo-list-today">
-                <p><b>Aktiviteter</b></p>
-                <p class="todo-list-empty-text" id="todo-list-empty-text-today">Du har inga planerade aktiviteter.</p>
-                <ul data-cy="todo-list" class="todo-list-today-activites" id="todo-list-today-activities">
-                </ul>
+              <div class="flex column activites">
+                <div class="new-item" id="new-item"> 
+                    <label for="new-todo-activity">Aktivitet</label><br>
+                    <input data-cy="todo-task-input" type="text" class="new-item-input" id="new-item-activity" placeholder="Ny aktivitet"><br>
+                    <br>
+                    <label for="new-todo-date">Datum:</label><br>
+                    <input data-cy="todo-date-input" type="date" class="new-item-input" id="new-item-date"><br>
+                    <br>
+                    <button class="new-item-input" id="new-item-clear">Rensa</button>
+                    <button data-cy="save-todo" class="new-item-input" id="new-item-add">Lägg till aktivitet</button><br><br>
+                </div>
+                <div class="todo-list-today">
+                  <p><b>Aktiviteter</b></p>
+                  <p class="todo-list-empty-text" id="todo-list-empty-text-today">Du har inga planerade aktiviteter.</p>
+                  <ul data-cy="todo-list" class="todo-list-today-activites" id="todo-list-today-activities">
+                  </ul>
+                </div>
               </div>
           </aside>
       
