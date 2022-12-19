@@ -103,7 +103,7 @@ function addTodo(title, date, filterId) {
     todoList.appendChild(newTodo);
 
     // Clears the input fields after adding
-    todoListEmptyText.style.display = "none";
+    todoListEmptyText.innerHTML = "";
     userInputTitle.value = "";
     userInputDate.value = "";
     showAddTodoContainer.innerHTML = "add";
@@ -133,7 +133,16 @@ function deleteTodo() {
     loadTodoList();
 
     if (todoList.innerText == "") {
-        todoListEmptyText.style.display = "block";
+        todoList.innerText == "You have no planned todos";
+    }
+}
+
+// Check if todo-list is empty
+function checkIfTodoListIsEmpty() {
+    if (todoList.innerHTML == "" && localStorage.getItem("selected-calendar-day") != null) {
+    todoListEmptyText.innerHTML = "You have no planned todos on this date";
+    } else if (todoList.innerHTML == "") {
+        todoListEmptyText.innerHTML = "You have no planned todos";
     }
 }
 
@@ -225,7 +234,8 @@ function loadTodoList() {
                 }
             }
         }
-    } 
+    }
+    checkIfTodoListIsEmpty();
 }
 
 function clearTodoList() {

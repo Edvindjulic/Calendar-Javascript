@@ -165,3 +165,7 @@ aside {
     background: none;
     cursor: pointer;
 }
+
+#todo-list-filtered {
+    font-weight: bold;
+}

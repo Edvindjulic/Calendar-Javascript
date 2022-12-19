@@ -139,6 +139,8 @@ function initButtons() {
 
 // Filters the todo list by selected calendar day
 function selectCalendarDay() {
+    let filteredText = document.getElementById("todo-list-filtered");
+
     if (this.classList.contains("day-square")) {
         
         for (const daySquare of this.parentNode.childNodes) {
@@ -154,14 +156,14 @@ function selectCalendarDay() {
         this.classList.remove("day-square");
         this.classList.add("day-square-selected");
         localStorage.setItem("selected-calendar-day", this.id);
-
+        filteredText.innerHTML = "My todos on " + this.id;
         loadTodoList()
         
     } else if (this.classList.contains("day-square-selected")) {
         this.classList.remove("day-square-selected");
         this.classList.add("day-square")
         window.localStorage.removeItem("selected-calendar-day");
-
+        filteredText.innerHTML = "My todos";
         loadTodoList()
     }
 }
