@@ -112,6 +112,7 @@ function addTodo(title, date, filterId) {
     buttonEditTodo.classList.add("todo-buttons", "material-symbols-outlined");
     buttonEditTodo.setAttribute("data-cy", "edit-todo-button");
     buttonEditTodo.innerHTML = "edit";
+    buttonEditTodo.addEventListener('click', containerShowOrHide);
     buttonEditTodo.addEventListener('click', () => {
         editTodo(buttonEditTodo);
     });    
@@ -252,6 +253,11 @@ function completeTodo(button) {
     }
 
     loadCalendar();
+}
+
+function editTodo(button) {
+    button.parentNode.parentNode.parentNode.parentNode.style.display = "none";
+    todoListTitle.innerHTML = "Edit todo";
 }
 
 /**
