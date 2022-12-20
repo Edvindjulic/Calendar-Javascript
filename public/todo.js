@@ -17,50 +17,110 @@ const addTodoContainer = document.getElementById("new-todo-container");
 const showAddTodoContainer = document.getElementById("todo-list-add-button");
 const todoListTitle = document.getElementById("todo-list-title");
 const todoListEditTitle = document.getElementById("todo-list-edit-title");
-let todoListLocalStorage = [];
+let todoListLocalStorage;
 let calendarSelectedDay = [];
 window.localStorage.removeItem("selected-calendar-day");
 
 // Initalizing event listeners
 buttonAddNewTodo.addEventListener("click", verifyInputFields);
 buttonClearNewTodo.addEventListener("click", clearInputFields);
-buttonCancelTodoEdit.addEventListener("click", containerShowOrHide);
+buttonCancelTodoEdit.addEventListener("click", hideNewTodoContainer);
 showAddTodoContainer.addEventListener("click", containerShowOrHide);
+
 
 /**
  * FUNCTIONS
  */
 
 /**
- * Shows or hides the container when adding a new todo
+ * Decides whether to show or hide container to add todo
  */
 function containerShowOrHide() {
-    showAddTodoContainer.style.display = "block";
-    todoListEditTitle.style.display = "none";
-    todoListTitle.parentNode.style.flexDirection = "row";
-    todoList.parentNode.style.display = "block";
-    userInputTitleText.innerHTML = "Title";
-    userInputDateText.innerHTML = "Date";
-    userInputTitle.value = "";
-    buttonCancelTodoEdit.style.display = "none";
-    buttonEditTodo.style.display = "none";
-    buttonClearNewTodo.style.display = "block";
-    buttonAddNewTodo.style.display = "block";
 
     if (showAddTodoContainer.innerHTML == "remove") {
-        showAddTodoContainer.innerHTML = "add";
-        addTodoContainer.style.display = "none";
-        todoListTitle.innerHTML = "Todo list";
-    } else {
-        showAddTodoContainer.innerHTML = "remove";
-        addTodoContainer.style.display = "block";
-        if (localStorage.getItem("selected-calendar-day") != null) {
-            userInputDate.value = localStorage.getItem("selected-calendar-day");
-        } else {
-            userInputDate.value = getTodaysDate();
-        }
-        todoListTitle.innerHTML = "Add a new todo";
+        hideNewTodoContainer();
+    } else if (showAddTodoContainer.innerHTML == "add") {
+        showNewTodoContainer();
     }
+}
+
+/**
+ * Shows the todo container
+ */
+function showNewTodoContainer() {
+
+    showAddTodoContainer.innerHTML = "remove";
+    showAddTodoContainer.style.display = "block";
+    addTodoContainer.style.display = "block";
+    todoListTitle.innerHTML = "Add a new todo";
+    todoListTitle.parentNode.style.flexDirection = "row";
+    userInputTitleText.innerHTML = "Title";
+    userInputDateText.innerHTML = "Date";
+    todoListEditTitle.style.display = "none";
+    buttonCancelTodoEdit.style.display = "none";
+    buttonEditTodo.style.display = "none";
+    buttonEditTodo.removeAttribute("data-cy");
+    buttonClearNewTodo.style.display = "block";
+    buttonAddNewTodo.style.display = "block";
+    buttonAddNewTodo.setAttribute("data-cy", "save-todo");
+
+    userInputTitle.value = "";
+    todoList.parentNode.style.display = "block";
+
+    if (localStorage.getItem("selected-calendar-day") != null) {
+        userInputDate.value = localStorage.getItem("selected-calendar-day");
+    } else {
+        userInputDate.value = getTodaysDate();
+    }
+}
+
+/**
+ * Shows the editing todo container
+ * @param {HTMLButtonElement} button - Button associated with the todo that needs editing
+ */
+function showEditTodoContainer(button) {
+    showAddTodoContainer.style.display = "none";
+    addTodoContainer.style.display = "block";
+    todoListTitle.innerHTML = "Editing todo:";
+    todoListTitle.parentNode.style.flexDirection = "column";
+    userInputTitleText.innerHTML = "New title";
+    userInputDateText.innerHTML = "New date";
+    todoListEditTitle.style.display = "block";
+    buttonCancelTodoEdit.style.display = "block";
+    buttonEditTodo.style.display = "block";
+    buttonEditTodo.setAttribute("data-cy", "save-todo");
+    buttonClearNewTodo.style.display = "none";
+    buttonAddNewTodo.style.display = "none";
+    buttonAddNewTodo.removeAttribute("data-cy");
+    todoList.parentNode.style.display = "none";
+    todoListEditTitle.innerHTML = "\""+ button.parentNode.previousSibling.innerHTML + "\""
+    userInputTitle.value = button.parentNode.previousSibling.innerHTML;
+    userInputDate.value = button.parentNode.parentNode.firstChild.innerHTML;
+
+    buttonEditTodo.addEventListener("click", () => {
+        editTodo(button);
+    });
+}
+
+/**
+ * Hides the todo container
+ */
+function hideNewTodoContainer() {
+    showAddTodoContainer.innerHTML = "add";
+    showAddTodoContainer.style.display = "block";
+    addTodoContainer.style.display = "none";
+    todoListTitle.innerHTML = "Todo list";
+    todoListTitle.parentNode.style.flexDirection = "row";
+    userInputTitleText.innerHTML = "Title";
+    userInputDateText.innerHTML = "Date";
+    todoListEditTitle.style.display = "none";
+    buttonCancelTodoEdit.style.display = "none";
+    buttonEditTodo.style.display = "none";
+    buttonEditTodo.removeAttribute("data-cy");
+    buttonClearNewTodo.style.display = "block";
+    buttonAddNewTodo.style.display = "block";
+    buttonAddNewTodo.setAttribute("data-cy", "save-todo");
+    todoList.parentNode.style.display = "block";
 }
 
 /**
@@ -78,10 +138,27 @@ function verifyInputFields() {
     const newTodoTitle = userInputTitle.value;
     const newTodoDate = userInputDate.value;
     if (newTodoTitle != "" && newTodoDate != "") {
-        addToLocalStorage (newTodoTitle, newTodoDate);
+        addToLocalStorage(newTodoTitle, newTodoDate);
         addTodo(newTodoTitle, newTodoDate, todoListLocalStorage.length+1);
         loadTodoList();
     }
+}
+
+/**
+ * Adds todo in local storage
+ * @param {String} todoTitle - User input title
+ * @param {String} todoDate - User input date
+ */
+function addToLocalStorage (todoTitle, todoDate) {        
+    const todo = {
+        id: todoListLocalStorage.length+1,
+        title: todoTitle,
+        date: todoDate,
+        completed: false
+    };
+
+    todoListLocalStorage.push(todo);
+    localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
 }
 
 /**
@@ -131,7 +208,7 @@ function addTodo(title, date, filterId) {
     buttonEditTodo.setAttribute("data-cy", "edit-todo-button");
     buttonEditTodo.innerHTML = "edit";
     buttonEditTodo.addEventListener('click', () => {
-        editTodo(buttonEditTodo);
+        showEditTodoContainer(buttonEditTodo);
     });    
 
     // Creates a done button
@@ -165,27 +242,7 @@ function addTodo(title, date, filterId) {
 
     // Clears the input fields after adding
     todoListEmptyText.innerHTML = "";
-    userInputTitle.value = "";
-    userInputDate.value = "";
-    showAddTodoContainer.innerHTML = "add";
-    addTodoContainer.style.display = "none";
-}
-
-/**
- * Adds todo in local storage
- * @param {String} todoTitle - User input title
- * @param {String} todoDate - User input date
- */
-function addToLocalStorage (todoTitle, todoDate) {        
-    const todo = {
-        id: todoListLocalStorage.length+1,
-        title: todoTitle,
-        date: todoDate,
-        completed: false
-    };
-
-    todoListLocalStorage.push(todo);
-    localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
+    hideNewTodoContainer();
 }
 
 /**
@@ -201,17 +258,6 @@ function deleteTodo() {
 
     if (todoList.innerText == "") {
         todoList.innerText == "You have no planned todos";
-    }
-}
-
-/**
- * Check if todo-list is empty
- */
-function checkIfTodoListIsEmpty() {
-    if (todoList.innerHTML == "" && localStorage.getItem("selected-calendar-day") != null) {
-    todoListEmptyText.innerHTML = "You have no planned todos on this date";
-    } else if (todoList.innerHTML == "") {
-        todoListEmptyText.innerHTML = "You have no planned todos";
     }
 }
 
@@ -249,6 +295,23 @@ function updateId () {
 }
 
 /**
+ * Edits the todo
+ * @param {HTMLButtonElement} button - Button associated with the todo that needs editing
+ */
+function editTodo(button) {
+    let todo = button.parentNode.parentNode.firstChild.nextSibling.nextSibling;
+
+    todo.innerHTML = userInputTitle.value;
+    todo.previousSibling.previousSibling.innerHTML = userInputDate.value;
+    todoListLocalStorage[todo.parentNode.id-1].title = userInputTitle.value;
+    todoListLocalStorage[todo.parentNode.id-1].date = userInputDate.value;
+    localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
+    hideNewTodoContainer();
+    loadTodoList();
+    loadCalendar();
+}
+
+/**
  * Marks a todo as completed or not
  * @param {HTMLButtonElement} button - Button that draws a line through todo list item if clicked
  */
@@ -272,56 +335,6 @@ function completeTodo(button) {
     loadCalendar();
 }
 
-function editTodo(button) {
-    if (showAddTodoContainer.innerHTML == "add") {
-        containerShowOrHide();
-    }
-    
-    buttonCancelTodoEdit.style.display = "block";
-    buttonEditTodo.style.display = "block";
-    buttonClearNewTodo.style.display = "none";
-    buttonAddNewTodo.style.display = "none";
-    todoList.parentNode.style.display = "none";
-    todoListTitle.parentNode.style.flexDirection = "column";
-    todoListEditTitle.style.display = "block";
-    userInputTitleText.innerHTML = "New title";
-    userInputDateText.innerHTML = "New date";
-    showAddTodoContainer.style.display = "none";
-    todoListTitle.innerHTML = "Editing todo:";
-    todoListEditTitle.innerHTML = "\""+ button.parentNode.previousSibling.innerHTML + "\""
-    userInputTitle.value = button.parentNode.previousSibling.innerHTML;
-    userInputDate.value = button.parentNode.parentNode.firstChild.innerHTML;
-   
-
-    let todo = button.parentNode.parentNode.firstChild.nextSibling.nextSibling;
-    
-    buttonEditTodo.addEventListener("click", () => {
-        todo.innerHTML = userInputTitle.value;
-        todo.previousSibling.previousSibling.innerHTML = userInputDate.value;
-        todoListLocalStorage[todo.parentNode.id-1].title = userInputTitle.value;
-        todoListLocalStorage[todo.parentNode.id-1].date = userInputDate.value;
-        localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
-        
-        todoList.parentNode.style.display = "block";
-        showAddTodoContainer.style.display = "block";
-        addTodoContainer.style.display = "none";
-        showAddTodoContainer.innerHTML = "add";
-        todoListEditTitle.style.display = "none";
-        todoListTitle.parentNode.style.flexDirection = "row";
-        todoListTitle.innerHTML = "Todo list";
-        loadCalendar();
-    });
-}
-
-/**
- * Creats empty local storage key if no local storage is found
- */
-function checkIfLocalStorageIsEmpty() {
-    if (localStorage.getItem("todo-list") == null) {
-        todoListLocalStorage = localStorage.setItem("todo-list", "[]");
-    }
-}
-
 /**
  * Loads the todo-list in the DOM from local storage
  */
@@ -332,14 +345,15 @@ function loadTodoList() {
 
     // Checks if the todo-list is empty before trying to load
     if (localStorage.getItem("todo-list")) {
+
         todoListLocalStorage = JSON.parse(localStorage.getItem("todo-list"));
-
+        
         for (var todoId = 0; todoId < todoListLocalStorage.length; todoId++) {
-
+            
             // Loads all todos if no calendar day is selected
             if (localStorage.getItem("selected-calendar-day") == null) {
                 addTodo(todoListLocalStorage[todoId].title, todoListLocalStorage[todoId].date);
-
+                
                 if (todoListLocalStorage[todoId].completed == true) {
                     completeTodo(todoList.lastChild.lastChild.firstChild);
                 }
@@ -358,6 +372,26 @@ function loadTodoList() {
         }
     }
     checkIfTodoListIsEmpty();
+}
+
+/**
+ * Creats empty local storage key if no local storage is found
+ */
+function checkIfLocalStorageIsEmpty() {
+    if (localStorage.getItem("todo-list") == null) {
+        todoListLocalStorage = localStorage.setItem("todo-list", "[]");
+    }
+}
+
+/**
+ * Check if todo-list is empty
+ */
+function checkIfTodoListIsEmpty() {
+    if (todoList.innerHTML == "" && localStorage.getItem("selected-calendar-day") != null) {
+    todoListEmptyText.innerHTML = "You have no planned todos on this date";
+    } else if (todoList.innerHTML == "") {
+        todoListEmptyText.innerHTML = "You have no planned todos";
+    }
 }
 
 /**

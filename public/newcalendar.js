@@ -146,9 +146,7 @@ function initButtons() {
 function selectCalendarDay() {
     let filteredText = document.getElementById("todo-list-filtered");
 
-    if (showAddTodoContainer.innerHTML == "remove") {
-        containerShowOrHide();
-    }
+    containerShowOrHide();
 
     if (this.classList.contains("day-square")) {
         
