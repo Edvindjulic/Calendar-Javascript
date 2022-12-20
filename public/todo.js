@@ -164,7 +164,7 @@ function checkIfTodoListIsEmpty() {
 
 /**
  * Removes object in local storage
- * @param {*} todoId - Number for looping through todo-list
+ * @param {Number} todoId - Number for looping through todo-list
  */
 function deleteTodoInLocalStorage(todoId) {
     todoListLocalStorage.splice(todoId-1, 1);
