@@ -17,6 +17,9 @@
         width: 100%
     }
 
+    #new-todo-title {
+        width: 70%;
+    }
 
     .todo {
         align-items: center;
@@ -62,7 +65,7 @@
 
     .todo-badge {
         display: flex;
-        flex-basis: auto;
+        width: 130px;
     }
 
     .todo-badge-hidden {
@@ -120,6 +123,9 @@
         display: none;
     }
 
+    #new-todo-title {
+        width: 50%;
+    }
 
     .todo {
         align-items: center;

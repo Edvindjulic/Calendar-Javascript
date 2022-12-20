@@ -106,7 +106,18 @@ aside {
 
 .new-todo-input {
     font-family: 'Montserrat', sans-serif;
+    background-color: var(--pewterblue);
+    color: var(--royalbluedark);
+    border-radius: 9px ;
+    border: 1px var(--darkelectricblue) solid;
+    height: 25px;
+    margin-top: 6px;
 }
+
+input{
+    display: flex;
+    align-items: center;
+ }
 
 .todo-list-empty-text {
     margin-top: 0.5rem;
@@ -120,6 +131,18 @@ aside {
     display: flex;
     align-items: start;
     margin-top: 1rem;
+}
+
+#new-todo-date {
+    display: flex;
+    padding-left: 8px;
+    width: 135px;
+    padding-right: 5px;
+}
+
+#new-todo-title {
+    width: 50%;
+    padding-left: 10px;
 }
 
 .todo-badge {
@@ -159,15 +182,28 @@ aside {
 
 }
 
+.new-todo-buttons-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.new-todo-buttons {
+    margin-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
 .todo-buttons {
     border: none;
     background-color: transparent;
     cursor: pointer;
+    margin-left: 5px;
 }
 
 .todo-text {
     width: 70%;
-    word-wrap: break-word;
+    overflow-wrap: anywhere;
 }
 
 .new-todo-container {
