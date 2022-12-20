@@ -42,7 +42,7 @@
 .day-square-selected {
     width: auto;
     height: 6rem;
-    background-color: var(--royalbluedark);
+    background-color: var(--silk);
     border: 2px solid var(--cadetblue);
     display: flex;
     flex-direction: column;
@@ -72,6 +72,10 @@
     font-weight: 700;
 }
 
+.today .day-square-activities {
+    font-weight: 400;
+}
+
 .day-square-activities {
     background-color: var(--silk);
     border-radius: 50%;
@@ -79,6 +83,10 @@
     width: 25px;
     align-self: center;
     margin-bottom: 10px;
+}
+
+.day-square-selected .day-square-activities {
+    background-color: var(--white);
 }
 
 /* The design for the div that day-squares are in */
