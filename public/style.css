@@ -74,16 +74,17 @@ header {
     user-select: none;
 }
 
-
 /* Aside */
 aside {
     width: 30rem;
     background-color: var(--cadetblue);
 }
+
 /* Welcome-segment */
 #welcome-segment {
     height: auto;
 }
+
 .welcome-segment-day {
     font-size: 1.5rem;
     font-weight: 700;

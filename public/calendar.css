@@ -95,6 +95,7 @@
     color: var(--royalbluedark);
     user-select: none;
 }
+
 #weekdays div {
     width: 1fr;
     text-align: center;

@@ -2,7 +2,7 @@
  * Makes it so that the clock can tick, updates every second
  */
 function startClock() {
-    setInterval(startWelcomeSegment, 10)
+    setInterval(startWelcomeSegment, 1000)
 }
 
 /**
@@ -19,8 +19,8 @@ function startWelcomeSegment() {
 
 /**
  * Renders the weekday on the side
- * @param {Date} date 
- * @param {HTMLDivElement} welcomeSegement 
+ * @param {Date} date - The date of the current day
+ * @param {HTMLDivElement} welcomeSegement - Div-element from HTML
  */
 function renderWeekday(date, welcomeSegement) {
     const weekdayText = document.createElement("p");
@@ -31,7 +31,7 @@ function renderWeekday(date, welcomeSegement) {
 
 /**
  * Gets the day of the week
- * @param {Date} date 
+ * @param {Date} date - The date of the current day
  * @returns 
  */
 function getWeekday(date) {
@@ -50,7 +50,7 @@ function getWeekday(date) {
 
 /**
  * Gets the full date in year-month-day
- * @param {Date} date 
+ * @param {Date} date - The date of the current day
  */
 function getTodaysDate(date) {
     const month = date.getMonth() + 1;
@@ -59,13 +59,12 @@ function getTodaysDate(date) {
 
     const todaysDate = year + "-" + month + "-" + day;
     return todaysDate;
-
 }
 
 /**
  * Renders the full date on to the side
- * @param {Date} date 
- * @param {HTMLDivElement} welcomeSegement 
+ * @param {Date} date - The date of the current day
+ * @param {HTMLDivElement} welcomeSegement - Div from HTML code
  */
 function renderTodaysDate(date, welcomeSegement) {
     const dateText = document.createElement("p");
@@ -76,8 +75,8 @@ function renderTodaysDate(date, welcomeSegement) {
 
 /**
  * Get and renders the time
- * @param {Date} date 
- * @param {HTMLDivElement} welcomeSegement 
+ * @param {Date} date - The date of the current day
+ * @param {HTMLDivElement} welcomeSegement - Div from HTML code
  */
 function getAndRenderTime(date, welcomeSegement) {
     const time = date.toTimeString().split(" ")[0];
