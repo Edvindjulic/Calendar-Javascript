@@ -107,6 +107,11 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
     }
 }
 
+/**
+ * Adds todos in calendar
+ * @param {HTMLDivElement} calendarTodo - 
+ * @param {String} day -
+ */
 function addTodoToCalendar(calendarTodo, day) {
     for (var i = 0; i < todoListLocalStorage.length; i++) {;
         if (todoListLocalStorage[i].date == day) {

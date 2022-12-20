@@ -60,8 +60,9 @@ function verifyInputFields() {
 
 /**
  * Creates and adds a new todo in the todo-list
- * @param {HTMLInputElement} title - User input title
- * @param {HTMLInputElement} date  - User input date
+ * @param {String} title - User input title
+ * @param {String} date  - User input date
+ * @param {Number} filterId - Id for filtering list
  */
 function addTodo(title, date, filterId) {
 
@@ -79,6 +80,12 @@ function addTodo(title, date, filterId) {
     const badgeTodo = document.createElement("span");
     badgeTodo.classList.add("todo-badge");
     const badgeTodoContent = document.createTextNode(date);
+
+    // Creates a hidden badge for the date
+    const badgeTodoHidden = document.createElement("span");
+    badgeTodoHidden.classList.add("todo-badge-hidden");
+    const splitBadgeText = date.split("-");
+    const badgeTodoHiddenContent = document.createTextNode(splitBadgeText[0] + " " + splitBadgeText[1] + "-" + splitBadgeText[2]);
 
     // Creates a div for styling
     const newTodoContentDiv = document.createElement("span");
@@ -100,16 +107,24 @@ function addTodo(title, date, filterId) {
         completeTodo(buttonCompleteTodo);
     });
 
+    // Creates a container for all the buttons
+    const buttonContainer = document.createElement("span");
+    buttonContainer.classList.add("todo-buttons-container");
+
+
     // Updates the calendar
     loadCalendar();
     
     // Gathers all the parts and pushes them to the DOM
     badgeTodo.appendChild(badgeTodoContent);
+    badgeTodoHidden.appendChild(badgeTodoHiddenContent);
     newTodo.appendChild(badgeTodo);
+    newTodo.appendChild(badgeTodoHidden);
     newTodoContentDiv.appendChild(newTodoContent);
     newTodo.appendChild(newTodoContentDiv);
-    newTodo.appendChild(buttonCompleteTodo);
-    newTodo.appendChild(buttonDeleteTodo);
+    buttonContainer.appendChild(buttonCompleteTodo);
+    buttonContainer.appendChild(buttonDeleteTodo);
+    newTodo.appendChild(buttonContainer);
     todoList.appendChild(newTodo);
 
     // Clears the input fields after adding
@@ -122,8 +137,8 @@ function addTodo(title, date, filterId) {
 
 /**
  * Adds todo in local storage
- * @param {HTMLInputElement} todoTitle - User input title
- * @param {HTMLInputElement} todoDate - User input date
+ * @param {String} todoTitle - User input title
+ * @param {String} todoDate - User input date
  */
 function addToLocalStorage (todoTitle, todoDate) {        
     const todo = {
@@ -141,7 +156,7 @@ function addToLocalStorage (todoTitle, todoDate) {
  * Removes a todo
  */
 function deleteTodo() {
-    const todo = this.parentNode;
+    const todo = this.parentNode.parentNode;
     todoList.removeChild(todo);
     deleteTodoInLocalStorage(todo.id);
     updateId();
@@ -153,7 +168,9 @@ function deleteTodo() {
     }
 }
 
-// Check if todo-list is empty
+/**
+ * Check if todo-list is empty
+ */
 function checkIfTodoListIsEmpty() {
     if (todoList.innerHTML == "" && localStorage.getItem("selected-calendar-day") != null) {
     todoListEmptyText.innerHTML = "You have no planned todos on this date";
@@ -200,8 +217,8 @@ function updateId () {
  * @param {HTMLButtonElement} button - Button that draws a line through todo list item if clicked
  */
 function completeTodo(button) {
-    let todo = button.parentNode.firstChild.nextSibling;
-    let todoId = button.parentNode.id-1;
+    let todo = button.parentNode.parentNode.firstChild.nextSibling.nextSibling;
+    let todoId = button.parentNode.parentNode.id-1;
 
     if (todo.style.textDecoration == "line-through") {
         todo.style.textDecoration = "none";
@@ -247,7 +264,7 @@ function loadTodoList() {
                 addTodo(todoListLocalStorage[todoId].title, todoListLocalStorage[todoId].date);
 
                 if (todoListLocalStorage[todoId].completed == true) {
-                    completeTodo(todoList.lastChild.lastChild.previousSibling);
+                    completeTodo(todoList.lastChild.lastChild.lastChild.previousSibling);
                 }
 
             // Loads todos related to selected calendar day only
@@ -257,7 +274,7 @@ function loadTodoList() {
                     addTodo(todoListLocalStorage[todoId].title, todoListLocalStorage[todoId].date, todoId+1);
 
                     if (todoListLocalStorage[todoId].completed == true) {
-                        completeTodo(todoList.lastChild.lastChild.previousSibling);
+                        completeTodo(todoList.lastChild.lastChild.lastChild.previousSibling);
                     }
                 }
             }

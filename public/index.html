@@ -29,22 +29,23 @@
             </div>
             <div id="todo-list-container" class="padding1 margin1 border-radius">
               <div class="todo-list-header flex space-between align-center">
-                <p><b>Todo-list</b></p>
+                <p><b>Todo list</b></p>
                 <button data-cy="todo-reveal-form" class="material-symbols-outlined todo-list-add-button" id="todo-list-add-button">
                   add
                 </button>
               </div>
               <br>
-              <div class="flex column activites">
+              <div class="flex column activities">
                 <div class="new-todo-container" id="new-todo-container"> 
-                    <label for="new-todo-title">Title</label><br>
+                    <label for="new-todo-title" class="new-todo-text">Title</label><br>
                     <input data-cy="todo-task-input" type="text" class="new-todo-input" id="new-todo-title" placeholder="New todo"><br>
-                    <br>
-                    <label for="new-todo-date">Date</label><br>
+
+                    <label for="new-todo-date" class="new-todo-text">Date</label><br>
                     <input data-cy="todo-date-input" type="date" class="new-todo-input" id="new-todo-date"><br>
-                    <br>
-                    <button class="new-todo-input" id="new-todo-clear-button">Clear</button>
-                    <button data-cy="save-todo" class="new-todo-input" id="new-todo-add-button">Add todo</button><br><br>
+                    <div class="new-todo-buttons-container">
+                        <button class="new-todo-buttons" id="new-todo-clear-button">Clear</button>
+                        <button data-cy="save-todo" class="new-todo-buttons" id="new-todo-add-button">Add todo</button><br><br>
+                    </div>
                 </div>
                 <div class="todo-list">
                   <p id="todo-list-filtered">My todos</p>
