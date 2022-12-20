@@ -37,14 +37,16 @@
               <br>
               <div class="flex column activities">
                 <div class="new-todo-container" id="new-todo-container"> 
-                    <label for="new-todo-title" class="new-todo-text">Title</label><br>
+                    <p id="new-todo-title-text" class="new-todo-text">Title</p>
                     <textarea data-cy="todo-task-input" class="new-todo-input" id="new-todo-title" maxlength ="150" placeholder="New todo"></textarea><br>
 
-                    <label for="new-todo-date" class="new-todo-text">Date</label><br>
+                    <p id="new-todo-date-text" class="new-todo-text">Date</p>
                     <input data-cy="todo-date-input" type="date" value="2022-12-22" class="new-todo-input" id="new-todo-date"><br>
                     <div class="new-todo-buttons-container">
                         <button class="new-todo-buttons" id="new-todo-clear-button">Clear</button>
-                        <button data-cy="save-todo" class="new-todo-buttons" id="new-todo-add-button">Add todo</button><br><br>
+                        <button data-cy="save-todo" class="new-todo-buttons" id="new-todo-add-button">Add todo</button>
+                        <button class="new-todo-buttons" id="new-todo-cancel-button">Cancel</button>
+                        <button data-cy="save-todo" class="new-todo-buttons" id="new-todo-edit-button">Edit todo</button>
                     </div>
                 </div>
                 <div class="todo-list">

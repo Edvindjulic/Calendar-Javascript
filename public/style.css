@@ -195,6 +195,14 @@ aside {
     background-color: var(--darkelectricblue);
 }
 
+#new-todo-cancel-button {
+    display: none;
+    background-color: var(--darkelectricblue);
+}
+
+#new-todo-edit-button {
+    display: none;
+}
 
 /* Todo list */
 

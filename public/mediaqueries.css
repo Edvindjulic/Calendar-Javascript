@@ -115,11 +115,6 @@
     .activites {
         flex-direction: column;
     }
-    
-    /* Todo list container */
-    #new-todo-title {
-        width: 50%;
-    }
 
     /* Todo objects */
     .todo {

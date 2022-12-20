@@ -6,7 +6,11 @@
 const todoList = document.getElementById("todo-list-todos");
 const buttonAddNewTodo = document.getElementById("new-todo-add-button");
 const buttonClearNewTodo = document.getElementById("new-todo-clear-button");
+const buttonCancelTodoEdit = document.getElementById("new-todo-cancel-button");
+const buttonEditTodo = document.getElementById("new-todo-edit-button");
 const todoListEmptyText = document.getElementById("todo-list-empty-text");
+const userInputTitleText = document.getElementById("new-todo-title-text");
+const userInputDateText = document.getElementById("new-todo-date-text");
 const userInputTitle = document.getElementById("new-todo-title");
 const userInputDate = document.getElementById("new-todo-date");
 const addTodoContainer = document.getElementById("new-todo-container");
@@ -20,6 +24,7 @@ window.localStorage.removeItem("selected-calendar-day");
 // Initalizing event listeners
 buttonAddNewTodo.addEventListener("click", verifyInputFields);
 buttonClearNewTodo.addEventListener("click", clearInputFields);
+buttonCancelTodoEdit.addEventListener("click", containerShowOrHide);
 showAddTodoContainer.addEventListener("click", containerShowOrHide);
 
 /**
@@ -30,6 +35,18 @@ showAddTodoContainer.addEventListener("click", containerShowOrHide);
  * Shows or hides the container when adding a new todo
  */
 function containerShowOrHide() {
+    showAddTodoContainer.style.display = "block";
+    todoListEditTitle.style.display = "none";
+    todoListTitle.parentNode.style.flexDirection = "row";
+    todoList.parentNode.style.display = "block";
+    userInputTitleText.innerHTML = "Title";
+    userInputDateText.innerHTML = "Date";
+    userInputTitle.value = "";
+    buttonCancelTodoEdit.style.display = "none";
+    buttonEditTodo.style.display = "none";
+    buttonClearNewTodo.style.display = "block";
+    buttonAddNewTodo.style.display = "block";
+
     if (showAddTodoContainer.innerHTML == "remove") {
         showAddTodoContainer.innerHTML = "add";
         addTodoContainer.style.display = "none";
@@ -113,7 +130,6 @@ function addTodo(title, date, filterId) {
     buttonEditTodo.classList.add("todo-buttons", "material-symbols-outlined");
     buttonEditTodo.setAttribute("data-cy", "edit-todo-button");
     buttonEditTodo.innerHTML = "edit";
-    buttonEditTodo.addEventListener('click', containerShowOrHide);
     buttonEditTodo.addEventListener('click', () => {
         editTodo(buttonEditTodo);
     });    
@@ -257,15 +273,39 @@ function completeTodo(button) {
 }
 
 function editTodo(button) {
+    if (showAddTodoContainer.innerHTML == "add") {
+        containerShowOrHide();
+    }
+    
+    buttonCancelTodoEdit.style.display = "block";
+    buttonEditTodo.style.display = "block";
+    buttonClearNewTodo.style.display = "none";
+    buttonAddNewTodo.style.display = "none";
     todoList.parentNode.style.display = "none";
     todoListTitle.parentNode.style.flexDirection = "column";
     todoListEditTitle.style.display = "block";
+    userInputTitleText.innerHTML = "New title";
+    userInputDateText.innerHTML = "New date";
     showAddTodoContainer.style.display = "none";
     todoListTitle.innerHTML = "Editing todo:";
     todoListEditTitle.innerHTML = "\""+ button.parentNode.previousSibling.innerHTML + "\""
     userInputTitle.value = button.parentNode.previousSibling.innerHTML;
     userInputDate.value = button.parentNode.parentNode.firstChild.innerHTML;
 
+    let todo = button.parentNode.parentNode.firstChild.nextSibling.nextSibling;
+    buttonEditTodo.addEventListener("click", () => {
+        todo.innerHTML = userInputTitle.value;
+        todoListLocalStorage[todo.parentNode.id-1].title = userInputTitle.value;
+        localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
+        
+        todoList.parentNode.style.display = "block";
+        showAddTodoContainer.style.display = "block";
+        addTodoContainer.style.display = "none";
+        showAddTodoContainer.innerHTML = "add";
+        todoListEditTitle.style.display = "none";
+        todoListTitle.parentNode.style.flexDirection = "row";
+        todoListTitle.innerHTML = "Todo list";
+    });
 }
 
 /**
