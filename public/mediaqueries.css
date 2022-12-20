@@ -72,6 +72,10 @@
         display: none;
     }
 
+    .new-todo-container {
+        padding-right: 30px;
+    }
+
     /* main */
     .aside-main-container {
         flex-direction: column-reverse;
@@ -123,6 +127,10 @@
         display: none;
     }
 
+    .todo-badge-hidden {
+        display: flex;
+    }
+
     #new-todo-title {
         width: 50%;
     }
@@ -133,7 +141,7 @@
 
     .todo-badge-hidden {
         display: flex;
-        width: 75px;
+        width: 60px;
         height: 40px;
         border-radius: 15px;
         text-align: center;
