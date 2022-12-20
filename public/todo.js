@@ -282,7 +282,7 @@ function loadTodoList() {
                 addTodo(todoListLocalStorage[todoId].title, todoListLocalStorage[todoId].date);
 
                 if (todoListLocalStorage[todoId].completed == true) {
-                    completeTodo(todoList.lastChild.lastChild.lastChild.previousSibling);
+                    completeTodo(todoList.lastChild.lastChild.firstChild);
                 }
 
             // Loads todos related to selected calendar day only
@@ -292,7 +292,7 @@ function loadTodoList() {
                     addTodo(todoListLocalStorage[todoId].title, todoListLocalStorage[todoId].date, todoId+1);
 
                     if (todoListLocalStorage[todoId].completed == true) {
-                        completeTodo(todoList.lastChild.lastChild.lastChild.previousSibling);
+                        completeTodo(todoList.lastChild.lastChild.firstChild);
                     }
                 }
             }
@@ -309,7 +309,6 @@ function clearTodoList() {
         todoList.removeChild(todoList.firstChild);
     }
 }
-
 
 /**
  * Returns todays date
