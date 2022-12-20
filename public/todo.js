@@ -257,7 +257,7 @@ function completeTodo(button) {
 
 function editTodo(button) {
     button.parentNode.parentNode.parentNode.parentNode.style.display = "none";
-    todoListTitle.innerHTML = "Edit todo";
+    todoListTitle.innerHTML = "Edit todo: \"" + button.parentNode.previousSibling.innerHTML + "\"";
 }
 
 /**
