@@ -258,10 +258,14 @@ function completeTodo(button) {
 
 function editTodo(button) {
     todoList.parentNode.style.display = "none";
+    todoListTitle.parentNode.style.flexDirection = "column";
     todoListEditTitle.style.display = "block";
     showAddTodoContainer.style.display = "none";
     todoListTitle.innerHTML = "Editing todo:";
     todoListEditTitle.innerHTML = "\""+ button.parentNode.previousSibling.innerHTML + "\""
+    userInputTitle.value = button.parentNode.previousSibling.innerHTML;
+    userInputDate.value = button.parentNode.parentNode.firstChild.innerHTML;
+
 }
 
 /**

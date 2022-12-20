@@ -11,11 +11,7 @@
     
     /* New todo container */
     #new-todo-title {
-        width: 70%;
-    }
-
-    .todo-list-header {
-        flex-direction: column;
+        width: 100%;
     }
 
     /* Todo objects */
