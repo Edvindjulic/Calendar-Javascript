@@ -123,38 +123,38 @@ aside {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--pewterblue);
     color: var(--royalbluedark);
-    border-radius: 9px ;
-    border: 1px var(--darkelectricblue) solid;
-    height: 25px;
-    margin-top: 6px;
+    border-radius: 0.563rem ;
+    border: 0.063rem var(--darkelectricblue) solid;
+    height: 1.56rem;
+    margin-top: 0.375rem;
 }
 
 #new-todo-title {
     width: 50%;
-    padding-left: 10px;
+    padding-left: 0.625rem;
 }
 
 #new-todo-date {
     display: flex;
-    padding-left: 8px;
-    width: 135px;
-    padding-right: 5px;
+    padding-left: 0.5rem;
+    width: 8.48rem;
+    padding-right: 0.313rem;
 }
 
 .new-todo-buttons-container {
     display: flex;
     justify-content: flex-end;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 0.625rem;
+    margin-bottom: 0.625rem;
 }
 
 .new-todo-buttons {
-    margin-right: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 5px 5px 5px 5px;
+    margin-right: 0.625rem;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    padding-top: 0.313rem;
+    padding-bottom: 0.313rem;
+    border-radius: 0.313rem;
     cursor: pointer;
     border: none;
     background-color: var(--royalbluedark);
@@ -193,9 +193,9 @@ aside {
     align-items: center;
     background-color: var(--pewterblue);
     color: var(--royalbluedark);
-    border-radius: 25px;
+    border-radius:  0.313rem;
     width: 20%;
-    height: 20px;
+    height: 1.25rem;
     font-size: 0.7rem;
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
@@ -208,9 +208,9 @@ aside {
     align-items: center;
     background-color: var(--pewterblue);
     color: var(--royalbluedark);
-    border-radius: 25px;
-    width: 75px;
-    height: 20px;
+    border-radius:  0.313rem;
+    width:  0.313rem;
+    height: 1.25rem;
     font-size: 0.7rem;
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
@@ -234,5 +234,5 @@ aside {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    margin-left: 5px;
+    margin-left: 0.313rem;
 }
