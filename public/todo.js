@@ -408,9 +408,9 @@ function clearTodoList() {
  */
 function getTodaysDate() {
     let today = new Date();
-    const dd = today.getDate();
-    const mm = today.getMonth() + 1;
-    const yyyy = today.getFullYear();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+    let yyyy = today.getFullYear();
 
     if (dd < 10) {
        dd = '0' + dd;
@@ -429,7 +429,7 @@ function getTodaysDate() {
  * Blocks the user from choosing an earlier date
  */
 function blockPastDates() {
-    const today = getTodaysDate();
+    let today = getTodaysDate();
     const datePicker = document.getElementById("new-todo-date");
     datePicker.setAttribute("min", today);
 }
