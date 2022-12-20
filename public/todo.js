@@ -12,6 +12,7 @@ const userInputDate = document.getElementById("new-todo-date");
 const addTodoContainer = document.getElementById("new-todo-container");
 const showAddTodoContainer = document.getElementById("todo-list-add-button");
 const todoListTitle = document.getElementById("todo-list-title");
+const todoListEditTitle = document.getElementById("todo-list-edit-title");
 let todoListLocalStorage = [];
 let calendarSelectedDay = [];
 window.localStorage.removeItem("selected-calendar-day");
@@ -257,7 +258,8 @@ function completeTodo(button) {
 
 function editTodo(button) {
     button.parentNode.parentNode.parentNode.parentNode.style.display = "none";
-    todoListTitle.innerHTML = "Edit todo: \"" + button.parentNode.previousSibling.innerHTML + "\"";
+    todoListTitle.innerHTML = "Editing todo:";
+    todoListEditTitle.innerHTML = "\""+ button.parentNode.previousSibling.innerHTML + "\""
 }
 
 /**

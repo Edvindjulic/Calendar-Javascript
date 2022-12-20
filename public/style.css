@@ -105,14 +105,31 @@ aside {
 }
 
 .todo-list-header {
+    display: flex;
     font-size: 1.3rem;
     font-weight: bold;
+    align-items: flex-stretch;
+}
+
+#todo-list-title {
+    align-self: flex-start;
+    white-space: nowrap;
+    margin-right: 1rem;
+}
+
+#todo-list-edit-title {
+    overflow-wrap: anywhere;
+    margin-right: 2rem;
+    font-style: italic;
+    align-self: flex-start;
 }
 
 .todo-list-add-button {
     border: none;
     background: none;
     cursor: pointer;
+    margin-left: auto;
+    align-self: flex-start;
 }
 
 /* New todo container */
