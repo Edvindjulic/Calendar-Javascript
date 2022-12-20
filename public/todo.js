@@ -107,6 +107,15 @@ function addTodo(title, date, filterId) {
     buttonDeleteTodo.innerHTML = "delete";
     buttonDeleteTodo.addEventListener('click', deleteTodo);
     
+    // Creates an edit button
+    const buttonEditTodo = document.createElement("button");
+    buttonEditTodo.classList.add("todo-buttons", "material-symbols-outlined");
+    buttonEditTodo.setAttribute("data-cy", "edit-todo-button");
+    buttonEditTodo.innerHTML = "edit";
+    buttonEditTodo.addEventListener('click', () => {
+        editTodo(buttonEditTodo);
+    });    
+
     // Creates a done button
     const buttonCompleteTodo = document.createElement("button");
     buttonCompleteTodo.classList.add("todo-buttons", "material-symbols-outlined");
@@ -131,6 +140,7 @@ function addTodo(title, date, filterId) {
     newTodoContentDiv.appendChild(newTodoContent);
     newTodo.appendChild(newTodoContentDiv);
     buttonContainer.appendChild(buttonCompleteTodo);
+    buttonContainer.appendChild(buttonEditTodo);
     buttonContainer.appendChild(buttonDeleteTodo);
     newTodo.appendChild(buttonContainer);
     todoList.appendChild(newTodo);
