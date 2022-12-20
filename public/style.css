@@ -8,7 +8,7 @@
     --pewterblue: #95ACBE; /*Används för markering av helgdagar*/
 }
 
-/* Re-usable classes */
+/* Reusable classes */
 .margin1 {
     margin: 1rem;
 }
@@ -62,7 +62,6 @@ main {
     width: calc(100% - 30rem);
 }
 
-/* Header */
 header {
     width: 100%;
     height: 6rem;
@@ -74,15 +73,19 @@ header {
     user-select: none;
 }
 
-/* Aside */
+input {
+    display: flex;
+}
+
 aside {
     width: 30rem;
     background-color: var(--cadetblue);
 }
 
-/* Welcome-segment */
+/* Welcome segment */
 #welcome-segment {
     height: auto;
+    user-select: none;
 }
 
 .welcome-segment-day {
@@ -95,7 +98,7 @@ aside {
     color: var(--white);
 }
 
-/* todo-list */
+/* Todo list container */
 #todo-list-container {
     background-color: var(--silk);
     color: var(--royalbluedark);
@@ -103,6 +106,17 @@ aside {
 
 .todo-list-header {
     font-size: 1.3rem;
+}
+
+.todo-list-add-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* New todo container */
+.new-todo-container {
+    display: none;
 }
 
 .new-todo-input {
@@ -115,23 +129,9 @@ aside {
     margin-top: 6px;
 }
 
-input{
-    display: flex;
-    align-items: center;
- }
-
-.todo-list-empty-text {
-    margin-top: 0.5rem;
-}
-
-.todo-list {
-    margin-top: 0.5rem;
-} 
-
-.todo {
-    display: flex;
-    align-items: start;
-    margin-top: 1rem;
+#new-todo-title {
+    width: 50%;
+    padding-left: 10px;
 }
 
 #new-todo-date {
@@ -141,9 +141,50 @@ input{
     padding-right: 5px;
 }
 
-#new-todo-title {
-    width: 50%;
+.new-todo-buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.new-todo-buttons {
+    margin-right: 10px;
     padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+    border: none;
+    background-color: var(--royalbluedark);
+    color: var(--white);
+}
+
+#new-todo-clear-button {
+    background-color: var(--darkelectricblue);
+}
+
+
+/* Todo list */
+.todo-list {
+    margin-top: 0.5rem;
+} 
+
+
+#todo-list-filtered {
+    font-weight: bold;
+}
+
+.todo-list-empty-text {
+    margin-top: 0.5rem;
+}
+
+/* Todo objects */
+.todo {
+    display: flex;
+    align-items: start;
+    margin-top: 1rem;
 }
 
 .todo-badge {
@@ -177,6 +218,11 @@ input{
     overflow-wrap: anywhere;
 }
 
+.todo-text {
+    width: 70%;
+    overflow-wrap: anywhere;
+}
+
 .todo-buttons-container {
     display: flex;
     width: 25%;
@@ -184,53 +230,9 @@ input{
 
 }
 
-#new-todo-clear-button {
-    background-color: var(--darkelectricblue);
-}
-
-.new-todo-buttons-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.new-todo-buttons {
-    margin-right: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 5px 5px 5px 5px;
-    cursor: pointer;
-    border: none;
-    background-color: var(--royalbluedark);
-    color: var(--white);
-}
-
-
 .todo-buttons {
     border: none;
     background-color: transparent;
     cursor: pointer;
     margin-left: 5px;
-}
-
-.todo-text {
-    width: 70%;
-    overflow-wrap: anywhere;
-}
-
-.new-todo-container {
-    display: none;
-}
-
-.todo-list-add-button {
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-
-#todo-list-filtered {
-    font-weight: bold;
 }

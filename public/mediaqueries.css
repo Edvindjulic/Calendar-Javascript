@@ -1,26 +1,20 @@
-/* big tablet */
+/* Big tablet view */
 @media (max-width: 1100px) {
-    /* header */
-
-
-    /* aside */
+    /* Styling for the entire document */
     aside {
         width: 20rem;
     }
 
-    /* main */
     main {
         width: calc(100% - 20rem);
     }
     
-    .todo-text {
-        width: 100%
-    }
-
+    /* New todo container */
     #new-todo-title {
         width: 70%;
     }
 
+    /* Todo objects */
     .todo {
         align-items: center;
     }
@@ -36,33 +30,50 @@
         border-radius: 15px;
         text-align: center;
     }
+    
+    .todo-text {
+        width: 100%
+    }
 }
 
+/* Small tablet view */
 @media (max-width: 820px) {
-    /* header */
+    /* Styling for the entire document */
+    main {
+        width: 100%;
+    }
+    
     header {
         height: 3rem;
         font-size: 1rem;
     }
 
-    /* aside */
+    /* Aside */
     aside {
         width: 100%;
     }
 
-    /* todo-list */
+    .aside-main-container {
+        flex-direction: column-reverse;
+    }
+
+    .activities {
+        flex-direction: row;
+    }
+
+    /* New todo container */
     .new-todo-container {
         flex: 1;
+        padding-right: 30px;
     }
+
+    /* Todo list */
     .todo-list {
         flex: 1;
         margin-top: 0;
     }
 
-    .activites {
-        flex-direction: row;
-    }
-
+    /* Todo objects */
     .todo-badge {
         display: flex;
         width: 130px;
@@ -72,19 +83,8 @@
         display: none;
     }
 
-    .new-todo-container {
-        padding-right: 30px;
-    }
 
-    /* main */
-    .aside-main-container {
-        flex-direction: column-reverse;
-    }
-
-    main {
-        width: 100%;
-    }
-
+    /* Calendar */
     #backButton, #nextButton {
         font-size: 1.5rem;
     }
@@ -93,7 +93,6 @@
         font-size: 1.5rem;
     }
 
-    /* calendar */
     .day-square {
         height: 4rem;
     }
@@ -105,22 +104,21 @@
     }
 }
 
-/* mobile */
+/* Mobile view */
 @media (max-width: 560px) {
-    /* aside */
-    /* todo-list */
+    /* Aside */
     .activites {
         flex-direction: column;
     }
-    /* main */
-    /* calendar */
-    #weekdays {
-        font-size: 0.8rem;
+    
+    /* Todo list container */
+    #new-todo-title {
+        width: 50%;
     }
-    .day-square {
-        font-size: 0.8rem;
-        margin: 0.2rem;
-        border: 1px solid var(--cadetblue);
+
+    /* Todo objects */
+    .todo {
+        align-items: center;
     }
 
     .todo-badge {
@@ -129,21 +127,20 @@
 
     .todo-badge-hidden {
         display: flex;
-    }
-
-    #new-todo-title {
-        width: 50%;
-    }
-
-    .todo {
-        align-items: center;
-    }
-
-    .todo-badge-hidden {
-        display: flex;
         width: 60px;
         height: 40px;
         border-radius: 15px;
         text-align: center;
+    }
+
+    /* Calendar */
+    #weekdays {
+        font-size: 0.8rem;
+    }
+
+    .day-square {
+        font-size: 0.8rem;
+        margin: 0.2rem;
+        border: 1px solid var(--cadetblue);
     }
 }

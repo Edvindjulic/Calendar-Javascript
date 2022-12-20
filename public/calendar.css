@@ -1,3 +1,4 @@
+/* Design for calendar container */
 #container {
     width: 100%;
     padding-left: 2rem;
@@ -54,18 +55,8 @@
     user-select: none;
 }
 
-
 .day-square:hover {
     background-color: #79aeb279;
-}
-
-.day-square-activities {
-    background-color: var(--silk);
-    border-radius: 50%;
-    display: inline-block;
-    width: 25px;
-    align-self: center;
-    margin-bottom: 10px;
 }
 
 .empty {
@@ -79,6 +70,15 @@
 .today {
     background-color: var(--cadetblue);
     font-weight: 700;
+}
+
+.day-square-activities {
+    background-color: var(--silk);
+    border-radius: 50%;
+    display: inline-block;
+    width: 25px;
+    align-self: center;
+    margin-bottom: 10px;
 }
 
 /* The design for the div that day-squares are in */
