@@ -60,8 +60,9 @@ function verifyInputFields() {
 
 /**
  * Creates and adds a new todo in the todo-list
- * @param {HTMLInputElement} title - User input title
- * @param {HTMLInputElement} date  - User input date
+ * @param {String} title - User input title
+ * @param {String} date  - User input date
+ * @param {Number} filterId - Id for filtering list
  */
 function addTodo(title, date, filterId) {
 
@@ -136,8 +137,8 @@ function addTodo(title, date, filterId) {
 
 /**
  * Adds todo in local storage
- * @param {HTMLInputElement} todoTitle - User input title
- * @param {HTMLInputElement} todoDate - User input date
+ * @param {String} todoTitle - User input title
+ * @param {String} todoDate - User input date
  */
 function addToLocalStorage (todoTitle, todoDate) {        
     const todo = {
@@ -167,7 +168,9 @@ function deleteTodo() {
     }
 }
 
-// Check if todo-list is empty
+/**
+ * Check if todo-list is empty
+ */
 function checkIfTodoListIsEmpty() {
     if (todoList.innerHTML == "" && localStorage.getItem("selected-calendar-day") != null) {
     todoListEmptyText.innerHTML = "You have no planned todos on this date";
