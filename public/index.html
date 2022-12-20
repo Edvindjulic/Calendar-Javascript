@@ -29,7 +29,7 @@
             </div>
             <div id="todo-list-container" class="padding1 margin1 border-radius">
               <div class="todo-list-header flex space-between align-center">
-                <p><b>Todo list</b></p>
+                <p id="todo-list-title">Todo list</p>
                 <button data-cy="todo-reveal-form" class="material-symbols-outlined todo-list-add-button" id="todo-list-add-button">
                   add
                 </button>
@@ -41,7 +41,7 @@
                     <input data-cy="todo-task-input" type="text" class="new-todo-input" id="new-todo-title" placeholder="New todo"><br>
 
                     <label for="new-todo-date" class="new-todo-text">Date</label><br>
-                    <input data-cy="todo-date-input" type="date" class="new-todo-input" id="new-todo-date"><br>
+                    <input data-cy="todo-date-input" type="date" value="2022-12-22" class="new-todo-input" id="new-todo-date"><br>
                     <div class="new-todo-buttons-container">
                         <button class="new-todo-buttons" id="new-todo-clear-button">Clear</button>
                         <button data-cy="save-todo" class="new-todo-buttons" id="new-todo-add-button">Add todo</button><br><br>

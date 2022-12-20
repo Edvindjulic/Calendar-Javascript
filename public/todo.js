@@ -11,6 +11,7 @@ const userInputTitle = document.getElementById("new-todo-title");
 const userInputDate = document.getElementById("new-todo-date");
 const addTodoContainer = document.getElementById("new-todo-container");
 const showAddTodoContainer = document.getElementById("todo-list-add-button");
+const todoListTitle = document.getElementById("todo-list-title");
 let todoListLocalStorage = [];
 let calendarSelectedDay = [];
 window.localStorage.removeItem("selected-calendar-day");
@@ -31,9 +32,16 @@ function containerShowOrHide() {
     if (showAddTodoContainer.innerHTML == "remove") {
         showAddTodoContainer.innerHTML = "add";
         addTodoContainer.style.display = "none";
+        todoListTitle.innerHTML = "Todo list";
     } else {
         showAddTodoContainer.innerHTML = "remove";
         addTodoContainer.style.display = "block";
+        if (localStorage.getItem("selected-calendar-day") != null) {
+            userInputDate.value = localStorage.getItem("selected-calendar-day");
+        } else {
+            userInputDate.value = getTodaysDate();
+        }
+        todoListTitle.innerHTML = "Add a new todo";
     }
 }
 
@@ -292,15 +300,15 @@ function clearTodoList() {
     }
 }
 
+
 /**
- * Blocks the user from choosing an earlier date
+ * Returns todays date
  */
-function blockPastDates() {
+function getTodaysDate() {
     let today = new Date();
     const dd = today.getDate();
     const mm = today.getMonth() + 1;
     const yyyy = today.getFullYear();
-    const datePicker = document.getElementById("new-todo-date");
 
     if (dd < 10) {
        dd = '0' + dd;
@@ -311,5 +319,15 @@ function blockPastDates() {
     } 
 
     today = yyyy + '-' + mm + '-' + dd;
+
+    return today;
+}
+
+/**
+ * Blocks the user from choosing an earlier date
+ */
+function blockPastDates() {
+    const today = getTodaysDate();
+    const datePicker = document.getElementById("new-todo-date");
     datePicker.setAttribute("min", today);
 }
