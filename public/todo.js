@@ -291,11 +291,15 @@ function editTodo(button) {
     todoListEditTitle.innerHTML = "\""+ button.parentNode.previousSibling.innerHTML + "\""
     userInputTitle.value = button.parentNode.previousSibling.innerHTML;
     userInputDate.value = button.parentNode.parentNode.firstChild.innerHTML;
+   
 
     let todo = button.parentNode.parentNode.firstChild.nextSibling.nextSibling;
+    
     buttonEditTodo.addEventListener("click", () => {
         todo.innerHTML = userInputTitle.value;
+        todo.previousSibling.previousSibling.innerHTML = userInputDate.value;
         todoListLocalStorage[todo.parentNode.id-1].title = userInputTitle.value;
+        todoListLocalStorage[todo.parentNode.id-1].date = userInputDate.value;
         localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
         
         todoList.parentNode.style.display = "block";
@@ -305,6 +309,7 @@ function editTodo(button) {
         todoListEditTitle.style.display = "none";
         todoListTitle.parentNode.style.flexDirection = "row";
         todoListTitle.innerHTML = "Todo list";
+        loadCalendar();
     });
 }
 
