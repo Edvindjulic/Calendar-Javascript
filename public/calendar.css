@@ -36,7 +36,7 @@
     width: auto;
     height: 6rem;
     background-color: #fff;
-    border: 2px solid var(--cadetblue);
+    border: 0.125rem solid var(--cadetblue);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -52,7 +52,7 @@
     width: auto;
     height: 6rem;
     background-color: var(--silk);
-    border: 2px solid var(--cadetblue);
+    border: 0.125rem solid var(--cadetblue);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -70,7 +70,7 @@
 
 .empty {
     background-color: #fff;
-    border: 2px solid #fff !important;
+    border: 0.125rem solid #fff !important;
 }
 .empty:hover {
     background-color: #fff;
@@ -89,9 +89,9 @@
     background-color: var(--silk);
     border-radius: 50%;
     display: inline-block;
-    width: 25px;
+    width: 1.56rem;
     align-self: center;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
 }
 
 .day-square-selected .day-square-activities {
