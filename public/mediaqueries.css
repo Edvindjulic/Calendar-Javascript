@@ -85,12 +85,17 @@
 
 
     /* Calendar */
+    #container-month-arrows {
+        margin: 0.5rem 0 0.5rem 0;
+    }
+
     #backButton, #nextButton {
         font-size: 1.5rem;
+        margin: 0 1rem 0 1rem;
     }
 
     .current-month {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
 
     .day-square {
