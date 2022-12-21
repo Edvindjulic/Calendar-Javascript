@@ -74,12 +74,12 @@ function showNewTodoContainer() {
     buttonClearNewTodo.addEventListener("click", clearInputFields);
 }
 
+
 /**
  * Shows the editing todo container
  * @param {HTMLButtonElement} button - Button associated with the todo that needs editing
  */
 function showEditTodoContainer(button) {
-    
     buttonNewTodoContainer.style.display = "none";
     newTodoContainer.style.display = "block";
     todoListTitle.innerHTML = "Editing todo:";
@@ -100,7 +100,8 @@ function showEditTodoContainer(button) {
 
     buttonConfirmEditTodo.addEventListener("click", () => {
         editTodo(button);
-    });
+    }, { once: true });
+    buttonCancelEditTodo.addEventListener("click", hideNewTodoContainer);
 }
 
 /**
@@ -306,8 +307,10 @@ function editTodo(button) {
     todoListLocalStorage[todo.parentNode.id-1].title = userInputTitle.value;
     todoListLocalStorage[todo.parentNode.id-1].date = userInputDate.value;
     localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
-    hideNewTodoContainer();
+    
     loadCalendar();
+    loadTodoList();
+    hideNewTodoContainer();
 }
 
 /**
