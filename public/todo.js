@@ -6,7 +6,6 @@
 const todoList = document.getElementById("todo-list-todos");
 const buttonAddNewTodo = document.getElementById("new-todo-add-button");
 const buttonClearNewTodo = document.getElementById("new-todo-clear-button");
-const buttonCancelEditTodo = document.getElementById("new-todo-cancel-button");
 const buttonConfirmEditTodo = document.getElementById("new-todo-edit-button");
 const todoListEmptyText = document.getElementById("todo-list-empty-text");
 const userInputTitleText = document.getElementById("new-todo-title-text");
@@ -54,7 +53,6 @@ function showNewTodoContainer() {
     userInputTitleText.innerHTML = "Title";
     userInputDateText.innerHTML = "Date";
     todoListEditTitle.style.display = "none";
-    buttonCancelEditTodo.style.display = "none";
     buttonConfirmEditTodo.style.display = "none";
     buttonConfirmEditTodo.removeAttribute("data-cy");
     buttonClearNewTodo.style.display = "block";
@@ -80,29 +78,38 @@ function showNewTodoContainer() {
  * @param {HTMLButtonElement} button - Button associated with the todo that needs editing
  */
 function showEditTodoContainer(button) {
+    let todoTitle = button.parentNode.previousSibling.innerHTML;
+    let todoDate = button.parentNode.parentNode.firstChild.innerHTML;
+    
+    userInputTitle.value = todoTitle;
+    userInputDate.value = todoDate;
+    
     buttonNewTodoContainer.style.display = "none";
     newTodoContainer.style.display = "block";
-    todoListTitle.innerHTML = "Editing todo:";
+    todoListTitle.innerHTML = "Editing todo on " + todoDate + ":";
     todoListTitle.parentNode.style.flexDirection = "column";
     userInputTitleText.innerHTML = "New title";
     userInputDateText.innerHTML = "New date";
     todoListEditTitle.style.display = "block";
-    buttonCancelEditTodo.style.display = "block";
     buttonConfirmEditTodo.style.display = "block";
     buttonConfirmEditTodo.setAttribute("data-cy", "save-todo");
     buttonClearNewTodo.style.display = "none";
     buttonAddNewTodo.style.display = "none";
     buttonAddNewTodo.removeAttribute("data-cy");
     todoList.parentNode.style.display = "none";
-    todoListEditTitle.innerHTML = "\""+ button.parentNode.previousSibling.innerHTML + "\""
-    userInputTitle.value = button.parentNode.previousSibling.innerHTML;
-    userInputDate.value = button.parentNode.parentNode.firstChild.innerHTML;
-
-    buttonConfirmEditTodo.addEventListener("click", () => {
-        editTodo(button);
-    }, { once: true });
-    buttonCancelEditTodo.addEventListener("click", hideNewTodoContainer);
+    todoListEditTitle.innerHTML = todoTitle;
 }
+
+buttonConfirmEditTodo.addEventListener("click", () => {
+
+    let oldTodoDate = todoListTitle.innerHTML.slice(-11, -1);;
+
+    for (const todo of todoList.childNodes) {
+        if (todo.firstChild.nextSibling.nextSibling.innerHTML == todoListEditTitle.innerHTML && oldTodoDate == todo.firstChild.innerHTML) {
+            editTodo(todo);
+        }
+    }
+});
 
 /**
  * Hides the todo container
@@ -116,7 +123,6 @@ function hideNewTodoContainer() {
     userInputTitleText.innerHTML = "Title";
     userInputDateText.innerHTML = "Date";
     todoListEditTitle.style.display = "none";
-    buttonCancelEditTodo.style.display = "none";
     buttonConfirmEditTodo.style.display = "none";
     buttonConfirmEditTodo.removeAttribute("data-cy");
     buttonClearNewTodo.style.display = "block";
@@ -275,20 +281,20 @@ function deleteTodoInLocalStorage(todoId) {
  * Updates the ID in the local storage and DOM object
  */
 function updateId () {
-    id = 1;
+    newId = 1;
 
     if (localStorage.getItem("selected-calendar-day") == null) {
         for (const todo of todoList.childNodes) {
             todo.removeAttribute("id");
-            todo.id = id;
-            todoListLocalStorage[id-1].id = id;
-            id++;
+            todo.id = newId;
+            todoListLocalStorage[newId-1].id = newId;
+            newId++;
         }
 
     } else {
         for (let i = 0; i < todoListLocalStorage.length; i++) {
-            todoListLocalStorage[id-1].id = id;
-            id++;
+            todoListLocalStorage[newId-1].id = newId;
+            newId++;
         }
     }
     
@@ -299,13 +305,12 @@ function updateId () {
  * Edits the todo
  * @param {HTMLButtonElement} button - Button associated with the todo that needs editing
  */
-function editTodo(button) {
-    let todo = button.parentNode.parentNode.firstChild.nextSibling.nextSibling;
+function editTodo(todo) {
 
-    todo.innerHTML = userInputTitle.value;
-    todo.previousSibling.previousSibling.innerHTML = userInputDate.value;
-    todoListLocalStorage[todo.parentNode.id-1].title = userInputTitle.value;
-    todoListLocalStorage[todo.parentNode.id-1].date = userInputDate.value;
+    todo.firstChild.innerHTML = userInputDate.value;
+    todo.firstChild.nextSibling.nextSibling.innerHTML = userInputTitle.value;
+    todoListLocalStorage[todo.id-1].title = userInputTitle.value;
+    todoListLocalStorage[todo.id-1].date = userInputDate.value;
     localStorage.setItem("todo-list", JSON.stringify(todoListLocalStorage));
     
     loadCalendar();
