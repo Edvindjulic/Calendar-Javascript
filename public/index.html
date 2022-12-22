@@ -30,27 +30,28 @@
             </div>
             <div id="todo-list-container" class="padding1 margin1 border-radius">
               <div class="todo-list-header flex space-between align-center">
-                <p><b>Todo-list</b></p>
-                <button data-cy="todo-reveal-form" class="material-symbols-outlined todo-list-add-button" id="todo-list-add-button">
-                  add
-                </button>
+                <p id="todo-list-title">Todo list</p>
+                <span id="todo-list-edit-title">Todo list</span>
+                <button data-cy="todo-reveal-form" class="material-symbols-outlined todo-list-add-button" id="todo-list-add-button">add</button>
               </div>
               <br>
-              <div class="flex column activites">
+              <div class="flex column activities">
                 <div class="new-todo-container" id="new-todo-container"> 
-                    <label for="new-todo-title">Title</label><br>
-                    <input data-cy="todo-task-input" type="text" class="new-todo-input" id="new-todo-title" placeholder="New todo"><br>
-                    <br>
-                    <label for="new-todo-date">Date</label><br>
-                    <input data-cy="todo-date-input" type="date" class="new-todo-input" id="new-todo-date"><br>
-                    <br>
-                    <button class="new-todo-input" id="new-todo-clear-button">Clear</button>
-                    <button data-cy="save-todo" class="new-todo-input" id="new-todo-add-button">Add todo</button><br><br>
+                    <p id="new-todo-title-text" class="new-todo-text">Title</p>
+                    <textarea data-cy="todo-task-input" class="new-todo-input" id="new-todo-title" maxlength ="150" placeholder="New todo"></textarea><br>
+
+                    <p id="new-todo-date-text" class="new-todo-text">Date</p>
+                    <input data-cy="todo-date-input" type="date" value="2022-12-22" class="new-todo-input" id="new-todo-date"><br>
+                    <div class="new-todo-buttons-container">
+                        <button class="new-todo-buttons" id="new-todo-clear-button">Clear</button>
+                        <button data-cy="save-todo" class="new-todo-buttons" id="new-todo-add-button">Add todo</button>
+                        <button data-cy="save-todo" class="new-todo-buttons" id="new-todo-edit-button">Edit todo</button>
+                    </div>
                 </div>
                 <div class="todo-list">
                   <p id="todo-list-filtered">My todos</p>
                   <p class="todo-list-empty-text" id="todo-list-empty-text">You have no planned todos</p>
-                  <ul data-cy="todo-list" class="todo-list-todos" id="todo-list-todos"></ul>
+                  <ul data-cy="todo-list" data-cy="filtered-todo-list" class="todo-list-todos" id="todo-list-todos"></ul>
                 </div>
               </div>
           </aside>
@@ -58,12 +59,11 @@
           <!-- Contains current month, year and calendar -->
           <main>
             <div id="container">
-                <div id="container-month-arrows" class="flex space-between padding-top-bottom1">
+                <div id="container-month-arrows" class="flex padding-top-bottom1">
                   <span class="material-symbols-outlined button" id="backButton" data-cy="prev-month">chevron_left</span>
                   <div id="monthAndYear" class="current-month"></div>
                   <span class="material-symbols-outlined" id="nextButton" data-cy="next-month">chevron_right</span>
                 </div>
-      
                 <div id="calendar">
                   <div id="weekdays">
                     <div>Mon</div>
