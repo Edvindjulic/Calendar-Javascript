@@ -103,14 +103,42 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
             addTodoToCalendar(daySquareTodos, daySquare.id);
         }
         daySquare.appendChild(daySquareTodos);
+        getHoliday(daySquare);
         calendar.appendChild(daySquare);
     }
 }
 
+async function getHoliday(daySquare) {
+    console.log(daySquare.id);
+    let date2 = daySquare.id;
+
+    let year2 = date2.slice(0, 4);
+    let month2 = date2.slice(5, 7);
+  
+    const response = await fetch(`https://sholiday.faboul.se/dagar/v2.1/${year2}/${month2}`);
+  
+    const holidays = await response.json();
+    const listOfHolidays = []
+  
+    const daySquareHoliday = document.createElement('div');
+  
+    for (const holiday of holidays.dagar) {
+      if (holiday.helgdag) {
+        listOfHolidays.push(holiday); 
+        if (holiday.datum == daySquare.id) {
+          daySquareHoliday.innerHTML = holiday.helgdag;
+          daySquareHoliday.classList.add("day-square-holiday")
+        }
+        daySquare.appendChild(daySquareHoliday);
+
+      }   
+    }
+  } 
+
 /**
- * Adds todos in calendar
- * @param {HTMLDivElement} calendarTodo - 
- * @param {String} day -
+ * Adds a todo to the calendar
+ * @param {HTMLDivElement} calendarTodo - The div that the todo gets added into
+ * @param {*} day 
  */
 function addTodoToCalendar(calendarTodo, day) {
     for (var i = 0; i < todoListLocalStorage.length; i++) {;
@@ -142,7 +170,9 @@ function initButtons() {
     });
   }
 
-// Filters the todo list by selected calendar day
+/**
+ * Filters the todo list by selected calendar day
+ */
 function selectCalendarDay() {
     let filteredText = document.getElementById("todo-list-filtered");
 
