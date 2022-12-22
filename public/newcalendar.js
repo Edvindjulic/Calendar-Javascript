@@ -37,6 +37,7 @@ function loadCalendar() {
     monthAndYear.classList.add("current-month");
     
     renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year);
+    getHoliday();
 }
 
 /**
@@ -102,38 +103,52 @@ function renderDaySquare(emptyDaySquare, daysInAMonth, day, month, year) {
         } else {
             addTodoToCalendar(daySquareTodos, daySquare.id);
         }
+        
         daySquare.appendChild(daySquareTodos);
-        getHoliday(daySquare);
         calendar.appendChild(daySquare);
     }
 }
 
-async function getHoliday(daySquare) {
-    console.log(daySquare.id);
-    let date2 = daySquare.id;
+/**
+ * Function that fetches holidays and inserts them into DOM
+ */
+async function getHoliday() {
+    const calendar = document.getElementById("month-calendar");
+    
+    let date = calendar.lastChild.id;
 
-    let year2 = date2.slice(0, 4);
-    let month2 = date2.slice(5, 7);
+    let year = date.slice(0, 4);
+    let month = date.slice(5, 7);
   
-    const response = await fetch(`https://sholiday.faboul.se/dagar/v2.1/${year2}/${month2}`);
+    const response = await fetch(`https://sholiday.faboul.se/dagar/v2.1/${year}/${month}`);
   
     const holidays = await response.json();
-    const listOfHolidays = []
-  
-    const daySquareHoliday = document.createElement('div');
-  
-    for (const holiday of holidays.dagar) {
-      if (holiday.helgdag) {
-        listOfHolidays.push(holiday); 
-        if (holiday.datum == daySquare.id) {
-          daySquareHoliday.innerHTML = holiday.helgdag;
-          daySquareHoliday.classList.add("day-square-holiday")
-        }
-        daySquare.appendChild(daySquareHoliday);
+   
+    for (const daySquare of calendar.childNodes) {
 
-      }   
+        if (daySquare.classList.contains("empty")) {
+
+        } else {
+
+            for (const holiday of holidays.dagar) {
+
+                if (holiday.helgdag) {
+
+                    if (holiday.datum == daySquare.id) {
+
+                        if (daySquare.lastChild.innerHTML != holiday.helgdag) {
+
+                            const daySquareHoliday = document.createElement('div');
+                            daySquareHoliday.innerHTML = holiday.helgdag;
+                            daySquareHoliday.classList.add("day-square-holiday")
+                            daySquare.appendChild(daySquareHoliday);
+                        }
+                    }
+                }
+            }   
+        }
     }
-  } 
+}
 
 /**
  * Adds a todo to the calendar
@@ -176,8 +191,6 @@ function initButtons() {
 function selectCalendarDay() {
     let filteredText = document.getElementById("todo-list-filtered");
 
-    hideNewTodoContainer();
-
     if (this.classList.contains("day-square")) {
         
         for (const daySquare of this.parentNode.childNodes) {
@@ -194,13 +207,13 @@ function selectCalendarDay() {
         this.classList.add("day-square-selected");
         localStorage.setItem("selected-calendar-day", this.id);
         filteredText.innerHTML = "My todos on " + this.id;
-        loadTodoList();
+        loadTodoList()
         
     } else if (this.classList.contains("day-square-selected")) {
         this.classList.remove("day-square-selected");
         this.classList.add("day-square")
         window.localStorage.removeItem("selected-calendar-day");
         filteredText.innerHTML = "My todos";
-        loadTodoList();
+        loadTodoList()
     }
 }
