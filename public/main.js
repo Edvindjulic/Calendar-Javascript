@@ -11,5 +11,4 @@ function main() {
     initButtons();
     blockPastDates();
     loadTodoList();
-    getHoliday();
 }
