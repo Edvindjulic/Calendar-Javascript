@@ -1,4 +1,6 @@
 # Kalenderverktyg i Javascript.
+<H2>Hur projektet har gått</H2>
+Samarbetet har varit bra, Edvin och Moa har jobbat en del tillsammans i skolan, vilket har gjort att det inte är lika fördelat på github för hur mycket alla har arbetat. Vi har kollat en del på tidigare kod-exempel, men sen försökt bygga så mycket som möjligt från våra egna kunskaper. Iallafall förstår vi i stort sett hur allting fungerar.
 
 <H2>Schemalagda todos</H2>
 I den här uppgiften skall ni bygga ett verktyg där användaren kan skapa och schemalägga todos. Verktyget skall visa en lista med todos och en kalender för översikt. Utöver det tekniska som skall skapas så ämnar den här uppgiften att träna på att arbeta med git och GitHub i projektform.
