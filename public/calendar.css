@@ -34,7 +34,7 @@
 /* Design for each day-square */
 .day-square {
     width: auto;
-    height: 6rem;
+    height: 7rem;
     background-color: #fff;
     border: 0.125rem solid var(--cadetblue);
     display: flex;
@@ -121,9 +121,7 @@
 .day-square-holiday {
     background-color: var(--royalbluedark);
     color: var(--white);
-    border-radius: 100rem;
     width: auto;
     font-size: 0.6rem;
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
+    padding: 0.2rem;
 }

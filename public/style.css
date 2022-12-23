@@ -97,11 +97,11 @@ aside {
 .welcome-segment-day {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--white);
+    color: var(--royalbluedark);
 }
 
 .welcome-segment-date, .welcome-segment-time {
-    color: var(--white);
+    color: var(--royalbluedark);
 }
 
 /* Todo list container */
@@ -148,7 +148,7 @@ aside {
 
 .new-todo-input {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--pewterblue);
+    background-color: var(--white);
     color: var(--royalbluedark);
     border-radius: 0.563rem ;
     border: 0.063rem var(--darkelectricblue) solid;
