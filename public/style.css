@@ -86,6 +86,7 @@ textarea {
 aside {
     width: 30rem;
     background-color: var(--cadetblue);
+    min-height: calc(100vh - 6rem);
 }
 
 /* Welcome segment */
@@ -227,12 +228,11 @@ aside {
     align-items: center;
     background-color: var(--pewterblue);
     color: var(--royalbluedark);
-    border-radius:  0.5rem;
-    width: 23%;
+    border-radius:  0.313rem;
+    width: 25%;
     height: 1.25rem;
     font-size: 0.7rem;
-    padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
+    padding: 0.1rem;
     margin-right: 0.7rem;
 }
 
@@ -253,7 +253,7 @@ aside {
 }
 
 .todo-text {
-    width: 70%;
+    width: 75%;
     overflow-wrap: anywhere;
 }
 

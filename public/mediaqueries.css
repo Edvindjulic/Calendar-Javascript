@@ -51,6 +51,7 @@
     /* Aside */
     aside {
         width: 100%;
+        min-height: calc(100vh - 34.7rem);
     }
 
     .aside-main-container {
@@ -112,6 +113,10 @@
 /* Mobile view */
 @media (max-width: 560px) {
     /* Aside */
+    aside {
+        min-height: calc(100vh - 31.06rem);
+    }
+
     .activites {
         flex-direction: column;
     }
