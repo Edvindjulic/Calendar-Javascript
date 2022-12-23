@@ -227,8 +227,8 @@ aside {
     align-items: center;
     background-color: var(--pewterblue);
     color: var(--royalbluedark);
-    border-radius:  0.313rem;
-    width: 20%;
+    border-radius:  0.5rem;
+    width: 23%;
     height: 1.25rem;
     font-size: 0.7rem;
     padding-top: 0.1rem;

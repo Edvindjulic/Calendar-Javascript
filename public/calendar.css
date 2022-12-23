@@ -46,11 +46,13 @@
     border-radius: 1rem;
     font-size: 1.3rem;
     user-select: none;
+    align-items: center;
+    overflow: hidden;
 }
 
 .day-square-selected {
     width: auto;
-    height: 6rem;
+    height: 7rem;
     background-color: var(--silk);
     border: 0.125rem solid var(--cadetblue);
     display: flex;
@@ -121,7 +123,9 @@
 .day-square-holiday {
     background-color: var(--royalbluedark);
     color: var(--white);
-    width: auto;
+    width: 100%;
     font-size: 0.6rem;
+    border-radius: 0.5rem;
     padding: 0.2rem;
+    word-wrap: break-word;
 }

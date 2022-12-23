@@ -99,7 +99,7 @@
     }
 
     .day-square {
-        height: 4rem;
+        height: 6rem;
     }
 
     .day-square-activities {
@@ -142,5 +142,10 @@
         font-size: 0.8rem;
         margin: 0.2rem;
         border: 1px solid var(--cadetblue);
+    }
+
+    .day-square-holiday {
+        word-wrap: break-word;
+
     }
 }
