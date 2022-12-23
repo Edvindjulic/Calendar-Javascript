@@ -86,6 +86,7 @@ textarea {
 aside {
     width: 30rem;
     background-color: var(--cadetblue);
+    min-height: calc(100vh - 6rem);
 }
 
 /* Welcome segment */
