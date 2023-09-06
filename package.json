@@ -6,6 +6,7 @@
   "scripts": {
     "postinstall": "node postinstall.js",
     "dev": "cd public && live-server --port=8080",
+    "build": "webpack --mode production",
   },
   "devDependencies": {
     "live-server": "^1.2.2",
