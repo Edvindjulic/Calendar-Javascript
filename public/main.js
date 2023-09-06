@@ -1,6 +1,7 @@
 require('./style.css');
 require('./calendar.css');
 require('./mediaqueries.css');
+const startWelcomeSegment = require('./welcomesegment.js');
 
 window.addEventListener("DOMContentLoaded", main);
 
