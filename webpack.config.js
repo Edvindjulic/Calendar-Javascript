@@ -38,6 +38,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       chunks: ["main", "newcalendar", "todo", "welcomesegment"],
+      scriptLoading: "blocking",
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
