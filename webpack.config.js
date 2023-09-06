@@ -39,6 +39,18 @@ module.exports = {
       template: "./public/index.html",
       chunks: ["main", "newcalendar", "todo", "welcomesegment"],
       filename: "index.html",
+      scriptLoading: "blocking",
+      inject: (data) => {
+        let tags = '';
+        for (let chunk in data.chunks) {
+          if (chunk === 'todo') {
+            tags += `<script defer src="${data.chunks[chunk].entry}"></script>`;
+          } else {
+            tags += `<script src="${data.chunks[chunk].entry}"></script>`;
+          }
+        }
+        return tags;
+      }
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
