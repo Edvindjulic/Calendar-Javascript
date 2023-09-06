@@ -39,6 +39,7 @@ module.exports = {
       template: "./public/index.html",
       chunks: ["main", "newcalendar", "todo", "welcomesegment"],
       scriptLoading: "blocking",
+      inject: "head",
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
