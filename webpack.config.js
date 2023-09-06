@@ -37,7 +37,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
-      chunks: ["main", "todo", "newCalendar", "welcomesegment"],
+      chunks: ["main"],
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
