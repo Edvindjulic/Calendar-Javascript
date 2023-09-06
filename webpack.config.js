@@ -6,7 +6,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   entry: {
     main: "./public/main.js",
-    newCalendar: "./public/newcalendar.js",
+    newcalendar: "./public/newcalendar.js",
+    todo: "./public/todo.js",
+    welcomesegment: "./public/welcomesegment.js",
     // Add other entry points for different JavaScript files if needed
   },
   output: {
@@ -27,7 +29,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+        ],
       },
     ],
   },
