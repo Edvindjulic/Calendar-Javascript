@@ -1,3 +1,7 @@
+require('./style.css');
+require('./calendar.css');
+require('./mediaqueries.css');
+
 window.addEventListener("DOMContentLoaded", main);
 
 /**
