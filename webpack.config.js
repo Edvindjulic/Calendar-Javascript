@@ -4,12 +4,12 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
+  mode: "production",
   entry: {
     main: "./public/main.js",
     newcalendar: "./public/newcalendar.js",
     todo: "./public/todo.js",
     welcomesegment: "./public/welcomesegment.js",
-    // Add other entry points for different JavaScript files if needed
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -29,10 +29,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   },
@@ -40,7 +37,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
-      chunks: ["main"],
+      chunks: ["main", "todo", "newCalendar", "welcomesegment"],
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
